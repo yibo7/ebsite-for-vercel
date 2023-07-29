@@ -182,69 +182,20 @@ table td {
     margin-right: 15px;
 }
 
-/*admin_login*/
-
-.indexbody {
-    background: #5F82A3 !important;
-    height: 100vh;
-}
-
-.loginbox-p {
-    width: 400px !important;
-    border: 8px solid #123E5C !important;
+.cbrowbox-tab {
+        border-left: 1px solid #dadada !important;
+        border-right: 1px solid #dadada !important;
+        border-bottom: 1px solid #dadada !important;
+        background: #ffffff !important;
+        padding: 8px;
+    }
+.cbrowbox {
+    width: 98% !important;
     margin: 20px auto 0 !important;
-    background: #E6EDF2
+    border: 1px solid #dadada !important;
+    background: #ffffff !important;
+    border-radius: 5px
 }
-
-.loginbox-s {
-    text-align: left;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    margin-top: 8px;
-    font-weight: bold;
+.logotext{
+	color: #d4500d;font-weight: bold
 }
-
-.loginbox-title {
-    height: 20px;
-    text-align: left;
-    padding-left: 10px;
-    margin-top: 8px;
-    font-weight: bold;
-}
-
-.loginbox-content {
-    border: solid 1px #003C78;
-    background: #E1EAF2;
-    padding-bottom: 10px;
-    color: #52514E;
-}
-
-.adminlogin_loginform {
-    width: 100%;
-    height: 500px;
-    padding-top: 150px;
-    background: #0F344D;
-    text-align: center !important;
-}
-.adminlogin_banner {
-    height: 40px;
-    width: 100%;
-    top: 0px;
-    /*background-image: url(wd-header.png);*/
-    background: #092130;
-    border-bottom: 1px solid #12405E;
-}
-
-.adminlogin_banner #logo {
-    background-image: url(logo.png);
-    background-repeat: no-repeat;
-    height: 34px;
-    width: 120px;
-    position: absolute;
-    top: 4px;
-    left: 20px;
-    padding-left: 120px;
-    padding-top: 8px;
-}
-/*end_admin_login*/
