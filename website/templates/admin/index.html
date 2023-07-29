@@ -1,0 +1,49 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+
+<div class="d-flex flex-column" style="height: 100vh;">
+    <div class="d-flex justify-content-between align-items-center top_logo">
+        <div class="d-flex justify-content-start">
+            <a target=rform href="welcome"><div class="adminlogo"></div></a>
+            <div id="panrent-menu" class="panrent-menu">
+                {% for menu in menu_data %}
+                    <span data-mid="{{menu._id}}">
+                        <i class="{{menu.image_url}}" /></i> {{menu.menu_name}}
+                    </span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="dropdown px-2">
+            <i style="font-size:30px;color:#fff; " class="fa fa-user-circle-o" data-bs-toggle="dropdown"></i>
+            <ul class="dropdown-menu">
+                <li><a target=rform href="wellcome" class="dropdown-item"><i class="fa fa-home" ></i> 管理首页</a></li>
+                <li><a target=rform href="change-pass" class="dropdown-item"><i class="fa fa-key"></i> 修改密码</a></li>
+                <li><a href="log_out" onclick="return confirm('确定要退出登录？');" class="dropdown-item"><i class="fa fa-sign-out"></i>退出({{g.u.ni_name}})</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="flex-grow-1">
+        <table style="height: 100%;width:100%;">
+            <tr>
+                <td id="leftList" width="183" valign="top">
+                    <div id="LeftMenuList">
+                    </div>
+                </td>
+                <td class="resizeBar" onclick="OpenLeftMenu();">
+                    <img id="sp_img" src="/admin_themes/splitbar.gif" width="8" />
+                </td>
+                <td style="height:100%;vertical-align:top">
+                    <div class="menu-title">
+                        <i style="color:coral" class="fa fa-arrow-circle-right" ></i> <span>管理首页</span>
+                    </div>
+                    <div style="height: calc(100% - 50px);">
+                        <iframe name="rform" id="rform" src="wellcome" frameborder="0" style="width:100%; height:100%;" scrolling="yes" />
+                    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

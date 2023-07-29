@@ -1,0 +1,6 @@
+Flask==2.3.2
+redis==4.6.0
+pymongo==4.4.1
+pydantic==2.1.1
+requests
+Pillow==10.0.0

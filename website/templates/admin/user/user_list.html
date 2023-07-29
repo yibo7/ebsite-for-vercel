@@ -1,0 +1,86 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+
+<div class="eb-box">
+    <div class="btn-toolbar px-2">
+        <form method="get">
+            <div class="btn-group">
+                <input class="form-control" placeholder="关键字" name="k" type="text" required/>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-primary" type="submit">   搜索   </button>
+            </div>
+            <div class="btn-group">
+                <a href="user_list_save" class="btn btn-outline-primary">
+                    添加
+                </a>
+            </div>
+            <div class="btn-group">
+                <a class="btn btn-outline-primary" onclick="return confirm('将删除包括其下的子菜单，确认要删除所选项吗？');" href="javascript: delitems()">
+                    删除
+                </a>
+            </div>
+        </form>
+    </div>
+<!--    table-striped-->
+    <table class="table table-hover eb-table">
+        <thead>
+            <tr>
+                <th>账号名称</th>
+                <th>昵称</th>
+                <th>手机号</th>
+                <th>EMAIL</th>
+                <th>积分</th>
+                <th>用户组</th>
+                <th>是否锁定</th>
+                <th>最后登录</th>
+                <th>操作</th>
+                <th><input id='chAll' onclick='on_check(this)' type="checkbox" /></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in datas %}
+
+                <tr>
+                    <td>{{item['username']}}</td>
+                    <td>{{item['ni_name']}}</td>
+                    <td>{{item['mobile_number']}}</td>
+                    <td>{{ item['email_address'] }}</td>
+                    <td>{{ item['credits'] }}</td>
+                    <td>{{item['group_id']}}</td>
+                    <td>
+                        {% if item['is_locked'] %}
+                            <span>是</span>
+                        {% else %}
+                            <span>否</span>
+                        {% endif %}
+
+                    </td>
+
+                    <td class="pd-a">
+                        <a href="user_list_save?id={{item['_id']}}" ><i class="fa fa-edit" /></i> 修 改 </a>
+
+                        <a onclick="return confirm('将删除包括其下的子菜单，确认要删除所选项吗？');" href="user_list_del?ids={{item['_id']}}"><i class="fa fa-remove" /></i> 删 除 </a>
+                    </td>
+                    <td>
+                        <input value="{{item['_id']}}" type="checkbox" />
+                    </td>
+                </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+<nav class="mt-2 px-2">
+    {{pager|safe}}
+</nav>
+<script>
+    function delitems() {
+        var ids = get_checkboxval(".eb-table");
+        if (ids)
+            location.href = 'menus_del?ids=' + ids;
+        else
+            alert("请选择要删除的数据！");
+    }
+</script>
+
+{% endblock %}

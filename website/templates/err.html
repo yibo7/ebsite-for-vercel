@@ -1,0 +1,16 @@
+{% extends 'site_base.html' %}
+{% block title %}
+用户注册
+{% endblock %}
+{% block content %}
+<div style="max-width: 500px" class="row cbrowbox">
+    <div class="col-sm-12 col-md-12 ">
+        <div class="boxheader headertips">
+                <h3>发生错误了</h3>
+            </div>
+            <div style="color: red" class="eb-content">
+                {{errinfo}}
+            </div>
+    </div>
+</div>
+{% endblock %}

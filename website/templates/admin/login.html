@@ -1,0 +1,72 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+  <div class="adminlogin_banner">
+    <div id="logo">
+    </div>
+
+    <div id="logoRight">
+        <a href="/">网站首页</a>
+    </div>
+</div>
+<div style="text-align: center;width:100%;">
+    <div  class="loginbox-p">
+        <div class="loginbox-s">
+            <div class="loginbox-title">管理员登录</div>
+            <div class="loginbox-content" style="padding-left: 20px;">
+              <form action="#" method="post">
+                
+                <table>
+                    <tr>
+                        <td>
+                            <font color='#E78A29'>*</font> 用户名称：
+                        </td>
+                        <td colspan="2">
+                          <input type="text" class="form-control" name="username" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font color='#E78A29'>*</font> 密码：
+                        </td>
+                        <td colspan="2">
+                          <input type="password"  class="form-control" name="pass" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <font color='#E78A29'>*</font> 验证码：
+                        </td>
+                        <td>
+                          <input type="text" class="form-control" name="code" />
+                            <input type="hidden" value="{{safe_code_key}}" class="form-control" name="key" />
+                        </td>
+                        <td>
+                          <img  onClick="this.src+=Math.random()" src="/imgcode?key={{safe_code_key}}&" style="cursor: pointer;" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: center; padding-top: 20px;">
+                          <button class="btn btn-primary" style="width: 120px;" type="submit">  登  录 </button>  
+                        </td> 
+                    </tr>
+                    <tr> 
+                      <td colspan="3" style="color: #FF0000;">
+                        {{err}}
+                      </td>
+                  </tr>
+                </table>
+              </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<div>
+    <div style="text-align: center; padding: 20px;">
+        @2009 okx Inc. All rights reserved Powered by <a target="_blank" href="#">okx</a>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'admin_base.html' %}    
+{% block content %}
+
+<div class="row eb-box">
+    <div class="col-sm-12 col-md-12 ">
+        <div class="block-flat">
+            <div class="boxheader">
+                <h3>系统设置</h3>
+            </div>
+            <div class="content">
+
+                <form method="post" action="{{request.path}}">
+                    <div class="mb-3">
+                        <label>网站名称</label>
+                        <input name="site_name" value="{{model.site_name}}" style="max-width:500px" class="form-control" required>
+                        <div class="invalid-feedback">请输入网站名称。</div>
+                    </div>
+                    <div class="mb-3">
+                        <label>后台错误登录几次锁定</label>
+                        <input name="err_login_lock" value="{{model.err_login_lock}}" style="max-width:100px" class="form-control" required>
+                        <div class="invalid-feedback">请输入整数值。</div>
+                    </div>
+
+                    <div class="mb-3 mt-3">
+                        <label>默认注册用户组</label>
+                        <select name="reg_group_id" style="max-width:300px" class="form-control">
+                            {% for item in u_groups %}
+                                {% if item.get("_id")|str == model.reg_group_id %}
+                                     <option selected value="{{item.get('_id')}}" >{{item.get("name")}}</option>
+                                {% else %}
+                                     <option  value="{{item.get('_id')}}">{{item.get("name")}}</option>
+                                {% endif %}
+
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>
+                            <input name="is_open_safe_code" type="checkbox" {{ "checked" if model.is_open_safe_code }} >是否开启验证码
+                            <input type="hidden" title="checkbox未选提交辅助控件，只能放在同名checkbox下面" name="is_open_safe_code" value="checkbox_unchecked">
+                        </label>
+                        <span class="text-danger"></span>
+                    </div>
+
+                    <button class="btn btn-primary mb-3" type="submit">   保  存   </button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %} 

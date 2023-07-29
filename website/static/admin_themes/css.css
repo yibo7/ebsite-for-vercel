@@ -1,0 +1,250 @@
+@import url("https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-weight: normal;
+    font-size: 14px;
+    word-spacing: normal;
+    text-transform: none;
+    letter-spacing: normal;
+    color: #000000;
+    background: #ffffff !important;
+}
+li {
+    list-style: none;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+a:link, a:visited {
+    color: #656D77;
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    color: #333;
+    text-decoration: underline;
+}
+
+img {
+    border: 0px;
+}
+
+a {
+    cursor: pointer;
+}
+
+
+table td {
+    font-size: 12px;
+    height: 40px;
+}
+
+.selectThisItemsStyle {
+    background: url(f1.gif) no-repeat;
+    text-decoration: none;
+}
+
+.resizeBar {
+    background-image: url(resizeBar.gif);
+    width: 8px;
+    cursor: pointer;
+}
+
+.BasicinfoShow {
+    margin-top: 10px;
+    display: block;
+    padding-left: 10px;
+}
+
+    .BasicinfoShow img {
+        vertical-align: middle;
+        margin-right: 5px;
+    }
+
+    .BasicinfoShow ul li {
+        height: 30px;
+        line-height: 20px;
+    }
+    .BasicinfoShow ul li a{
+       padding:10px;
+    }
+.treeview_unfocus {
+    background: #EBEBEB;
+    clear: none;
+    height: 35px;
+    text-indent: 10px;
+    width: 100%;
+    cursor: pointer;
+    border-bottom: #D6D6D6 1px solid;
+    font-size:16px;
+}
+
+.boxheader {
+    padding-top:8px;
+    width: 100%;
+    height: 65px ;
+    border-bottom: 1px solid #dadada;
+    margin-bottom:8px;
+}
+
+.eb-box {
+    width: 99%;
+    margin: 10px auto 0 !important;
+    border: 1px solid #dadada !important;
+    background: #ffffff !important;
+}
+
+
+
+/*end box*/
+/*对bootstar的扩展*/
+.dropdown-menu {
+    background-color: #e5f7ff !important;
+}
+.btn-toolbar {
+    background: #EEEEEE;
+    height: 50px;
+    padding-top: 6px;
+}
+
+.btn-group {
+    margin-left: 8px;
+}
+
+/*admin-index*/
+.panrent-menu {
+    color: #fff;
+    margin-left: 55px;
+    font-size: 14px;
+    line-height: 15px;
+    padding: 17px 14px 17px 13px;
+}
+
+.panrent-menu span.current {
+    padding: 17px 14px 17px 13px;
+    background: #0086C9;
+    color: #C9EDFF;
+}
+
+.panrent-menu span {
+    padding: 17px 14px 17px 13px;
+    font-size:16px;
+}
+
+.panrent-menu span:hover {
+    padding: 17px 14px 17px 13px;
+    background: #27A6E6;
+}
+
+.top_logo {
+    height: 50px;
+    width: 100%;
+    background: #00AAFF;
+}
+
+.adminlogo {
+        background-image: url(logo.png);
+        background-repeat: no-repeat;
+        height: 33px;
+        width: 120px;
+       margin-top:8px;
+       margin-left:5px;
+    }
+
+
+
+.top_sub_menu {
+    height: 35px;
+    width: 100%;
+    background: #EBF0F5;
+    cursor: default;
+    border-bottom: 1px solid #DEDEDE;
+}
+
+.menu-title {
+    height: 37px;
+    line-height:37px;
+    background-color: #EBEBEB;
+    border-bottom: solid 1px #D6D6D6;
+
+}
+    .menu-title span {
+        font-size: 16px;
+    }
+
+.pd-a a{
+    margin-right: 15px;
+}
+
+/*admin_login*/
+
+.indexbody {
+    background: #5F82A3 !important;
+    height: 100vh;
+}
+
+.loginbox-p {
+    width: 400px !important;
+    border: 8px solid #123E5C !important;
+    margin: 20px auto 0 !important;
+    background: #E6EDF2
+}
+
+.loginbox-s {
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+.loginbox-title {
+    height: 20px;
+    text-align: left;
+    padding-left: 10px;
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+.loginbox-content {
+    border: solid 1px #003C78;
+    background: #E1EAF2;
+    padding-bottom: 10px;
+    color: #52514E;
+}
+
+.adminlogin_loginform {
+    width: 100%;
+    height: 500px;
+    padding-top: 150px;
+    background: #0F344D;
+    text-align: center !important;
+}
+.adminlogin_banner {
+    height: 40px;
+    width: 100%;
+    top: 0px;
+    /*background-image: url(wd-header.png);*/
+    background: #092130;
+    border-bottom: 1px solid #12405E;
+}
+
+.adminlogin_banner #logo {
+    background-image: url(logo.png);
+    background-repeat: no-repeat;
+    height: 34px;
+    width: 120px;
+    position: absolute;
+    top: 4px;
+    left: 20px;
+    padding-left: 120px;
+    padding-top: 8px;
+}
+/*end_admin_login*/

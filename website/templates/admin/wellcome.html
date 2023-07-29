@@ -1,0 +1,23 @@
+{% extends 'admin_base.html' %}    
+{% block content %}
+
+<div class="row eb-box">
+    <div class="col-sm-12 col-md-12 ">
+        <div class="boxheader">
+            <h3><i class="icon-spinner4 spinner"></i>系统运行状况</h3>
+        </div>
+        <div>
+            <div class="mb-3 mt-3">
+                <label class="form-label">账号：@ViewBag.UserName</label>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">姓名：@ViewBag.UserNiName</label>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">角色：@ViewBag.RoleName</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %} 
