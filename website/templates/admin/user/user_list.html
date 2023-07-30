@@ -1,4 +1,4 @@
-{% extends 'admin_base.html' %}
+{% extends 'base_admin.html' %}
 {% block content %}
 
 <div class="eb-box">
@@ -26,6 +26,7 @@
     <table class="table table-hover eb-table">
         <thead>
             <tr>
+
                 <th>账号名称</th>
                 <th>昵称</th>
                 <th>手机号</th>
@@ -39,6 +40,7 @@
             </tr>
         </thead>
         <tbody>
+
             {% for item in datas %}
 
                 <tr>

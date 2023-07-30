@@ -1,4 +1,4 @@
-{% extends 'admin_base.html' %}    
+{% extends 'base_admin.html' %}
 {% block content %}
 
 <div class="row eb-box">
@@ -25,7 +25,7 @@
                         <label>默认注册用户组</label>
                         <select name="reg_group_id" style="max-width:300px" class="form-control">
                             {% for item in u_groups %}
-                                {% if item.get("_id")|str == model.reg_group_id %}
+                                {% if item.get("_id")|to_str == model.reg_group_id %}
                                      <option selected value="{{item.get('_id')}}" >{{item.get("name")}}</option>
                                 {% else %}
                                      <option  value="{{item.get('_id')}}">{{item.get("name")}}</option>
@@ -44,6 +44,7 @@
                     </div>
 
                     <button class="btn btn-primary mb-3" type="submit">   保  存   </button>
+                    {{say_hello('cqs')}}
                 </form>
 
             </div>

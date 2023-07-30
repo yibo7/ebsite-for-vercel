@@ -1,4 +1,4 @@
-{% extends 'admin_base.html' %}
+{% extends 'base_admin.html' %}
 {% block content %}
 
 <div class="row eb-box">
@@ -15,7 +15,7 @@
                         <select id="parent_id" name="parent_id" style="max-width:300px" class="form-control">
                             <option value="">一级菜单</option>
                             {% for item in p_data %}
-                                {% if item.get("_id")|str == model.parent_id %}
+                                {% if item.get("_id")|to_str == model.parent_id %}
                                      <option selected value="{{item.get('_id')}}" >{{item.get("menu_name")}}</option>
                                 {% else %}
                                      <option  value="{{item.get('_id')}}">{{item.get("menu_name")}}</option>

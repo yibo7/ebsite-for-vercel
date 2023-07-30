@@ -1,6 +1,14 @@
+from session_utils import check_session
 from website import create_app
 
 app = create_app("dev")  # dev 或者 pro
+
+
+@app.before_request
+@check_session
+def before_request():
+    pass
+
 
 # The following code is for local debugging purposes only and should be removed when deploying on Vercel.
 # On Vercel, the function is imported and executed as a module, rather than being directly run as the main program.

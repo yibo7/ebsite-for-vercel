@@ -3,6 +3,7 @@ import os
 from flask import Flask
 
 from db_utils import init_eb_db
+from temp_expand import reg_temp_expand
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -18,6 +19,9 @@ def create_app(run_mode):  # run_mode
     app.config['SECRET_KEY'] = os.urandom(24)
     app.config['TEMPLATES_AUTO_RELOAD'] = True  # 模板热更新
     init_eb_db(app)
+
+    reg_temp_expand(app)
+
     # db.app = app  # 如果不加这个，在视图外使用会出错
     # 将蓝图注册到app中
     from website.pages import pages_blue
@@ -27,8 +31,9 @@ def create_app(run_mode):  # run_mode
     from website.pages.apis import api_blue
     app.register_blueprint(api_blue)
 
+
     # 注册自定义过滤器--让模板支持str()函数 在模板中调用 {% if item.get("_id")|str == model.parent_id %}
-    app.jinja_env.filters['str'] = to_str
+    # app.jinja_env.filters['str'] = to_str
 
     # 启动时，手动加载BOT 后期更新bot会有dbsession混乱的问题
     # init_all_change(Event(EVENT_UPDATE_CHANGE,data="start"))
@@ -36,5 +41,4 @@ def create_app(run_mode):  # run_mode
 
 
 # 自定义过滤器：str
-def to_str(value):
-    return str(value)
+

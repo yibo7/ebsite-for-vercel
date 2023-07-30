@@ -10,6 +10,10 @@ def generate_key():
     return str(uuid.uuid4())
 
 
+def get_safe_coe_key():
+    return f'safe_code_{generate_key()}'
+
+
 def get_str(key: str) -> str:
     if key:
         v = redis_db.get(key)

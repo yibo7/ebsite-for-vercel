@@ -1,4 +1,4 @@
-{% extends 'site_base.html' %}
+{% extends 'base_site.html' %}
 {% block title %}
 用户注册
 {% endblock %}
@@ -28,14 +28,14 @@
                         <input type="password" class="form-control" id="repassword" name="repassword" placeholder="确认密码" required>
                         <div class="invalid-feedback">确认密码不能为空</div>
                     </div>
-                       <div class="row">
-                        <div class="col-md-8">
-                          <label class="form-label" for="code">验证码</label>
-                            <input type="text" class="form-control" min="4" id="code" name="code" placeholder="验证码" required>
-                            <div class="invalid-feedback">验证码不能为空</div>
+                     <div class="row">
+                        <label class="form-label" >验证码</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" title="验证码为4个字符" pattern=".{4}" name="code" required/>
+                            <input type="hidden" value="{{safe_code_key}}" class="form-control" name="key" />
                         </div>
-                        <div class="col-md-4">
-                          <img  onClick="this.src+=Math.random()" src="/imgcode?" style="cursor: pointer;width: 100px;height: 50px" />
+                        <div class="col-sm-4">
+                          <img  onClick="this.src+=Math.random()" src="/imgcode?key={{safe_code_key}}&" style="cursor: pointer;" />
                         </div>
                       </div>
                     <div class="form-check mt-10">
@@ -55,8 +55,6 @@
                         </div>
                     {%endif%}
                 </form>
-
-
             </div>
     </div>
 </div>

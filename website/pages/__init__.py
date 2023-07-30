@@ -23,7 +23,7 @@ def before_req():
 
 @pages_blue.route('/', methods=['GET'])
 def welcome():
-    resp = make_response(render_template("site_index.html"))
+    resp = make_response(render_template("index.html"))
     return resp
 
 
@@ -49,7 +49,7 @@ def login():
         # else:
         #     err_msg = "验证码无效"
 
-    return render_template("site_login.html", err=err_msg)
+    return render_template("login.html", err=err_msg)
 
 
 @pages_blue.route('/reg', methods=['GET', 'POST'])
@@ -93,8 +93,8 @@ def reg():
     #             return redirect(WebPaths.USER_INDEX)
     #         else:
     #             err_msg = msg
-
-    return render_template("site_reg.html", err=err_msg)
+    cache_key = redis_utils.get_safe_coe_key()
+    return render_template("reg.html", err=err_msg, safe_code_key=cache_key)
 
 
 @pages_blue.route('/login_ad', methods=['GET', 'POST'])
@@ -123,7 +123,7 @@ def ad_login():
                 err_msg = "验证码错误"
         else:
             err_msg = "验证码无效或过期"
-    cache_key = redis_utils.generate_key()
+    cache_key = redis_utils.get_safe_coe_key()
     return render_template("admin/login.html", err=err_msg, safe_code_key=cache_key)
 
 
