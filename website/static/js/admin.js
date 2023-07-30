@@ -265,4 +265,12 @@ function OpenLeftMenu() {
         ob.attr("tg", "1"); 
     } 
 }
- 
+
+function del_items(url) {
+        var ids = get_checkboxval(".eb-table");
+        alert(ids)
+        if (ids)
+            location.href = url+'?ids=' + ids;
+        else
+            alert("请选择要删除的数据！");
+    }

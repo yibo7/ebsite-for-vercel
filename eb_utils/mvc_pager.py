@@ -2,6 +2,7 @@ from typing import List
 from urllib.parse import urlencode
 from urllib.parse import quote
 from flask import request
+from markupsafe import Markup
 
 
 def pager_html_admin(count: int, page_number: int, page_size: int, prams={}):
@@ -86,4 +87,4 @@ class MvcPager:
                     f"<li class='page-item'><a class='page-link' href='{self.build_url(self.page_num)}'>尾页</a></li>")
 
         sb.append("</ul>")
-        return "".join(sb)
+        return Markup("".join(sb))

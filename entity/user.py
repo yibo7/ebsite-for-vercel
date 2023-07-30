@@ -4,7 +4,8 @@ from entity.entity_base import EntityBase
 
 
 class User(EntityBase):
-    def __int__(self):
+    def __init__(self):
+        super().__init__()
         self.username = ""
         self.password = ""
         self.mobile_number = ""

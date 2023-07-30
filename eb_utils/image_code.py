@@ -31,7 +31,7 @@ class ImageCode:
             draw.line(((x1, y1), (x2, y2)), fill='black', width=1)
 
     def getVerifyCode(self):
-        '''生成验证码图形'''
+        """生成验证码图形"""
         code = self.geneText()
         # 图片大小120×50
         width, height = 100, 20

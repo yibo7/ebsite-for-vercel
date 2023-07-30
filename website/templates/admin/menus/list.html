@@ -16,7 +16,7 @@
                 </a>
             </div>
             <div class="btn-group">
-                <a class="btn btn-outline-primary" onclick="return confirm('将删除包括其下的子菜单，确认要删除所选项吗？');" href="javascript: delitems()">
+                <a class="btn btn-outline-primary" onclick="return confirm('将删除包括其下的子菜单，确认要删除所选项吗？');" href="javascript: del_items('menus_del')">
                     删除
                 </a>
             </div>
@@ -43,8 +43,7 @@
                 <th>菜单ID</th>
                 <th>就否菜单</th>
                 <th>排序权重</th>
-                <th>操作</th>
-                <th><input id='chAll' onclick='on_check(this)' type="checkbox" /></th>
+                <th>操作<input id='chAll' onclick='on_check(this)' type="checkbox" /></th>
             </tr>
         </thead>
         <tbody>
@@ -84,16 +83,7 @@
     </table>
 </div>
 <nav class="mt-2 px-2">
-    {{pager|safe}}
+    {{pager}}
 </nav>
-<script>
-    function delitems() {
-        var ids = get_checkboxval(".eb-table");
-        if (ids)
-            location.href = 'menus_del?ids=' + ids;
-        else
-            alert("请选择要删除的数据！");
-    }
-</script>
 
 {% endblock %}

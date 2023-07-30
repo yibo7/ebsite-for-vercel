@@ -14,15 +14,7 @@
                         <label>父菜单</label>
                         <select id="parent_id" name="parent_id" style="max-width:300px" class="form-control">
                             <option value="">一级菜单</option>
-                            {% for item in p_data %}
-                                {% if item.get("_id")|to_str == model.parent_id %}
-                                     <option selected value="{{item.get('_id')}}" >{{item.get("menu_name")}}</option>
-                                {% else %}
-                                     <option  value="{{item.get('_id')}}">{{item.get("menu_name")}}</option>
-                                {% endif %}
-
-                            {% endfor %}
-
+                            {{build_sel_item(p_data,'_id','menu_name',model.parent_id)}}
                         </select>
                     </div>
                     <div class="mb-3">

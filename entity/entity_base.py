@@ -187,3 +187,4 @@ class EntityBase:
 
         pager = pager_html_admin(i_count, page_number, page_size, {'k': keyword})
         return datas, pager
+

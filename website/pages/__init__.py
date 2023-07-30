@@ -1,6 +1,6 @@
 import datetime
 
-from flask import Blueprint, g, render_template, request, redirect, make_response
+from flask import Blueprint, g, render_template, request, redirect, make_response, render_template_string
 
 from db_utils import redis_utils
 from eb_utils.configs import WebPaths, SiteConstant
@@ -134,3 +134,19 @@ def img_code():
         return ImageCode().getImgCode(cache_key)
     else:
         return "bad key"
+
+
+@pages_blue.route('/test')
+def temp_test():
+    template_string = """
+        <html>
+        <head>
+            <title>Template Processing Example</title>
+        </head>
+        <body>
+            <h1>Hello, Flask!</h1>
+            {{say_hello('cqs')}}
+        </body>
+        </html>
+        """
+    return render_template_string(template_string)

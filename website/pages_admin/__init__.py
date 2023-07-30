@@ -64,12 +64,10 @@ def admin_log_out():
 def admin_settings():
     settings_model = get_settings()
 
-    u_groups = UserGroup().find_all()
-
     if request.method == 'POST':
         prams_dict = http_helper.get_prams_dict()
         settings_model = update_dic_to_class(prams_dict, settings_model)
         # settings_model.is_open_safe_code = http_helper.get_prams('is_open_safe_code')
         settings_model.save()
-
-    return render_template(WebPaths.get_admin_path("configs/settings.html"), model=settings_model, u_groups=u_groups)
+    return render_template(WebPaths.get_admin_path("configs/settings.html"), model=settings_model,
+                           group=UserGroup().find_all())

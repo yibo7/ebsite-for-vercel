@@ -1,10 +1,6 @@
-from pydantic import BaseModel
-from werkzeug.security import generate_password_hash, check_password_hash
 
-from db_utils import redis_utils
 from entity.entity_base import EntityBase
 from entity.site_settings import get_settings
-from entity.user_token import UserToken
 
 
 class UserGroup(EntityBase):
@@ -23,3 +19,11 @@ class UserGroup(EntityBase):
     def exist_name(self, name: str) -> bool:
         return self.find_one_by_where({'name': name})
 
+    # def get_sel_items(self, sel_value: str):
+    #     datas = self.find_all()
+    #     items = []
+    #     for item in datas:
+    #         temp = SelectItem(str(item['_id']), item['name'])
+    #         items.append(temp)
+    #
+    #     return sel_box_html(items, sel_value)

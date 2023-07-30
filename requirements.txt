@@ -4,3 +4,4 @@ pymongo==4.4.1
 pydantic==2.1.1
 requests
 Pillow==10.0.0
+werkzeug~=2.3.6
