@@ -2,12 +2,12 @@ from dataclasses import asdict, replace
 
 from flask import Blueprint, g, render_template, request, redirect, make_response
 
+from bll.user_group import UserGroup
 from db_utils import redis_utils
 from eb_utils import http_helper, update_dic_to_class
 from eb_utils.configs import WebPaths, SiteConstant
-from entity.admin_menus import AdminMenus
-from entity.site_settings import get_settings, SiteSettings
-from entity.user_group import UserGroup
+from bll.admin_menus import AdminMenus
+from entity.site_settings import get_settings
 from entity.user_token import UserToken
 
 admin_blue = Blueprint('admin', __name__, url_prefix=WebPaths.ADMIN_PATH)

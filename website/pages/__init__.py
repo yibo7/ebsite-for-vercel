@@ -2,11 +2,11 @@ import datetime
 
 from flask import Blueprint, g, render_template, request, redirect, make_response, render_template_string
 
+from bll.admin_user import AdminUser
+from bll.user_group import UserGroup
 from db_utils import redis_utils
 from eb_utils.configs import WebPaths, SiteConstant
 from eb_utils.image_code import ImageCode
-from entity.admin_user import AdminUser
-from entity.user_group import UserGroup
 
 pages_blue = Blueprint('pages_blue', __name__)
 
@@ -23,7 +23,11 @@ def before_req():
 
 @pages_blue.route('/', methods=['GET'])
 def welcome():
-    resp = make_response(render_template("index.html"))
+    model = AdminUser().find_one_first()
+    print(model.user_name)
+    print(model._id)
+
+    resp = render_template("index.html")
     return resp
 
 

@@ -19,26 +19,26 @@
                     </div>
                     <div class="mb-3">
                         <label>菜单名称</label>
-                        <input value="{{model['menu_name']}}" id="menu_name" name="menu_name" title="请输入菜单名称" style="max-width:300px" class="form-control" required>
+                        <input value="{{model.menu_name}}" id="menu_name" name="menu_name" title="请输入菜单名称" style="max-width:300px" class="form-control" required>
                         <div class="invalid-feedback">请输入菜单名称。</div>
                     </div>
                     <div class="mb-3">
                         <label>图标</label>
-                        <input value="{{model['image_url']}}" id="image_url" name="image_url" style="max-width:500px" class="form-control" required>
+                        <input value="{{model.image_url}}" id="image_url" name="image_url" style="max-width:500px" class="form-control" required>
                         <div class="invalid-feedback">请输入图标样式。</div>
                     </div>
                     <div class="mb-3">
                         <label>页面地址</label>
-                        <input value="{{model['page_url']}}" id="page_url" name="page_url" style="max-width:500px" class="form-control">
+                        <input value="{{model.page_url}}" id="page_url" name="page_url" style="max-width:500px" class="form-control">
                     </div>
 
                     <div class="mb-3">
                         <label>
-                            <input id="is_menu" name="is_menu" type="checkbox" {% if model['is_menu'] %}checked{% endif %}>是否菜单
+                            <input id="is_menu" name="is_menu" type="checkbox" {% if model.is_menu %}checked{% endif %}>是否菜单
                             <input type="hidden" title="checkbox未选提交辅助控件，只能放在同名checkbox下面" name="is_menu" value="checkbox_unchecked">
                         </label>
                     </div>
-                    <input hidden value="{{model['_id']}}" id="id" name="id" >
+                    <input hidden value="{{model._id}}" id="id" name="id" >
                     <button class="btn btn-primary mb-3" type="submit">   保  存   </button>
                 </form>
 

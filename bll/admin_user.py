@@ -1,32 +1,28 @@
-from pydantic import BaseModel
 from werkzeug.security import generate_password_hash, check_password_hash
 
+from bll.bll_base import BllBase
 from db_utils import redis_utils
-from entity.entity_base import EntityBase
+from entity.admin_user_model import AdminUserModel
 from entity.user_token import UserToken
 
 
-class AdminUser(EntityBase):
-    def __init__(self):
-        super().__init__()
-        self.user_name = ""
-        self.user_pass = ""
-        self.user_status = 0
-        self.role_id = 0
-        self.role_name = ""
-        self.real_name = ""
-        self.user_email = ""
-        self.mobile_number = ""
+class AdminUser(BllBase[AdminUserModel]):
+    def new_instance(self) -> AdminUserModel:
+        return AdminUserModel()
+
+    # def __init__(self):
+    #     super().__init__()
 
     def add_default(self):
         if not self.exist_table():
-            self.user_name = "admin"
-            self.user_pass = generate_password_hash("222222")
-            self.user_status = 1
-            self.role_id = 1
-            self.role_name = "超级管理员"
-            self.real_name = "创建人"
-            self.add()
+            model = self.new_instance()
+            model.user_name = "admin"
+            model.user_pass = generate_password_hash("222222")
+            model.user_status = 1
+            model.role_id = 1
+            model.role_name = "超级管理员"
+            model.real_name = "创建人"
+            model.add()
 
     def get_by_name(self, name: str):
         return self.find_one_by_where({"user_name": name})
@@ -46,15 +42,13 @@ class AdminUser(EntityBase):
         is_sucessfull = False
         msg = "未知错误"
         if user:
-            pass_1 = user["user_pass"]
+            pass_1 = user.user_pass
             is_sucessfull = self.check_pass(pass_1, pass_word)
             if is_sucessfull:
-                utk = UserToken(user["_id"], user["user_name"], user["real_name"], user['role_id'], user['role_name'])
+                utk = UserToken(user._id, user.user_name, user.real_name, user.role_id, user.role_name)
                 msg = redis_utils.set_ex_hours(utk, 24)
             else:
                 msg = "用户名或密码错误"
         else:
             msg = "用户名不存在或密码错误"
         return [is_sucessfull, msg]
-
-

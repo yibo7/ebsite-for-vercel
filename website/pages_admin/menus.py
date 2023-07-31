@@ -1,9 +1,10 @@
 from flask import render_template, request, redirect
 
+from entity.admin_menus_model import AdminMenuModel
 from website.pages_admin import admin_blue
-from eb_utils import http_helper, update_dic_to_dic
+from eb_utils import http_helper
 from eb_utils.configs import WebPaths
-from entity.admin_menus import AdminMenus
+from bll.admin_menus import AdminMenus
 
 
 @admin_blue.route('menus', methods=['GET'])
@@ -19,17 +20,19 @@ def admin_menus():
 
 @admin_blue.route('menus_save', methods=['GET', 'POST'])
 def admin_menus_save():
-    model = AdminMenus().__dict__
-
+    model = AdminMenuModel()
+    # print(model.is_menu)
+    bll = AdminMenus()
     modify_id = http_helper.get_prams("id")
     if modify_id:
-        model = AdminMenus().find_one_by_id(modify_id)
+        model = bll.find_one_by_id(modify_id)
     if request.method == 'POST':
         dic_prams = http_helper.get_prams_dict()
-        update_dic_to_dic(dic_prams, model)
-        _id = AdminMenus().save(model)
+        # update_dic_to_dic(dic_prams, model)
+        model.dict_to_model(dic_prams)
+        _id = bll.save(model)
         return redirect("menus")
-    p_data = AdminMenus().get_tree_text()
+    p_data = bll.get_tree_text()
     return render_template(WebPaths.get_admin_path("menus/save.html"), model=model, p_data=p_data)
 
 

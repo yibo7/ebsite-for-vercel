@@ -16,8 +16,12 @@ def reg_temp_expand_fun(app):
     def build_sel_item(datas, value_key: str, name_key: str, sel_value: str):
         select_html = []
         for data in datas:
-            name = data[name_key]
-            value = data[value_key]
+            name = 'none'
+            value = 'none'
+            if hasattr(data, name_key):
+                name = getattr(data, name_key) # data[name_key]
+            if hasattr(data, value_key):
+                value = getattr(data, value_key) # data[value_key]
             if str(value) == sel_value:
                 select_html.append(f'<option selected value="{value}">{name}</option>')
             else:

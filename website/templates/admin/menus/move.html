@@ -12,7 +12,7 @@
                     <label>选择源</label>
                     <select name="from_id"  class="form-control">
                         {% for item in datas %}
-                            <option  value="{{item.get('_id')}}">{{item.get("menu_name")}}</option>
+                            <option  value="{{item._id}}">{{item.menu_name}}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -23,7 +23,7 @@
                     <label>选择目标</label>
                     <select name="target_id"  class="form-control">
                         {% for item in datas %}
-                            <option  value="{{item.get('_id')}}">{{item.get("menu_name")}}</option>
+                            <option  value="{{item._id}}">{{item.menu_name}}</option>
                         {% endfor %}
                     </select>
                 </div>

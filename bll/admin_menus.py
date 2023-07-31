@@ -3,21 +3,15 @@ import re
 import pymongo
 from bson import ObjectId
 
+from bll.bll_base import BllBase, T
 from db_utils import mongo_db
-from eb_utils.configs import SiteConstant
-from eb_utils.mvc_pager import pager_html_admin
-from entity.entity_base import EntityBase
+from entity.admin_menus_model import AdminMenuModel
 
 
-class AdminMenus(EntityBase):
-    def __init__(self):
-        super().__init__()
-        self.menu_name: str = ""
-        self.image_url: str = ""
-        self.order_id: int = 0
-        self.parent_id: str = ""
-        self.page_url: str = ""
-        self.is_menu: bool = True
+class AdminMenus(BllBase[AdminMenuModel]):
+
+    def new_instance(self) -> T:
+        return AdminMenuModel()
 
     def get_by_pid(self, pid):
         s_where = {"parent_id": str(pid)}
@@ -32,20 +26,20 @@ class AdminMenus(EntityBase):
         datas = self.get_all_datas()
 
         for tree in datas:
-            if not tree['parent_id']:
-                tree['menu_name'] = f"╋{tree['menu_name']}"
+            if not tree.parent_id:
+                tree.menu_name = f"╋{tree.menu_name}"
                 get_tree.append(tree)
-                self.get_sub_item(tree['_id'], get_tree, "├", datas)
+                self.get_sub_item(tree._id, get_tree, "├", datas)
 
         return get_tree
 
     def get_sub_item(self, data_id, new_class, blank, old_class):
         for md_model in old_class:
-            if md_model['parent_id'] == str(data_id):
+            if md_model.parent_id == str(data_id):
                 str_tag = f"{blank}─"
-                md_model['menu_name'] = f"{str_tag}『{md_model['menu_name']}』"
+                md_model.menu_name = f"{str_tag}『{md_model.menu_name}』"
                 new_class.append(md_model)
-                self.get_sub_item(md_model['_id'], new_class, str_tag, old_class)
+                self.get_sub_item(md_model._id, new_class, str_tag, old_class)
 
     def reset_orderid(self):
         datas = self.get_by_pid("")
@@ -56,17 +50,17 @@ class AdminMenus(EntityBase):
             i_index = 0
             for model in datas:
                 i_index += 1
-                model["order_id"] = i_index
+                model.order_id = i_index
                 self.update(model)
-                datas_sub = self.get_by_pid(model.get("_id"))
+                datas_sub = self.get_by_pid(model._id)
                 self._reset_orderid(datas_sub)
 
     def move_to(self, from_id, target_id, move_type: int):
         from_model = self.find_one_by_id(from_id)
         mongo_db[self.table_name].update_many(
             {
-                "parent_id": from_model.get("parent_id"),
-                "order_id": {"$gt": from_model.get("order_id")}
+                "parent_id": from_model.parent_id,
+                "order_id": {"$gt": from_model.order_id}
             },
             {
                 "$inc": {"order_id": -1}
@@ -93,8 +87,8 @@ class AdminMenus(EntityBase):
             target_model = self.find_one_by_id(target_id)
             mongo_db[self.table_name].update_many(
                 {
-                    "parent_id": target_model.get("parent_id"),
-                    "order_id": {"$gte": target_model.get("order_id")}
+                    "parent_id": target_model.parent_id,
+                    "order_id": {"$gte": target_model.order_id}
                 },
                 {
                     "$inc": {"order_id": 1}
@@ -105,8 +99,6 @@ class AdminMenus(EntityBase):
                     "_id": ObjectId(from_id)
                 },
                 {
-                    "$set": {"order_id": target_model.get('order_id'), "parent_id": target_model.get("parent_id")}
+                    "$set": {"order_id": target_model.order_id, "parent_id": target_model.parent_id}
                 }
             )
-
-
