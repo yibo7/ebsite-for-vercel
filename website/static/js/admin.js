@@ -182,7 +182,7 @@ function OnMainTags(obj) {
 function GetMenus(MenuParentID) { 
     LeftMenuList.innerHTML = "<div><img height='250px' src='../images/loading.gif' /></div>";
     let prams = {"pid":MenuParentID}
-    run_ajax_async_json("/api/getsubmenus", prams, CompGetMenus);
+    post_form("/api/getsubmenus", prams, CompGetMenus);
 }
 function CompGetMenus(msg) {
     var aMenus = msg.data;//eval(msg);
@@ -268,7 +268,6 @@ function OpenLeftMenu() {
 
 function del_items(url) {
         var ids = get_checkboxval(".eb-table");
-        alert(ids)
         if (ids)
             location.href = url+'?ids=' + ids;
         else

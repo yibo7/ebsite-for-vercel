@@ -9,7 +9,7 @@ from bll.admin_menus import AdminMenus
 
 @admin_blue.route('menus', methods=['GET'])
 def admin_menus():
-    datas = AdminMenus().get_tree_text()
+    datas = AdminMenus().get_tree()
     pager = ''
     keyword = http_helper.get_prams("k")
     if keyword:
@@ -23,12 +23,11 @@ def admin_menus_save():
     model = AdminMenuModel()
     # print(model.is_menu)
     bll = AdminMenus()
-    modify_id = http_helper.get_prams("id")
+    modify_id = http_helper.get_prams("_id")
     if modify_id:
         model = bll.find_one_by_id(modify_id)
     if request.method == 'POST':
         dic_prams = http_helper.get_prams_dict()
-        # update_dic_to_dic(dic_prams, model)
         model.dict_to_model(dic_prams)
         _id = bll.save(model)
         return redirect("menus")

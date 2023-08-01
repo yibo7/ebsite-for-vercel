@@ -23,3 +23,10 @@ def reg_temp_expand_filter(app):
             return '是'
         else:
             return '否'
+
+    @app.template_filter()
+    def adminer_status(truefalse: int):
+        if truefalse == 1:
+            return '正常'
+        else:
+            return '不正常'

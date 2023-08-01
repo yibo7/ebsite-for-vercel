@@ -3,6 +3,8 @@ import pickle
 import uuid
 from typing import TypeVar
 
+from flask import request
+
 from db_utils import redis_db
 
 
@@ -11,8 +13,10 @@ def generate_key():
 
 
 def get_safe_coe_key():
-    return f'safe_code_{generate_key()}'
-
+    sid = request.session_id
+    if sid:
+        return f'safe_code_{sid}'
+    return None
 
 def get_str(key: str) -> str:
     if key:
@@ -21,15 +25,11 @@ def get_str(key: str) -> str:
     return ""
 
 
-T = TypeVar('T')
-
-
 def get_obj(key: str):
     if key:
         # 从Redis中获取保存的二进制数据
         binary_data = redis_db.get(key)
         if binary_data:
-            data_obj: T
             # 将二进制数据转换回字典对象
             data_obj = pickle.loads(binary_data)
             return data_obj
@@ -111,3 +111,32 @@ def generate_next_id(key):
     :return:
     """
     return redis_db.incr(key)
+
+
+def add_count_second(key, ex_second=60):
+    """
+    生成某个键下的自增值，并过期会自动清理
+    :param key:
+    :return:
+    """
+    new_value = redis_db.incr(key)
+    # 设置过期时间为60秒
+    redis_db.expire(key, ex_second)
+    return new_value
+
+
+def add_count_minute(key, ex_minutes=60):
+    expiration_seconds = ex_minutes * 60
+    return add_count_second(key, expiration_seconds)
+
+
+def add_count_hour(key, ex_hours=60):
+    expiration_seconds = ex_hours * 60 * 60
+    return add_count_second(key, expiration_seconds)
+
+
+def get_count(key):
+    i_count = get_str(key)
+    if i_count:
+        return int(i_count)
+    return 0

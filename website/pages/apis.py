@@ -2,6 +2,7 @@ import json
 
 from flask import Blueprint, request, jsonify
 
+from eb_utils import http_helper
 from eb_utils.configs import WebPaths
 from bll.admin_menus import AdminMenus
 
@@ -10,13 +11,14 @@ api_blue = Blueprint('apis', __name__, url_prefix=WebPaths.API_PATH)
 
 @api_blue.route(f'getsubmenus', methods=['POST'])
 def admin_stop_order():
-    data = json.loads(request.data)
-    data_id = data.get('pid', None)
+    # data = json.loads(request.data)
+    # data_id = data.get('pid', None)
+    data_id = http_helper.get_prams('pid')
     data = []
     if data_id:
         menus_p = AdminMenus().get_by_pid(data_id)
         for ptree in menus_p:
-            # print(ptree)
+
             item_p = {"MenuTitle": ptree.menu_name, "img": ptree.image_url, "Items": []}
 
             menus_s = AdminMenus().get_by_pid(str(ptree._id))

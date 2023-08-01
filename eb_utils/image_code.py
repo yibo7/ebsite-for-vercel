@@ -51,7 +51,7 @@ class ImageCode:
         self.drawLines(draw, 2, width, height)
         return im, code
 
-    def getImgCode(self, cache_key):
+    def getImgCode(self):
         image, code = self.getVerifyCode()
         # 图片以二进制形式写入
         buf = BytesIO()
@@ -62,5 +62,21 @@ class ImageCode:
         response.headers['Content-Type'] = 'image/gif'
         # 将验证码字符串储存在session中
         # session[SessionIds.ImageCode] = code
-        redis_utils.set_ex_minutes(code, 10, cache_key)
+        cache_key = redis_utils.get_safe_coe_key()
+        if cache_key:
+            redis_utils.set_ex_minutes(code, 10, cache_key)
         return response
+
+    def check_code(self,image_code:str):
+        safe_key = redis_utils.get_safe_coe_key()
+        if not (safe_key or image_code or redis_utils.exists_key(safe_key)):
+            return False, '验证码无效'
+
+        safe_code = redis_utils.get_str(safe_key).lower()
+        if not safe_code:
+            return False, '验证码无效或过期'
+
+        if safe_code != image_code.lower():
+            return False, '验证码不正确'
+
+        return True, ''

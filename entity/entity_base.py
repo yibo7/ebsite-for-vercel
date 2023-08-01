@@ -1,6 +1,7 @@
 import re
 import time
 
+from bson import ObjectId
 from flask import current_app
 
 from eb_utils import string_check
@@ -31,12 +32,28 @@ def annotation(value):
 
 class ModelBase:
     def __init__(self):
-        self._id = None
+        self._id = ''
         self.add_time = time.time()  # int(time.time())  # 只精确到秒
 
     def dict_to_model(self, dic_data: dict):
         for key, value in dic_data.items():
-            setattr(self, key, convert_to_type(value))  #
+            col_v = getattr(self, key)
+            tem_v = value
+            if key == '_id' and value:
+                tem_v = ObjectId(value)
+            elif key == 'id' and value:
+                tem_v = int(value)
+            elif isinstance(col_v, int) and isinstance(value, str) and value:
+                tem_v = int(value)
+            elif isinstance(col_v, float) and isinstance(value, str) and value:
+                tem_v = float(value)
+            # elif isinstance(col_v, bool) and isinstance(value, str):
+            #     if value == 'on':
+            #         tem_v = True
+            #     elif value == 'checkbox_unchecked':
+            #         tem_v = False
+
+            setattr(self, key, tem_v)  # convert_to_type(value)
         return self
 
     # def add_atr_setting(self, func, setting: str):
@@ -46,6 +63,7 @@ class ModelBase:
         def decorator(func):
             setattr(func, 'annotation', value)
             return func
+
         return decorator
 
     def get_title(self, attribute_name: str):

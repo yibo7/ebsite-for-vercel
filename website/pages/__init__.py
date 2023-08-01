@@ -7,6 +7,7 @@ from bll.user_group import UserGroup
 from db_utils import redis_utils
 from eb_utils.configs import WebPaths, SiteConstant
 from eb_utils.image_code import ImageCode
+from entity.site_settings import get_settings
 
 pages_blue = Blueprint('pages_blue', __name__)
 
@@ -23,10 +24,8 @@ def before_req():
 
 @pages_blue.route('/', methods=['GET'])
 def welcome():
-    model = AdminUser().find_one_first()
-    print(model.user_name)
-    print(model._id)
-
+    #
+    print(f'用户的sessionID:{request.session_id}')
     resp = render_template("index.html")
     return resp
 
@@ -106,38 +105,38 @@ def ad_login():
     err_msg = ""
     AdminUser().add_default()
     UserGroup().add_default()
+    err_count = redis_utils.get_count('adminer_login_err_count')
+
     if request.method == 'POST':
         # session.pop(SessionIds.User, None)
         username = request.form.get("username", None)
         password = request.form.get("pass", None)
         image_code = request.form.get("code", None)
-        safe_key = request.form.get("key", None)
-        if image_code and redis_utils.exists_key(safe_key):
-            safe_code = redis_utils.get_str(safe_key).lower()
-            if image_code.lower() == safe_code:
-                [is_ok, msg] = AdminUser().login(username, password)
-                if is_ok:
-                    resp = make_response(redirect(WebPaths.ADMIN_INDEX))
-                    expires = datetime.datetime.now() + datetime.timedelta(hours=24)
-                    resp.set_cookie(SiteConstant.COOKIE_AD_TOKEN_KEY, msg, expires=expires)
-                    return resp  # redirect(WebPaths.ADMIN_INDEX)
-                else:
-                    err_msg = msg
+        is_safe = True
+        if err_count > 0:
+            is_safe, err_msg = ImageCode().check_code(image_code)
+        if is_safe:
+            is_safe, err_msg = AdminUser().login(username, password)
+            if is_safe:
+                resp = make_response(redirect(WebPaths.ADMIN_INDEX))
+                expires = datetime.datetime.now() + datetime.timedelta(hours=24)
+                resp.set_cookie(SiteConstant.COOKIE_AD_TOKEN_KEY, err_msg, expires=expires)
+                return resp  # redirect(WebPaths.ADMIN_INDEX)
             else:
-                err_msg = "验证码错误"
-        else:
-            err_msg = "验证码无效或过期"
-    cache_key = redis_utils.get_safe_coe_key()
-    return render_template("admin/login.html", err=err_msg, safe_code_key=cache_key)
+                err_count = redis_utils.add_count_hour('adminer_login_err_count', 24)
+
+    # settings_model = get_settings()
+    return render_template("admin/login.html", is_safe_code=err_count > 0, err=err_msg)
 
 
 @pages_blue.route('/imgcode')
 def img_code():
-    cache_key = request.args.get("key", None)
-    if cache_key:
-        return ImageCode().getImgCode(cache_key)
-    else:
-        return "bad key"
+    return ImageCode().getImgCode()
+    # cache_key = request.args.get("key", None)
+    # if cache_key:
+    #     return ImageCode().getImgCode(cache_key)
+    # else:
+    #     return "bad key"
 
 
 @pages_blue.route('/test')

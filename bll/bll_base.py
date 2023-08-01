@@ -33,8 +33,8 @@ class BllBase(Generic[T], ABC):
         model._id = ObjectId()
         if hasattr(model, 'id'):
             model.id = self.get_int_id()
-
-        result = mongo_db[self.table_name].insert_one(model.__dict__)
+        data_dic = model.__dict__
+        result = mongo_db[self.table_name].insert_one(data_dic)
         return result.inserted_id
 
     def delete_by_id(self, _id):

@@ -4,8 +4,9 @@ from bll.user import User
 from bll.user_group import UserGroup
 from entity.user_group_model import UserGroupModel
 from entity.user_model import UserModel
+from temp_expand import get_table_html
 from website.pages_admin import admin_blue
-from eb_utils import http_helper, get_table_html
+from eb_utils import http_helper
 from eb_utils.configs import WebPaths
 
 
@@ -20,7 +21,7 @@ def user_group():
 
 @admin_blue.route('user_group/save', methods=['GET', 'POST'])
 def user_group_add():
-    g_id = http_helper.get_prams('id')
+    g_id = http_helper.get_prams('_id')
     model = UserGroupModel()
     bll = UserGroup()
     if g_id:
@@ -57,7 +58,7 @@ def user_list():
     datas, pager = bll.search(keyword, page_num, 'username')
 
     del_btn = {"show_name": "删除", "url": "user_list_del?ids=#_id#", "confirm": True}
-    modify_btn = {"show_name": "修改", "url": "user_list_save?id=#_id#", "confirm": False}
+    modify_btn = {"show_name": "修改", "url": "user_list_save?_id=#_id#", "confirm": False}
 
     table_html = get_table_html(datas, [del_btn, modify_btn])
 
@@ -67,7 +68,7 @@ def user_list():
 
 @admin_blue.route('user_list_save', methods=['GET', 'POST'])
 def user_list_save():
-    data_id = http_helper.get_prams('id')
+    data_id = http_helper.get_prams('_id')
     model = UserModel()
     bll = User()
     if data_id:
@@ -77,8 +78,14 @@ def user_list_save():
     if request.method == 'POST':
         dic_prams = http_helper.get_prams_dict()
         model.dict_to_model(dic_prams)
-        _id = bll.save(model)
-        return redirect('user_list')
+        # _id = bll.save(model)
+        if data_id:
+            is_success = bll.update(model)
+        else:
+            is_success, err = bll.reg_user(model)
+        if is_success:
+            return redirect('user_list')
+
     group = UserGroup().find_all()
     return render_template(WebPaths.get_admin_path("user/user_list_save.html"), model=model, group=group, err=err)
 

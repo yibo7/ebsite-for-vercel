@@ -14,7 +14,7 @@ admin_blue = Blueprint('admin', __name__, url_prefix=WebPaths.ADMIN_PATH)
 
 from . import menus
 from . import users
-
+from . import adminer
 
 # region 后台请求前的处理
 
@@ -25,11 +25,12 @@ def before_req():
     :return:
     """
     token_key = request.cookies.get(SiteConstant.COOKIE_AD_TOKEN_KEY)
+    g.u = None
     if token_key:
         admin_token = redis_utils.get_obj(token_key)  # type:UserToken
-        # print(f"管理员的KEY：{ua_key}")
-
-        g.u = admin_token
+        if admin_token:
+            g.u = admin_token
+            g.uid = admin_token.id
         g.err = None
 
     if not g.u:

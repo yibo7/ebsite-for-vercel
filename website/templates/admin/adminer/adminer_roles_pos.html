@@ -1,0 +1,28 @@
+{% extends 'base_admin.html' %}
+{% block content %}
+
+<div class="eb-box">
+    {{table_html}}
+</div>
+<script>
+    function SaveFrame(){
+        let psids = get_checkboxval(".eb-table");
+        if (psids){
+            let roleid = GetUrlParams("rid");
+            let prams = { "rid": roleid, "pmsids": psids };
+            post_form('adminer_roles_pos', prams, (rz) => {
+                if (rz.success) {
+                    alert(rz.data)
+                } else {
+                    alert("发生错误：" + rz.data);
+                }
+            });
+        }else{
+            alert("请选择权限！");
+        }
+
+    }
+</script>
+
+
+{% endblock %}

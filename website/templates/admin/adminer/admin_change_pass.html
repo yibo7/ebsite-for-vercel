@@ -1,0 +1,37 @@
+{% extends 'base_admin.html' %}
+{% block content %}
+
+<div class="row eb-box">
+    <div class="col-sm-12 col-md-12 ">
+        <div class="block-flat">
+            <div class="boxheader">
+                <h3>修改密码</h3>
+            </div>
+            <div class="content">
+                <form method="post">
+
+                    <div class="mb-3">
+                        <label>旧密码</label>
+                        <input type="password" name="old_pass" minlength="6" style="max-width:300px" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>新密码</label>
+                        <input type="password" name="new_pass" minlength="6" style="max-width:300px" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>确认新密码</label>
+                        <input type="password" name="re_new_pass" style="max-width:300px" class="form-control" minlength="6" required>
+                    </div>
+                    <button class="btn btn-primary mb-3" type="submit">   保  存   </button>
+                    {% if err %}
+                        <div class="alert alert-info">{{err}}</div>
+                    {%endif%}
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

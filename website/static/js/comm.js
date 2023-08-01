@@ -1,4 +1,84 @@
 ﻿
+//常用插件开发
+
+; (function ($, window, document, undefined) {
+    $.extend({
+        log: function (message) {
+            var now = new Date(),
+                y = now.getFullYear(),
+                m = now.getMonth() + 1,
+                d = now.getDate(),
+                h = now.getHours(),
+                min = now.getMinutes(),
+                s = now.getSeconds(),
+                time = y + '/' + m + '/' + d + ' ' + h + ':' + min + ':' + s;
+            console.log("日志输出: " + message + "       时间:" + time);
+        }
+
+    });
+    $.extend({
+        logobj: function (obj) {
+            $.log(JSON.stringify(obj));
+        }
+
+    });
+
+    $.fn.LoadNoRefresh = function (options) {
+        var defaults = {
+            'itembox': '#panelzxtab1',//listview 盒子
+            'nextpagebox': '.pagination',//分页盒子
+            'nextpage': '.nextpage',//下页带href的元素
+            'loadingtxt': '正在加载中...'//点击加载提示
+        };
+        var settings = $.extend({}, defaults, options);//将一个空对象做为第一个参数,保护默认设置
+        $(settings.nextpagebox).hide();
+        var nextpage = $(settings.nextpage).attr("href");
+
+        var btnoldtxt = $(this).html();
+        var _this = this;
+        this.click(function () {
+            $(this).html(settings.loadingtxt);
+            $('<div/>').appendTo(settings.itembox).load(nextpage + " " + settings.itembox, function (responseText) {
+
+                var obj = $(responseText).find(settings.nextpage);
+
+                nextpage = obj.attr("href");
+                _this.html(btnoldtxt);
+
+                if (!nextpage) {
+                    _this.hide();
+                }
+
+
+            });
+        });
+    }
+})(jQuery, window, document);
+
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+
+// inc--start
+~function () { var __head = document.head || document.getElementsByTagName("head")[0]; var __waterfall = {}; var __loaded = {}; var __loading = {}; var __configure = { autoload: false, core: "", serial: false }; var __in; var __load = function (url, type, charset, callback) { if (__loading[url]) { if (callback) { setTimeout(function () { __load(url, type, charset, callback) }, 1); return } return } if (__loaded[url]) { if (callback) { callback(); return } return } __loading[url] = true; var pureurl = url.split("?")[0]; var n, t = type || pureurl.toLowerCase().substring(pureurl.lastIndexOf(".") + 1); if (t === "js") { n = document.createElement("script"); n.type = "text/javascript"; n.src = url; n.async = "true"; if (charset) { n.charset = charset } } else { if (t === "css") { n = document.createElement("link"); n.type = "text/css"; n.rel = "stylesheet"; n.href = url; __loaded[url] = true; __loading[url] = false; __head.appendChild(n); if (callback) { callback() } return } } n.onload = n.onreadystatechange = function () { if (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") { __loading[url] = false; __loaded[url] = true; if (callback) { callback() } n.onload = n.onreadystatechange = null } }; n.onerror = function () { __loading[url] = false; if (callback) { callback() } n.onerror = null }; __head.appendChild(n) }; var __analyze = function (array) { var riverflow = []; for (var i = array.length - 1; i >= 0; i--) { var current = array[i]; if (typeof (current) === "string") { if (!__waterfall[current]) {  continue } riverflow.push(current); var relylist = __waterfall[current].rely; if (relylist) { riverflow = riverflow.concat(__analyze(relylist)) } } else { if (typeof (current) === "function") { riverflow.push(current) } } } return riverflow }; var __stackline = function (blahlist) { var o = this; this.stackline = blahlist; this.current = this.stackline[0]; this.bag = { returns: [], complete: false }; this.start = function () { if (typeof (o.current) != "function" && __waterfall[o.current]) { __load(__waterfall[o.current].path, __waterfall[o.current].type, __waterfall[o.current].charset, o.next) } else { o.bag.returns.push(o.current()); o.next() } }; this.next = function () { if (o.stackline.length == 1 || o.stackline.length < 1) { o.bag.complete = true; if (o.bag.oncomplete) { o.bag.oncomplete(o.bag.returns) } return } o.stackline.shift(); o.current = o.stackline[0]; o.start() } }; var __parallel = function (blahlist, callback) { var length = blahlist.length; var hook = function () { if (! --length && callback) { callback() } }; if (length == 0) { callback && callback(); return } for (var i = 0; i < blahlist.length; i++) { var current = __waterfall[blahlist[i]]; if (typeof (blahlist[i]) == "function") { blahlist[i](); hook(); continue } if (current.rely && current.rely.length != 0) { __parallel(current.rely, (function (current) { return function () { __load(current.path, current.type, current.charset, hook) } })(current)) } else { __load(current.path, current.type, current.charset, hook) } } }; var __add = function (name, config) { if (!name || !config || !config.path) { return } __waterfall[name] = config }; var __adds = function (config) { if (!config.modules) { return } for (var module in config.modules) { var module_config = config.modules[module]; if (!config.modules.hasOwnProperty(module)) { continue } if (config.type && !module_config.type) { module_config.type = config.type } if (config.charset && !module_config.charset) { module_config.charset = config.charset } __add.call(this, module, module_config) } }; var __config = function (name, conf) { __configure[name] = conf }; var __css = function (csstext) { var css = document.getElementById("in-inline-css"); if (!css) { css = document.createElement("style"); css.type = "text/css"; css.id = "in-inline-css"; __head.appendChild(css) } if (css.styleSheet) { css.styleSheet.cssText = css.styleSheet.cssText + csstext } else { css.appendChild(document.createTextNode(csstext)) } }; var __later = function () { var args = [].slice.call(arguments); var timeout = args.shift(); window.setTimeout(function () { __in.apply(this, args) }, timeout) }; var __ready = function () { var args = arguments; __contentLoaded(window, function () { __in.apply(this, args) }) }; var __in = function () { var args = [].slice.call(arguments); if (__configure.serial) { if (__configure.core && !__loaded[__configure.core]) { args = ["__core"].concat(args) } var blahlist = __analyze(args).reverse(); var stack = new __stackline(blahlist); stack.start(); return stack.bag } if (typeof (args[args.length - 1]) === "function") { var callback = args.pop() } if (__configure.core && !__loaded[__configure.core]) { __parallel(["__core"], function () { __parallel(args, callback) }) } else { __parallel(args, callback) } }; var __contentLoaded = function (win, fn) { var done = false, top = true, doc = win.document, root = doc.documentElement, add = doc.addEventListener ? "addEventListener" : "attachEvent", rem = doc.addEventListener ? "removeEventListener" : "detachEvent", pre = doc.addEventListener ? "" : "on", init = function (e) { if (e.type == "readystatechange" && doc.readyState != "complete") { return } (e.type == "load" ? win : doc)[rem](pre + e.type, init, false); if (!done && (done = true)) { fn.call(win, e.type || e) } }, poll = function () { try { root.doScroll("left") } catch (e) { setTimeout(poll, 50); return } init("poll") }; if (doc.readyState == "complete") { fn.call(win, "lazy") } else { if (doc.createEventObject && root.doScroll) { try { top = !win.frameElement } catch (e) { } if (top) { poll() } } doc[add](pre + "DOMContentLoaded", init, false); doc[add](pre + "readystatechange", init, false); win[add](pre + "load", init, false) } }; void function () { var myself = (function () { var scripts = document.getElementsByTagName("script"); return scripts[scripts.length - 1] })(); var autoload = myself.getAttribute("autoload"); var core = myself.getAttribute("core"); if (core) { __configure.autoload = eval(autoload); __configure.core = core; __add("__core", { path: __configure.core }) } if (__configure.autoload && __configure.core) { __in() } } (); __in.add = __add; __in.adds = __adds; __in.config = __config; __in.css = __css; __in.later = __later; __in.load = __load; __in.ready = __ready; __in.use = __in; this.In = __in } ();
+
+In.add('jqcookie', { path: '/js/plugins/jquery.cookie.js', type: 'js', charset: 'utf-8' });
+In.add('blockui', { path: '/js/plugins/blockui.min.js', type: 'js', charset: 'utf-8' });
 
 /////////////////////////////////////////字符串操作///////////////////////////
 function GetFileNameByPath(s) {
@@ -222,6 +302,7 @@ function run_ajax_async_type(url, postdata, backfun, stype) {
         async: true
     });
 }
+
 //异步json
 function run_ajax_async_json(url, postobj, backfun) {
     
@@ -480,87 +561,60 @@ function blockTips(msg, time) {
 
 }
 
-//常用插件开发
 
-; (function ($, window, document, undefined) {
-    $.extend({
-        log: function (message) {
-            var now = new Date(),
-                y = now.getFullYear(),
-                m = now.getMonth() + 1,
-                d = now.getDate(),
-                h = now.getHours(),
-                min = now.getMinutes(),
-                s = now.getSeconds(),
-                time = y + '/' + m + '/' + d + ' ' + h + ':' + min + ':' + s;
-            console.log("日志输出: " + message + "       时间:" + time);
+function OpenIframe(sUrl, sTitle, btnText = "保存", height = 500, width = 600) {
+    var sbHtml = new StringBuilder();
+        sbHtml.Append("<div class='modal fade' id='ebiframewin' tabindex='-1' aria-hidden='true' >");
+        sbHtml.Append("<div class='modal-dialog modal-lg'>");
+        sbHtml.Append("<div style='width:{4}px' class='modal-content'>");
+        sbHtml.Append("<div class='modal-header'>");
+        sbHtml.Append("<h5 class='modal-title'>{0}</h5>");
+        sbHtml.Append("<button type='button' class='btn-close' data-bs-dismiss='modal'></button> ");
+        sbHtml.Append("</div>");
+        sbHtml.Append("<div style='height:{3}px;' class='modal-body'>");
+        sbHtml.Append("<iframe id='flOpenIframe' src='{1}' width='100%' height='100%' frameborder='0'></iframe>");
+        sbHtml.Append("</div>");
+        sbHtml.Append("<div class='modal-footer'>");
+        sbHtml.Append("<button type='button' class='btn btn-default' data-bs-dismiss='modal'>关闭</button>");
+        if (btnText != "")
+            sbHtml.Append("<button type='button'  class='btn btn-primary'>{2}</button>");
+        sbHtml.Append("</div></div></div></div> ");
+        var sHtml = sbHtml.toString().format(sTitle, sUrl, btnText, height, width);
+
+        var ob = $(".divEasyuiDialogP");
+
+        if (ob.html() == null) {
+            ob = $("<span class='divEasyuiDialogP'></span>").appendTo('body');
+        }
+        ob.html(sHtml);
+        ob.find(".btn-primary")
+            .click(function () {
+                var subwin = ob.find('iframe')[0];
+                subwin.contentWindow.SaveFrame();
+
+            });
+        $('#ebiframewin').modal('toggle');
+}
+
+function post_form(url, postobj, backfun)
+{
+    var obpram = postobj;
+    if (postobj == null || postobj == "")
+        obpram = {};
+    $.ajax({
+        url: url,
+        data: obpram,
+        type: "POST",
+        contentType: "application/x-www-form-urlencoded",
+        success: function (result) {
+            if (backfun != null) backfun(result);
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            $.log("调用ajax发生错误:" + thrownError + " 调用地址:" + url);
         }
 
     });
-    $.extend({
-        logobj: function (obj) {
-            $.log(JSON.stringify(obj));
-        }
-
-    });
-
-    $.fn.LoadNoRefresh = function (options) {
-        var defaults = {
-            'itembox': '#panelzxtab1',//listview 盒子
-            'nextpagebox': '.pagination',//分页盒子
-            'nextpage': '.nextpage',//下页带href的元素
-            'loadingtxt': '正在加载中...'//点击加载提示
-        };
-        var settings = $.extend({}, defaults, options);//将一个空对象做为第一个参数,保护默认设置
-        $(settings.nextpagebox).hide();
-        var nextpage = $(settings.nextpage).attr("href");
-
-        var btnoldtxt = $(this).html();
-        var _this = this;
-        this.click(function () {
-            $(this).html(settings.loadingtxt);
-            $('<div/>').appendTo(settings.itembox).load(nextpage + " " + settings.itembox, function (responseText) {
-
-                var obj = $(responseText).find(settings.nextpage);
-
-                nextpage = obj.attr("href");
-                _this.html(btnoldtxt);
-
-                if (!nextpage) {
-                    _this.hide();
-                }
-
-
-            });
-        });
-    }
-})(jQuery, window, document);
-
-    (function() {
-        'use strict';
-        window.addEventListener('load', function() {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-                form.addEventListener('submit', function(event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-    })();
-
-// inc--start
-~function () { var __head = document.head || document.getElementsByTagName("head")[0]; var __waterfall = {}; var __loaded = {}; var __loading = {}; var __configure = { autoload: false, core: "", serial: false }; var __in; var __load = function (url, type, charset, callback) { if (__loading[url]) { if (callback) { setTimeout(function () { __load(url, type, charset, callback) }, 1); return } return } if (__loaded[url]) { if (callback) { callback(); return } return } __loading[url] = true; var pureurl = url.split("?")[0]; var n, t = type || pureurl.toLowerCase().substring(pureurl.lastIndexOf(".") + 1); if (t === "js") { n = document.createElement("script"); n.type = "text/javascript"; n.src = url; n.async = "true"; if (charset) { n.charset = charset } } else { if (t === "css") { n = document.createElement("link"); n.type = "text/css"; n.rel = "stylesheet"; n.href = url; __loaded[url] = true; __loading[url] = false; __head.appendChild(n); if (callback) { callback() } return } } n.onload = n.onreadystatechange = function () { if (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") { __loading[url] = false; __loaded[url] = true; if (callback) { callback() } n.onload = n.onreadystatechange = null } }; n.onerror = function () { __loading[url] = false; if (callback) { callback() } n.onerror = null }; __head.appendChild(n) }; var __analyze = function (array) { var riverflow = []; for (var i = array.length - 1; i >= 0; i--) { var current = array[i]; if (typeof (current) === "string") { if (!__waterfall[current]) {  continue } riverflow.push(current); var relylist = __waterfall[current].rely; if (relylist) { riverflow = riverflow.concat(__analyze(relylist)) } } else { if (typeof (current) === "function") { riverflow.push(current) } } } return riverflow }; var __stackline = function (blahlist) { var o = this; this.stackline = blahlist; this.current = this.stackline[0]; this.bag = { returns: [], complete: false }; this.start = function () { if (typeof (o.current) != "function" && __waterfall[o.current]) { __load(__waterfall[o.current].path, __waterfall[o.current].type, __waterfall[o.current].charset, o.next) } else { o.bag.returns.push(o.current()); o.next() } }; this.next = function () { if (o.stackline.length == 1 || o.stackline.length < 1) { o.bag.complete = true; if (o.bag.oncomplete) { o.bag.oncomplete(o.bag.returns) } return } o.stackline.shift(); o.current = o.stackline[0]; o.start() } }; var __parallel = function (blahlist, callback) { var length = blahlist.length; var hook = function () { if (! --length && callback) { callback() } }; if (length == 0) { callback && callback(); return } for (var i = 0; i < blahlist.length; i++) { var current = __waterfall[blahlist[i]]; if (typeof (blahlist[i]) == "function") { blahlist[i](); hook(); continue } if (current.rely && current.rely.length != 0) { __parallel(current.rely, (function (current) { return function () { __load(current.path, current.type, current.charset, hook) } })(current)) } else { __load(current.path, current.type, current.charset, hook) } } }; var __add = function (name, config) { if (!name || !config || !config.path) { return } __waterfall[name] = config }; var __adds = function (config) { if (!config.modules) { return } for (var module in config.modules) { var module_config = config.modules[module]; if (!config.modules.hasOwnProperty(module)) { continue } if (config.type && !module_config.type) { module_config.type = config.type } if (config.charset && !module_config.charset) { module_config.charset = config.charset } __add.call(this, module, module_config) } }; var __config = function (name, conf) { __configure[name] = conf }; var __css = function (csstext) { var css = document.getElementById("in-inline-css"); if (!css) { css = document.createElement("style"); css.type = "text/css"; css.id = "in-inline-css"; __head.appendChild(css) } if (css.styleSheet) { css.styleSheet.cssText = css.styleSheet.cssText + csstext } else { css.appendChild(document.createTextNode(csstext)) } }; var __later = function () { var args = [].slice.call(arguments); var timeout = args.shift(); window.setTimeout(function () { __in.apply(this, args) }, timeout) }; var __ready = function () { var args = arguments; __contentLoaded(window, function () { __in.apply(this, args) }) }; var __in = function () { var args = [].slice.call(arguments); if (__configure.serial) { if (__configure.core && !__loaded[__configure.core]) { args = ["__core"].concat(args) } var blahlist = __analyze(args).reverse(); var stack = new __stackline(blahlist); stack.start(); return stack.bag } if (typeof (args[args.length - 1]) === "function") { var callback = args.pop() } if (__configure.core && !__loaded[__configure.core]) { __parallel(["__core"], function () { __parallel(args, callback) }) } else { __parallel(args, callback) } }; var __contentLoaded = function (win, fn) { var done = false, top = true, doc = win.document, root = doc.documentElement, add = doc.addEventListener ? "addEventListener" : "attachEvent", rem = doc.addEventListener ? "removeEventListener" : "detachEvent", pre = doc.addEventListener ? "" : "on", init = function (e) { if (e.type == "readystatechange" && doc.readyState != "complete") { return } (e.type == "load" ? win : doc)[rem](pre + e.type, init, false); if (!done && (done = true)) { fn.call(win, e.type || e) } }, poll = function () { try { root.doScroll("left") } catch (e) { setTimeout(poll, 50); return } init("poll") }; if (doc.readyState == "complete") { fn.call(win, "lazy") } else { if (doc.createEventObject && root.doScroll) { try { top = !win.frameElement } catch (e) { } if (top) { poll() } } doc[add](pre + "DOMContentLoaded", init, false); doc[add](pre + "readystatechange", init, false); win[add](pre + "load", init, false) } }; void function () { var myself = (function () { var scripts = document.getElementsByTagName("script"); return scripts[scripts.length - 1] })(); var autoload = myself.getAttribute("autoload"); var core = myself.getAttribute("core"); if (core) { __configure.autoload = eval(autoload); __configure.core = core; __add("__core", { path: __configure.core }) } if (__configure.autoload && __configure.core) { __in() } } (); __in.add = __add; __in.adds = __adds; __in.config = __config; __in.css = __css; __in.later = __later; __in.load = __load; __in.ready = __ready; __in.use = __in; this.In = __in } ();
-
-In.add('jqcookie', { path: '/js/plugins/jquery.cookie.js', type: 'js', charset: 'utf-8' });
-In.add('blockui', { path: '/js/plugins/blockui.min.js', type: 'js', charset: 'utf-8' });
-
+}
 
 
 

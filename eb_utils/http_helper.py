@@ -15,11 +15,17 @@ def get_prams(key: str):
 
 
 def get_prams_dict():
+    dict_prams = {}
     if request.method == 'POST':
-        return request.form.to_dict()
+        dict_prams = request.form.to_dict()
     else:
-        return request.args.to_dict()
-
+        dict_prams = request.args.to_dict()
+    for key, value in dict_prams.items():
+        if value == 'on':
+            dict_prams[key] = True
+        elif value == 'checkbox_unchecked':
+            dict_prams[key] = False
+    return dict_prams
 
 def get_prams_int(key: str, default: int = 0) -> int:
     s_value = get_prams(key)

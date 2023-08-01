@@ -29,15 +29,39 @@ class AdminMenus(BllBase[AdminMenuModel]):
             if not tree.parent_id:
                 tree.menu_name = f"╋{tree.menu_name}"
                 get_tree.append(tree)
-                self.get_sub_item(tree._id, get_tree, "├", datas)
+                self.get_sub_item_text(tree._id, get_tree, "├", datas)
 
         return get_tree
 
-    def get_sub_item(self, data_id, new_class, blank, old_class):
+    def get_sub_item_text(self, data_id, new_class, blank, old_class):
         for md_model in old_class:
             if md_model.parent_id == str(data_id):
                 str_tag = f"{blank}─"
                 md_model.menu_name = f"{str_tag}『{md_model.menu_name}』"
+                new_class.append(md_model)
+                self.get_sub_item_text(md_model._id, new_class, str_tag, old_class)
+
+    def get_tree(self):
+        get_tree = []
+        datas = self.get_all_datas()
+
+        for tree in datas:
+            if not tree.parent_id:
+                tree.menu_name = f"<img src='/images/tree/w1.gif' align=absmiddle><b><font color=red>{tree.menu_name}</font></b>"
+                get_tree.append(tree)
+                self.get_sub_item(tree._id, get_tree, "", datas)
+
+        return get_tree
+
+    def get_sub_item(self, data_id, new_class, blank, old_class):
+
+        sW3 = '<img src=\"/images/tree/w3.gif\" align=absmiddle>'
+        sW1 = '<img src=\"/images/tree/w1.gif\" align=absmiddle>'
+
+        for md_model in old_class:
+            if md_model.parent_id == str(data_id):
+                str_tag = f"{blank}{sW3}"
+                md_model.menu_name = f"{str_tag}{sW1}{md_model.menu_name}"
                 new_class.append(md_model)
                 self.get_sub_item(md_model._id, new_class, str_tag, old_class)
 

@@ -5,17 +5,20 @@
     <div class="col-sm-12 col-md-12 ">
         <div class="block-flat">
             <div class="boxheader">
-                <h3>保存用户组</h3>
+                <h3>保存角色</h3>
             </div>
             <div class="content">
 
                 <form method="post">
                     <div class="mb-3">
-                        <label>用户组名称</label>
+                        <label>角色名称</label>
                         <input value="{{model.name}}" name="name"  style="max-width:300px" class="form-control" required>
-                        <div class="invalid-feedback">请输入用户组名称。</div>
                     </div>
-                    <input hidden value="{{model['_id']}}" name="_id" >
+                    <div class="mb-3">
+                        <label>角色说明</label>
+                        <input value="{{model.info}}" name="info"   class="form-control">
+                    </div>
+                    <input hidden value="{{model._id}}" name="_id" >
                     <button class="btn btn-primary mb-3" type="submit">   保  存   </button>
                     {%if err%}
                         <div class="alert alert-danger">{{err}}</div>

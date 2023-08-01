@@ -51,16 +51,18 @@
                         <label class="form-label" for="pass">密 码</label>
                         <input type="password" class="form-control" name="pass" placeholder="密码" minlength="6" required>
                     </div>
-                    <div class="row">
-                        <label class="form-label" >验证码</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" title="验证码为4个字符" pattern=".{4}" name="code" required/>
-                            <input type="hidden" value="{{safe_code_key}}" class="form-control" name="key" />
-                        </div>
-                        <div class="col-sm-4">
-                          <img  onClick="this.src+=Math.random()" src="/imgcode?key={{safe_code_key}}&" style="cursor: pointer;" />
-                        </div>
-                      </div>
+                    {%if is_safe_code %}
+                        <div class="row">
+                            <label class="form-label" >验证码</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" title="验证码为4个字符" pattern=".{4}" name="code" required/>
+                                <input type="hidden" value="{{safe_code_key}}" class="form-control" name="key" />
+                            </div>
+                            <div class="col-sm-4">
+                              <img  onClick="this.src+=Math.random()" src="/imgcode?" style="cursor: pointer;" />
+                            </div>
+                          </div>
+                    {%endif%}
                     <br><br>
                     <button class="btn btn-primary" style="width: 120px;" type="submit">  登  录 </button>
                     <br><br>
