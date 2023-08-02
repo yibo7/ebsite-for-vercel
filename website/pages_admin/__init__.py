@@ -17,6 +17,12 @@ from . import users
 from . import adminer
 from . import logs
 
+from . import custom_form
+from . import news_class
+from . import news_content
+from . import news_special
+from . import widgets
+
 # region 后台请求前的处理
 
 @admin_blue.before_request
