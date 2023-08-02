@@ -15,7 +15,7 @@ class AdminMenus(BllBase[AdminMenuModel]):
 
     def get_by_pid(self, pid):
         s_where = {"parent_id": str(pid)}
-        return self.find_list_by_where(s_where)
+        return self.find_list_by_where(s_where, "order_id", pymongo.ASCENDING)
 
     def get_all_datas(self):
         datas = self.find_list_by_where("", "order_id", pymongo.ASCENDING)

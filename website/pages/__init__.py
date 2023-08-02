@@ -2,6 +2,7 @@ import datetime
 
 from flask import Blueprint, g, render_template, request, redirect, make_response, render_template_string
 
+from bll.admin_login_log import AdminLoginLog
 from bll.admin_user import AdminUser
 from bll.user_group import UserGroup
 from db_utils import redis_utils
@@ -18,7 +19,8 @@ def before_req():
     在页面请求前进行一些权限处理
     :return:
     """
-    g.userid = None
+    g.uid = None
+    g.u = None
     print("请求了页面...")
 
 
@@ -124,6 +126,8 @@ def ad_login():
                 return resp  # redirect(WebPaths.ADMIN_INDEX)
             else:
                 err_count = redis_utils.add_count_hour('adminer_login_err_count', 24)
+
+        AdminLoginLog().add_log(username, username, '后台登录失败', err_msg)
 
     # settings_model = get_settings()
     return render_template("admin/login.html", is_safe_code=err_count > 0, err=err_msg)

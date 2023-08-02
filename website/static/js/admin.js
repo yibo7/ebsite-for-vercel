@@ -180,7 +180,7 @@ function OnMainTags(obj) {
 }
 
 function GetMenus(MenuParentID) { 
-    LeftMenuList.innerHTML = "<div><img height='250px' src='../images/loading.gif' /></div>";
+    LeftMenuList.innerHTML = "<div><img height='100px' src='../images/loading.gif' /></div>";
     let prams = {"pid":MenuParentID}
     post_form("/api/getsubmenus", prams, CompGetMenus);
 }

@@ -58,6 +58,7 @@ class BllBase(Generic[T], ABC):
         # 执行删除操作
         return self.delete_by_where(s_where)
 
+    # @admin_action_log("删除用户")
     def delete_from_page(self, s_id):
         if s_id:
             a_id = s_id.split(',')

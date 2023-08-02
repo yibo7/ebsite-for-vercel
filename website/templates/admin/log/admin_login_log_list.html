@@ -1,0 +1,28 @@
+{% extends 'base_admin.html' %}
+{% block content %}
+
+<div class="eb-box">
+    <div class="btn-toolbar px-2">
+        <form>
+            <div class="btn-group">
+                <input class="form-control" placeholder="关键字" name="k" type="text" required/>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-primary" type="submit">   搜索   </button>
+            </div>
+            <div class="btn-group">
+                <a class="btn btn-outline-primary" onclick="return confirm('确认要删除所选项吗？');" href="javascript: del_items('admin_login_log_list_del')">
+                    删除
+                </a>
+            </div>
+        </form>
+
+    </div>
+    {{table_html}}
+
+</div>
+<nav class="mt-2 px-2">
+    {{pager}}
+</nav>
+
+{% endblock %}

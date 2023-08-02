@@ -14,4 +14,4 @@ class WebPaths(object):
 
 class SiteConstant(object):
     COOKIE_AD_TOKEN_KEY = "ua_key"
-    PAGE_SIZE_AD = 5
+    PAGE_SIZE_AD = 3

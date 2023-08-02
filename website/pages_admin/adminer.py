@@ -49,6 +49,7 @@ def admin_role_save():
     return render_template(WebPaths.get_admin_path("adminer/adminer_role_save.html"), model=model, err=err)
 
 
+
 @admin_blue.route('admin_roles_del', methods=['GET', 'POST'])
 def admin_role_del():
     AdminRole().delete_from_page(http_helper.get_prams("ids"))
@@ -72,7 +73,7 @@ def adminer_roles_pos():
         return jsonify(api_msg.__dict__)
     data_list = AdminMenus().get_tree()
     model = bll.find_one_by_id(role_id)
-    table_html = get_table_html(data_list,None,True,model.pos_id)
+    table_html = get_table_html(data_list, None, True, model.pos_id)
 
     return render_template(WebPaths.get_admin_path("adminer/adminer_roles_pos.html"), table_html=table_html)
 
@@ -87,15 +88,15 @@ def admin_list():
     keyword = http_helper.get_prams("k")
     page_num = http_helper.get_prams_int("p", 1)
     bll = AdminUser()
-    datas, pager = bll.search(keyword, page_num, 'user_name')
+    data_list, pager = bll.search(keyword, page_num, 'user_name')
 
     del_btn = {"show_name": "删除", "url": "admin_list_del?ids=#_id#", "confirm": True}
     modify_btn = {"show_name": "修改", "url": "admin_list_save?_id=#_id#", "confirm": False}
 
-    table_html = get_table_html(datas, [del_btn, modify_btn])
+    table_html = get_table_html(data_list, [del_btn, modify_btn])
 
     return render_template(WebPaths.get_admin_path("adminer/admin_list.html"), table_html=table_html, pager=pager,
-                           datas=datas)
+                           datas=data_list)
 
 
 @admin_blue.route('admin_list_save', methods=['GET', 'POST'])
@@ -135,6 +136,7 @@ def admin_change_pass():
         bll = AdminUser()
         dic_prams = http_helper.get_prams_dict()
         model = bll.find_one_by_id(g.uid)
-        is_success, err = bll.change_pass(dic_prams.get('old_pass'), dic_prams.get('new_pass'), dic_prams.get('re_new_pass'),model)
+        is_success, err = bll.change_pass(dic_prams.get('old_pass'), dic_prams.get('new_pass'),
+                                          dic_prams.get('re_new_pass'), model)
     return render_template(WebPaths.get_admin_path("adminer/admin_change_pass.html"), err=err)
 # endregion

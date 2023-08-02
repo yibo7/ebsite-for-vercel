@@ -68,6 +68,7 @@ table td {
     }
 
     .BasicinfoShow ul li {
+        font-size:14px;
         height: 30px;
         line-height: 20px;
     }

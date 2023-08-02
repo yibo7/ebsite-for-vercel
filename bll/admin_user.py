@@ -1,5 +1,6 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 
+from bll.admin_login_log import AdminLoginLog
 from bll.admin_role import AdminRole
 from bll.bll_base import BllBase
 from db_utils import redis_utils
@@ -53,6 +54,7 @@ class AdminUser(BllBase[AdminUserModel]):
             if is_sucessfull:
                 utk = UserToken(user._id, user.user_name, user.real_name, user.role_id, user.role_name)
                 msg = redis_utils.set_ex_hours(utk, 24)
+                AdminLoginLog().add_log(user.user_name, user.real_name, '后台登录成功', '',user._id)
             else:
                 msg = "用户名或密码错误"
         else:

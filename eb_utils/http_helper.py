@@ -27,6 +27,7 @@ def get_prams_dict():
             dict_prams[key] = False
     return dict_prams
 
+
 def get_prams_int(key: str, default: int = 0) -> int:
     s_value = get_prams(key)
     if s_value:
@@ -46,3 +47,13 @@ def get_prams_bool(key: str, default: bool = False) -> bool:
     if s_value:
         return bool(s_value)
     return default
+
+
+def get_ip():
+    ip = request.remote_addr
+    return ip
+
+
+def get_url_full():
+    url = request.url
+    return url

@@ -1,3 +1,4 @@
+import random
 from dataclasses import replace
 
 from flask import render_template_string, current_app
@@ -27,4 +28,9 @@ def update_dic_to_class(dic_obj: {}, class_model):
     return settings_model_new
 
 
+def random_int(min_value, max_value):
+    return random.randint(min_value, max_value)
 
+
+def random_float(min_value, max_value):
+    return random.uniform(min_value, max_value)

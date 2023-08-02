@@ -4,6 +4,7 @@ from flask import Flask
 
 from db_utils import init_eb_db
 from temp_expand import reg_temp_expand
+from eb_event import event_engine
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -31,12 +32,8 @@ def create_app(run_mode):  # run_mode
     from website.pages.apis import api_blue
     app.register_blueprint(api_blue)
 
+    event_engine.start()
 
-    # 注册自定义过滤器--让模板支持str()函数 在模板中调用 {% if item.get("_id")|str == model.parent_id %}
-    # app.jinja_env.filters['str'] = to_str
-
-    # 启动时，手动加载BOT 后期更新bot会有dbsession混乱的问题
-    # init_all_change(Event(EVENT_UPDATE_CHANGE,data="start"))
     return app
 
 
