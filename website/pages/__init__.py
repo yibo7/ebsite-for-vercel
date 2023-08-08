@@ -6,9 +6,9 @@ from bll.admin_login_log import AdminLoginLog
 from bll.admin_user import AdminUser
 from bll.user_group import UserGroup
 from db_utils import redis_utils
+from eb_event import content_ev
 from eb_utils.configs import WebPaths, SiteConstant
 from eb_utils.image_code import ImageCode
-from entity.site_settings import get_settings
 
 pages_blue = Blueprint('pages_blue', __name__)
 
@@ -27,7 +27,12 @@ def before_req():
 @pages_blue.route('/', methods=['GET'])
 def welcome():
     #
-    print(f'用户的sessionID:{request.session_id}')
+    data = {'name':'cqs'}
+    print('发送数据: ')
+    print(data)
+    content_ev.to_do(data)
+    print('修改后数据: ')
+    print(data)
     resp = render_template("index.html")
     return resp
 

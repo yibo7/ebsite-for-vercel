@@ -9,6 +9,6 @@ class TemplatesModel(ModelBase):
         self.temp_code: str = ""
         self.temp_type: int = 0  # 1.class_temp 2.content_temp 3.special_temp
 
-    @annotation("日志标题")
-    def a_user_name(self):
-        return self.title
+    @annotation("模板名称")
+    def a_name(self):
+        return self.name

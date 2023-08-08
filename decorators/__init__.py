@@ -6,7 +6,6 @@ from flask import request, g
 from bll.site_log import SiteLog
 from eb_utils import http_helper
 from entity.site_log_model import SiteLogModel
-from entity.user_token import UserToken
 
 
 def check_session(func):

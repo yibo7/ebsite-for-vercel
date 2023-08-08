@@ -2,7 +2,6 @@ from flask import request, make_response, g
 
 from decorators import check_session
 from website import create_app
-from eb_event import EventEngine
 
 app = create_app("dev")  # dev 或者 pro
 

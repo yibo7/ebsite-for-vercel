@@ -1,5 +1,6 @@
-from .event import Event, EventEngine, EVENT_TIMER, EVENT_SIGNAL,  HandlerType
+from eb_event.event_push import ContentEvent
 
-event_engine = EventEngine(interval=15)
+# queue_data = QueueData(interval=15)
+content_ev = ContentEvent()
 
 

@@ -3,8 +3,9 @@ import os
 from flask import Flask
 
 from db_utils import init_eb_db
+from eb_event import content_ev
+from eb_triggers import init_triggers
 from temp_expand import reg_temp_expand
-from eb_event import event_engine
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -32,10 +33,6 @@ def create_app(run_mode):  # run_mode
     from website.pages.apis import api_blue
     app.register_blueprint(api_blue)
 
-    event_engine.start()
+    init_triggers()
 
     return app
-
-
-# 自定义过滤器：str
-

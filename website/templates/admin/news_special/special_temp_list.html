@@ -5,36 +5,12 @@
     <div class="btn-toolbar px-2">
         <form method="get">
             <div class="btn-group">
-                <input class="form-control" placeholder="关键字" name="k" type="text" required/>
-            </div>
-            <div class="btn-group">
-                <button class="btn btn-primary" type="submit">   搜索   </button>
-            </div>
-            <div class="btn-group">
-                <a href="user_list_save" class="btn btn-outline-primary">
-                    添加
-                </a>
-            </div>
-            <div class="btn-group">
-                <a class="btn btn-outline-primary" onclick="return confirm('将删除包括其下的子菜单，确认要删除所选项吗？');" href="javascript: del_items('user_list_del')">
-                    删除
+                <a href="special_temp_list_save" class="btn btn-outline-primary">
+                    添加专题模板
                 </a>
             </div>
         </form>
     </div>
     {{table_html}}
 </div>
-<nav class="mt-2 px-2">
-    {{pager}}
-</nav>
-<script>
-    function delitems() {
-        var ids = get_checkboxval(".eb-table");
-        if (ids)
-            location.href = 'menus_del?ids=' + ids;
-        else
-            alert("请选择要删除的数据！");
-    }
-</script>
-
 {% endblock %}

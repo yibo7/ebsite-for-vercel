@@ -1,6 +1,4 @@
-"""
-Event-driven framework of Binance Tradingview Webhook Bot
-"""
+
 import sys
 from collections import defaultdict
 from queue import Empty, Queue
@@ -10,6 +8,7 @@ from typing import Any, Callable, List
 
 EVENT_TIMER = "eTimer"
 EVENT_SIGNAL = "eSignal"
+EVENT_CONTENT_ADDING = "content_adding"
 
 
 class Event:
@@ -29,15 +28,11 @@ class Event:
 HandlerType = Callable[[Event], None]
 
 
-class EventEngine:
-    """
-    将分发数据给已经注册的事件处理程序，并且还可以使用定时器模式
-    """
+class QueueData:
+
 
     def __init__(self, interval: int = 1):
-        """
-        interval：定时间隔，如果未指定间隔，定时器事件默认每 1 秒生成一次.
-        """
+
         self._interval: int = interval
         self._queue: Queue = Queue()
         self._active: bool = False
@@ -58,11 +53,6 @@ class EventEngine:
                 pass
 
     def _process(self, event: Event) -> None:
-        """
-        首先将事件分发给那些注册监听的处理程序到这种类型。
-        然后将事件分发给那些监听的通用处理程序
-        到所有类型。
-        """
         try:
             if event.type in self._handlers:
                 [handler(event) for handler in self._handlers[event.type]]
@@ -81,11 +71,10 @@ class EventEngine:
             sleep(self._interval)
             event = Event(EVENT_TIMER)
             self.put(event)
-            # print('ffffff')
+            print('ffffff')
 
     def start(self) -> None:
         """
-        按间隔秒睡眠，然后生成计时器事件
         Start event engine to process events and generate timer events.
         """
         self._active = True
@@ -110,7 +99,6 @@ class EventEngine:
         """
         Register a new handler function for a specific event type. Every
         function can only be registered once for each event type.
-        为特定事件类型注册一个新的处理函数。每一个每个事件类型只能注册一次函数。
         """
         handler_list = self._handlers[type]
         if handler not in handler_list:
@@ -132,7 +120,6 @@ class EventEngine:
         """
         Register a new handler function for all event types. Every
         function can only be registered once for each event type.
-        为所有事件类型注册一个新的处理函数。每一个每个事件类型只能注册一次函数。
         """
         if handler not in self._general_handlers:
             self._general_handlers.append(handler)
