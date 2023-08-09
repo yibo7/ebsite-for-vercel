@@ -12,3 +12,7 @@ class TemplatesModel(ModelBase):
     @annotation("模板名称")
     def a_name(self):
         return self.name
+
+    @annotation("添加时间|to_time_name")
+    def c_add_time(self):
+        return self.add_time

@@ -1,3 +1,4 @@
+import inspect
 import random
 from dataclasses import replace
 
@@ -5,6 +6,7 @@ from flask import render_template_string, current_app
 from markupsafe import Markup
 
 from eb_utils import string_check
+from entity.news_class_model import NewsClassModel
 
 
 def __convert_to_number(value):
@@ -34,3 +36,16 @@ def random_int(min_value, max_value):
 
 def random_float(min_value, max_value):
     return random.uniform(min_value, max_value)
+
+
+def get_all_fields(model):
+    attributes = []
+    dic_f = model.__dict__
+    if '_id' in dic_f:
+        dic_f.pop('_id')
+    # 获取当前类的属性
+    for name, value in dic_f.items():
+        attributes.append(name)
+
+    fields_str = ", ".join(attributes)
+    return fields_str

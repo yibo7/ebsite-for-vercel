@@ -1,0 +1,112 @@
+{% extends 'base_admin.html' %}
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="block-flat">
+            <div class="boxheader">
+                <h3>添加或修改部件</h3>
+            </div>
+            <div class="content">
+                <form method="post" >
+                    <div class="row-fluid">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#tg1" data-bs-toggle="tab">
+                                   基本信息
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tg2" data-bs-toggle="tab">
+                                  查询条件
+                                </a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content px-2">
+                            <div id="tg1" class="tab-pane active mt-3">
+                                    <div class="mb-3">
+                                        <label>部件名称</label>
+                                        <input name="name" value="{{model.name}}"  style="max-width:300px" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>数据绑定模板(flask模板语法)</label>
+                                        <textarea onkeydown="handleTabKey(event)" style="max-width:800px" name="temp_code" class="form-control" rows="10" cols="100" required>{{model.temp_code}}</textarea>
+                                    </div>
+                            </div>
+                            <div id="tg2" class="tab-pane mt-3">
+                                    <div class="mb-3">
+                                        <label>查询条件(mongodb)</label>
+                                        <textarea style="max-width:500px" name="where_query" class="form-control" rows="4" cols="50">{{model.where_query}}</textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>排序字段</label>
+                                        <input name="order_by" value="{{model.order_by}}"  style="max-width:300px" class="form-control" required>
+                                    </div>
+                                      <div class="mb-3 mt-3">
+                                        <label>排序方式</label>
+                                        <select name="order_by_desc" style="max-width:300px" class="form-control">
+                                            {{build_sel_item(desc_asc, 'value','name',model.order_by_desc)}}
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>查询记录数</label>
+                                        <input type="number" name="limit" value="{{model.limit}}"  style="max-width:100px" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>注：可查询的字段</label>
+                                        <div class="alert alert-info">{{all_fields}}</div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input hidden value="{{model._id}}" name="_id" >
+                     <input hidden value="{{model.temp_type}}" name="temp_type" >
+                    <button class="btn btn-primary mb-3" type="submit">   保  存   </button>
+                    {% if err %}
+                        <div class="alert alert-danger">err</div>
+                    {%endif%}
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+<script>
+    function handleTabKey(event) {
+      if (event.keyCode === 9) {
+        event.preventDefault();
+
+        var textarea = event.target;
+        var start = textarea.selectionStart;
+        var end = textarea.selectionEnd;
+
+        // 检查是否选择了多行文本
+        var selectedText = textarea.value.substring(start, end);
+        if (selectedText.indexOf('\n') !== -1) {
+          // 对选择的多行文本进行缩进
+          var lines = selectedText.split('\n');
+          var indentedText = lines.map(function(line) {
+            return '\t' + line;
+          }).join('\n');
+
+          // 替换选中的文本为缩进后的文本
+          textarea.value = textarea.value.substring(0, start) + indentedText + textarea.value.substring(end);
+
+          // 重新设置光标位置
+          textarea.selectionStart = start;
+          textarea.selectionEnd = start + indentedText.length;
+        } else {
+          // 对单行文本进行缩进
+          textarea.value = textarea.value.substring(0, start) + '\t' + textarea.value.substring(end);
+
+          // 重新设置光标位置
+          textarea.selectionStart = textarea.selectionEnd = start + 1;
+        }
+      }
+    }
+  </script>
+
+{% endblock %}

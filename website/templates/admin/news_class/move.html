@@ -1,0 +1,49 @@
+{% extends 'base_admin.html' %}
+{% block content %}
+
+<form action="{{request.path}}"  method="post" >
+    <div class="eb-box px-2 w-50">
+        <div class="boxheader">
+            <h5>移动分类</h5>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 ">
+                <div class="form-group">
+                    <label>选择源</label>
+                    <select name="from_id"  class="form-control">
+                        {% for item in datas %}
+                            <option  value="{{item._id}}">{{item.class_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+            </div>
+            <div class="col-sm-6 col-md-6 ">
+                <div class="form-group">
+                    <label>选择目标</label>
+                    <select name="target_id"  class="form-control">
+                        {% for item in datas %}
+                            <option  value="{{item._id}}">{{item.class_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+            </div>
+        </div>
+        <div class="mt-3">
+            <label class="radio-inline">
+                <input name="mt" type="radio" value="0" checked="checked">
+                移动到目标分类前
+            </label>
+            <label class="radio-inline">
+                <input name="mt" type="radio" value="1">
+                移动目标分类下
+            </label>
+        </div>
+        <div class="text-center mb-3">
+            <button class="btn btn-primary" type="submit">   保  存   </button>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

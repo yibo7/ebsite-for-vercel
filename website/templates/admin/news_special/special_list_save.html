@@ -10,53 +10,42 @@
             </div>
             <div class="content">
                 <form method="post" >
-                    {% if not model._id %}
-                        <div class="mb-3">
-                            <label>登录账号</label>
-                            <input name="username" value="{{model.username}}" style="max-width:300px" class="form-control" minlength="3" required>
-                        </div>
-                        <div class="mb-3">
-                            <label>密码</label>
-                            <input type="password" value="{{model.password}}" name="password" style="max-width:500px" class="form-control" minlength="6" required>
-                        </div>
-                    {% else %}
-                        <div class="mb-3">
-                            <label>登录账号</label>
-                            <input name="username" value="{{model.username}}" style="max-width:300px" readonly class="form-control" required>
-                        </div>
-                    {% endif %}
-                    <div class="mb-3">
-                        <label>真实姓名(昵称)</label>
-                        <input name="ni_name" value="{{model.ni_name}}" minlength="3" style="max-width:500px" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label>Email</label>
-                        <input name="email_address" value="{{model.email_address}}" type="email" style="max-width:500px" class="form-control">
-                    </div>
-                    <div class="mb-3">
-                        <label>手机号</label>
-                        <input name="mobile_number" value="{{model.mobile_number}}" required pattern="^1[3-9]\d{9}$" title="请输入正确的手机号码" style="max-width:500px" class="form-control">
-                    </div>
-                    <div class="mb-3 mt-3">
-                        <label>选择用户组</label>
-                        <select name="group_id" style="max-width:300px" class="form-control">
-		                    {{build_sel_item(group,'_id','name',model.group_id)}}
+                     <div class="mb-3 mt-3">
+                        <label>父级专题</label>
+                        <select name="parent_id" style="max-width:300px" class="form-control">
+                            <option value="">一级专题</option>
+		                    {{build_sel_item(p_list,'_id','name',model.parent_id)}}
                         </select>
                     </div>
-
+                    <div class="mb-3">
+                        <label>专题名称</label>
+                        <input name="name" value="{{model.name}}"  style="max-width:300px" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>专题简介</label>
+                        <textarea style="max-width:500px" name="info" class="form-control" rows="4" cols="50">{{model.info}}</textarea>
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label>专题模板</label>
+                        <select name="temp_id" style="max-width:300px" class="form-control">
+		                    {{build_sel_item(temp_special,'_id','name',model.temp_id)}}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label>排序权重</label>
+                        <input type="number" name="order_id" value="{{model.order_id}}"  style="max-width:100px" class="form-control" required>
+                    </div>
                     <div class="mb-3">
                         <label>
-                            <input name="is_locked" type="checkbox" {% if model.is_locked %}checked{% endif %}>是否锁定
-                            <input type="hidden" title="checkbox未选提交辅助控件，只能放在同名checkbox下面" name="is_locked" value="checkbox_unchecked">
+                            <input name="is_good" type="checkbox" {% if model.is_good %}checked{% endif %}>是否推荐
+                            <input type="hidden" title="checkbox未选提交辅助控件，只能放在同名checkbox下面" name="is_good" value="checkbox_unchecked">
                         </label>
                     </div>
                     <input hidden value="{{model._id}}" id="_id" name="_id" >
                     <button class="btn btn-primary mb-3" type="submit">   保  存   </button>
                     {% if err %}
-                        <div class="alert alert-danger">err</div>
+                        <div class="alert alert-danger">{{err}}</div>
                     {%endif%}
-
-
                 </form>
 
             </div>

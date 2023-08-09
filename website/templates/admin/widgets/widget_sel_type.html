@@ -1,0 +1,29 @@
+{% extends 'base_admin.html' %}
+{% block content %}
+
+
+<div class="container-fluid row">
+    <div class="col-sm-12 col-md-12 ">
+        <div class="block-flat">
+            <div class="boxheader">
+                <h3>请选择创建的部件类型</h3>
+            </div>
+            <div class="content">
+                <div class="list-group">
+                    {%for item in data_list%}
+                        <a href="widget_list_save?t={{item.id}}" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                              <h5 class="mb-1">{{item.name}}</h5>
+                              <small><i class="fa fa-arrow-right" /></i></small>
+                            </div>
+                            <p class="mb-1">{{item.info}}</p>
+                        </a>
+                    {%endfor%}
+                </div>
+                <br><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

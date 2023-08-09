@@ -12,24 +12,32 @@
                 <form method="post" >
                      <div class="mb-3 mt-3">
                         <label>父级分类</label>
-                        <select name="group_id" style="max-width:300px" class="form-control">
+                        <select name="parent_id" style="max-width:300px" class="form-control">
+                            <option value="">一级分类</option>
 		                    {{build_sel_item(p_class_list,'_id','class_name',model.parent_id)}}
                         </select>
                     </div>
                     <div class="mb-3">
                         <label>分类名称</label>
-                        <input name="class_name" value="{{model.class_name}}" minlength="3" style="max-width:500px" class="form-control" required>
+                        <input name="class_name" value="{{model.class_name}}" minlength="3" style="max-width:300px" class="form-control" required>
+                    </div>
+                     <div class="mb-3 mt-3">
+                        <label>分类模板</label>
+                        <select name="class_temp_id" style="max-width:300px" class="form-control">
+		                    {{build_sel_item(temp_class,'_id','name',model.class_temp_id)}}
+                        </select>
+                    </div>
+                     <div class="mb-3 mt-3">
+                        <label>内容模板</label>
+                        <select name="content_temp_id" style="max-width:300px" class="form-control">
+		                    {{build_sel_item(temp_content,'_id','name',model.content_temp_id)}}
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label>分类简介</label>
-                        <textarea name="info" value="{{model.info}}" class="form-control" rows="4" cols="50"></textarea>
+                        <textarea style="max-width:500px" name="info" class="form-control" rows="4" cols="50">{{model.info}}</textarea>
                     </div>
-<!--                    <div class="mb-3 mt-3">-->
-<!--                        <label>选择用户组</label>-->
-<!--                        <select name="user_group_ids" style="max-width:300px" class="form-control">-->
-<!--		                    {{build_sel_item(user_group,'_id','name',model.user_group_ids)}}-->
-<!--                        </select>-->
-<!--                    </div>-->
+
                     <input hidden value="{{model._id}}" id="_id" name="_id" >
                     <button class="btn btn-primary mb-3" type="submit">   保  存   </button>
                     {% if err %}

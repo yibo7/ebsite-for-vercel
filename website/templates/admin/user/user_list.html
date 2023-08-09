@@ -27,14 +27,4 @@
 <nav class="mt-2 px-2">
     {{pager}}
 </nav>
-<script>
-    function delitems() {
-        var ids = get_checkboxval(".eb-table");
-        if (ids)
-            location.href = 'menus_del?ids=' + ids;
-        else
-            alert("请选择要删除的数据！");
-    }
-</script>
-
 {% endblock %}

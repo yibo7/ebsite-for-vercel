@@ -54,19 +54,7 @@
             </div>
         </div>
         <div class="row ">
-            {% for item in datas %}
-             <div class="col-sm-12 col-md-12 cbrowbox mt-20">
-                    <div class="boxheader">
-                        <h3>{{item.title}}</h3>
-                        1年回测收益率:<label style="color: #2ea125">{{item.profit_ratio}}%</label> 标的：{{item.test_target}}
-                    </div>
-                    <div class="eb-content">
-                        <a href="/st/{{item.gid}}">
-                            <img  src="{{item.img_src}}">
-                        </a>
-                    </div>
-            </div>
-            {%endfor%}
+            {{ widget("64d369a73d94dd897b8f5971") }}
         </div>
 
     </div>

@@ -18,4 +18,4 @@ class UserGroup(BllBase[UserGroupModel]):
             st.save()
 
     def exist_name(self, name: str) -> bool:
-        return self.find_one_by_where({'name': name})
+        return self.exist_data('name', name)

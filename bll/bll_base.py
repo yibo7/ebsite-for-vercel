@@ -24,6 +24,9 @@ class BllBase(Generic[T], ABC):
     def exist_table(self):
         return self.table_name in mongo_db.list_collection_names()
 
+    def exist_data(self, key_name: str, name: str) -> bool:
+        return self.find_one_by_where({f'{key_name}': name})
+
     # def get_dic(self):
     #     data = self.__dict__
     #     data.pop("table_name")
@@ -127,21 +130,40 @@ class BllBase(Generic[T], ABC):
             return self.build_model(document)
         return None
 
-    def find_list_by_where(self, where: {}, sort_key="_id", sort_direction=pymongo.DESCENDING) -> list[T]:
+    def find_list_by_where(self, where: {}, sort_key="_id", sort_direction=pymongo.DESCENDING, limit: int = 100000) -> list[
+        T]:
         """
         查询列表
         :param where: 查询条件 如：{"name":"ctt"}
+        :param limit: 查询数量 如：10
         :param sort_key: 要用哪个字段排序，默认使用_id
         :param sort_direction: 排序方式，默认使用 pymongo.DESCENDING 降序排序
         :return: 结果列表，可以通过 for data in datas 遍历
         """
+
         if not where:
             where = {}
-        datas = mongo_db[self.table_name].find(where).sort(sort_key, sort_direction)
+        datas = mongo_db[self.table_name].find(where).limit(limit).sort(sort_key, sort_direction)
         lst = []
         for document in datas:
             lst.append(self.build_model(document))
         return lst  # list(datas)
+
+    # def find_list_by_where(self, where: {}, sort_key="_id", sort_direction=pymongo.DESCENDING) -> list[T]:
+    #     """
+    #     查询列表
+    #     :param where: 查询条件 如：{"name":"ctt"}
+    #     :param sort_key: 要用哪个字段排序，默认使用_id
+    #     :param sort_direction: 排序方式，默认使用 pymongo.DESCENDING 降序排序
+    #     :return: 结果列表，可以通过 for data in datas 遍历
+    #     """
+    #     if not where:
+    #         where = {}
+    #     datas = mongo_db[self.table_name].find(where).sort(sort_key, sort_direction)
+    #     lst = []
+    #     for document in datas:
+    #         lst.append(self.build_model(document))
+    #     return lst  # list(datas)
 
     def find_all(self) -> list[T]:
         """
@@ -154,7 +176,7 @@ class BllBase(Generic[T], ABC):
         c = mongo_db[self.table_name].count_documents(s_where)
         return c
 
-    def find_pages(self, page_number: int, page_size: int, where={}, sort_key="_id",
+    def find_pages(self, page_number: int, page_size: int, where=None, sort_key="_id",
                    sort_direction=pymongo.DESCENDING) -> Tuple[list[T], str]:
         """
         分页查询列表
@@ -167,6 +189,8 @@ class BllBase(Generic[T], ABC):
         """
 
         # 计算跳过的文档数量
+        if where is None:
+            where = {}
         skip_count = (page_number - 1) * page_size
 
         # 执行分页查询并排序
@@ -207,4 +231,3 @@ class BllBase(Generic[T], ABC):
         model = self.new_instance()
         model.dict_to_model(dic_data)
         return model
-

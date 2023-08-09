@@ -1,5 +1,5 @@
 import pymongo
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, g
 
 from bll.new_class import NewsClass
 from bll.templates import Templates
@@ -16,9 +16,14 @@ from eb_utils.configs import WebPaths
 
 @admin_blue.route('class_list', methods=['GET'])
 def class_list():
-    ug = NewsClass()
-    datas = ug.find_all()
-    return render_template(WebPaths.get_admin_path("news_class/class_list.html"), datas=datas)
+    bll = NewsClass()
+    data_list = bll.get_tree()
+    del_btn = {"show_name": "删除", "url": "class_list_del?ids=#_id#", "confirm": True}
+    modify_btn = {"show_name": "修改", "url": "class_list_save?_id=#_id#", "confirm": False}
+
+    table_html = get_table_html(data_list, [del_btn, modify_btn])
+
+    return render_template(WebPaths.get_admin_path("news_class/class_list.html"), table_html=table_html)
 
 
 @admin_blue.route('class_list_save', methods=['GET', 'POST'])
@@ -30,12 +35,16 @@ def class_list_save():
         model = bll.find_one_by_id(g_id)
     err = ''
     if request.method == 'POST':
-        name = http_helper.get_prams('name')
-        model.name = name
+        dic_prams = http_helper.get_prams_dict()
+        model.dict_to_model(dic_prams)
+        model.user_id = g.uid
         bll.save(model)
         return redirect('class_list')
     p_class_list = bll.get_tree_text()
-    return render_template(WebPaths.get_admin_path("news_class/class_list_save.html"), p_class_list=p_class_list,
+    temp_class = Templates(1).get_templates()
+    temp_content = Templates(2).get_templates()
+    return render_template(WebPaths.get_admin_path("news_class/class_list_save.html"), temp_class=temp_class,
+                           temp_content=temp_content, p_class_list=p_class_list,
                            model=model, err=err)
 
 
@@ -45,14 +54,33 @@ def class_list_del():
     return redirect("class_list")
 
 
+@admin_blue.route('class_move', methods=['GET', 'POST'])
+def class_move():
+    if request.method == 'POST':
+        from_id = http_helper.get_prams("from_id")
+        target_id = http_helper.get_prams("target_id")
+        i_move_type = http_helper.get_prams_int("mt")
+        NewsClass().move_to(from_id, target_id, i_move_type)
+        return redirect("class_move")
+
+    datas = NewsClass().get_tree_text()
+    return render_template(WebPaths.get_admin_path("news_class/move.html"), datas=datas)
+
+
+@admin_blue.route('class_reset_orderid', methods=['GET', 'POST'])
+def class_reset_orderid():
+    NewsClass().reset_orderid()
+    return redirect("class_list")
+
+
 # endregion
 
 # region template
 
 @admin_blue.route('class_temp_list', methods=['GET'])
 def class_temp_list():
-    ug = Templates(1)
-    datas = ug.get_templates()
+    tp = Templates(1)
+    datas = tp.get_templates()
 
     del_btn = {"show_name": "删除", "url": "class_temp_list_del?ids=#_id#", "confirm": True}
     modify_btn = {"show_name": "修改", "url": "class_temp_list_save?_id=#_id#", "confirm": False}

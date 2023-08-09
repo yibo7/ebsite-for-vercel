@@ -1,0 +1,37 @@
+{% extends 'base_admin.html' %}
+{% block content %}
+
+<div class="eb-box">
+    <div class="btn-toolbar px-2">
+        <form method="get">
+            <div class="btn-group">
+                <a href="form_list_save" class="btn btn-outline-primary">
+                    添加
+                </a>
+            </div>
+        </form>
+    </div>
+    <table class="table table-hover eb-table">
+        <thead>
+            <tr>
+                <th>表单id</th>
+                <th>表单名称</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+              <tr>
+                    <td>name_key</td>
+                    <td>
+                        姓名
+                    </td>
+                    <td class="pd-a">
+                        <a ><i class="fa fa-edit" /></i> 修 改 </a>
+                        <a onclick="return confirm('将删除包括其下的子菜单，确认要删除所选项吗？');" ><i class="fa fa-remove" /></i> 删 除 </a>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

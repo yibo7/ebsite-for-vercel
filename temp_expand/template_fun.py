@@ -4,6 +4,7 @@ Custom global functions can be called in templates using the following method：
 """
 from markupsafe import Markup
 
+from bll.widgets import Widgets
 from entity.select_opt import SelectItem
 
 
@@ -19,12 +20,16 @@ def reg_temp_expand_fun(app):
             name = 'none'
             value = 'none'
             if hasattr(data, name_key):
-                name = getattr(data, name_key) # data[name_key]
+                name = getattr(data, name_key)  # data[name_key]
             if hasattr(data, value_key):
-                value = getattr(data, value_key) # data[value_key]
+                value = getattr(data, value_key)  # data[value_key]
             if str(value) == sel_value:
                 select_html.append(f'<option selected value="{value}">{name}</option>')
             else:
                 select_html.append(f'<option  value="{value}">{name}</option>')
 
         return Markup(''.join(select_html))
+
+    @app.template_global()
+    def widget(data_id: str):
+        return Widgets().get_content(data_id)

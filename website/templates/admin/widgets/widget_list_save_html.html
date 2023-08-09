@@ -6,19 +6,20 @@
     <div class="col-sm-12 col-md-12 ">
         <div class="block-flat">
             <div class="boxheader">
-                <h3>添加或修改表单</h3>
+                <h3>添加或修改部件</h3>
             </div>
             <div class="content">
                 <form method="post" >
                     <div class="mb-3">
-                        <label>表单名称</label>
+                        <label>部件名称</label>
                         <input name="name" value="{{model.name}}"  style="max-width:300px" class="form-control" required>
                     </div>
                     <div class="mb-3">
-                        <label>表单字段(一行一个，格式为: 字段ID|展示名称 )</label>
-                        <textarea style="max-width:300px" name="form_fields" class="form-control" rows="10" cols="100">{{model.form_fields}}</textarea>
+                        <label>HTML内容</label>
+                        <textarea style="max-width:800px" name="temp_code" class="form-control" rows="10" cols="100" required>{{model.temp_code}}</textarea>
                     </div>
-                    <input hidden value="{{model._id}}" id="_id" name="_id" >
+                    <input hidden value="{{model._id}}" name="_id" >
+                     <input hidden value="{{model.temp_type}}" name="temp_type" >
                     <button class="btn btn-primary mb-3" type="submit">   保  存   </button>
                     {% if err %}
                         <div class="alert alert-danger">err</div>
