@@ -1,3 +1,4 @@
+from eb_utils import url_links
 from entity.entity_base import ModelBase, annotation
 
 
@@ -17,15 +18,20 @@ class NewsClassModel(ModelBase):
         self.class_temp_id: str = ""
         self.content_temp_id: str = ""
         self.id: int = 0
+        self.page_size = 30
 
     @annotation("分类名称")
     def a_class_name(self):
-        return self.class_name
+        return f'<a href="{url_links.get_class_url(self.id)}" target=_blank >{self.class_name}</a>'
+
+    @annotation("分类ID")
+    def b_id(self):
+        return self.id
 
     @annotation("排序ID")
-    def b_order_id(self):
+    def c_order_id(self):
         return self.order_id
 
     @annotation("添加时间|to_time_name")
-    def c_add_time(self):
+    def cd_add_time(self):
         return self.add_time

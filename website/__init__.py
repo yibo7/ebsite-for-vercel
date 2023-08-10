@@ -7,6 +7,7 @@ from eb_event import content_ev
 from eb_triggers import init_triggers
 from temp_expand import reg_temp_expand
 
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 
@@ -26,12 +27,15 @@ def create_app(run_mode):  # run_mode
 
     # db.app = app  # 如果不加这个，在视图外使用会出错
     # 将蓝图注册到app中
+    # from website.pages import register_routes
+    # register_routes()
     from website.pages import pages_blue
     app.register_blueprint(pages_blue)
     from website.pages_admin import admin_blue
     app.register_blueprint(admin_blue)
     from website.pages.apis import api_blue
     app.register_blueprint(api_blue)
+
 
     init_triggers()
 

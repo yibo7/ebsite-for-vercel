@@ -1,16 +1,27 @@
 import datetime
 
-from flask import Blueprint, g, render_template, request, redirect, make_response, render_template_string
+from flask import Blueprint, g, render_template, request, redirect, make_response, render_template_string, abort
 
 from bll.admin_login_log import AdminLoginLog
 from bll.admin_user import AdminUser
 from bll.user_group import UserGroup
 from db_utils import redis_utils
-from eb_event import content_ev
 from eb_utils.configs import WebPaths, SiteConstant
 from eb_utils.image_code import ImageCode
 
 pages_blue = Blueprint('pages_blue', __name__)
+from . import cms_page
+
+# region load custom route
+# def register_routes():
+#     route = f"/list1p1.html"
+#     pages_blue.add_url_rule(route, view_func=class_route_fun)
+#
+#
+# def class_route_fun():
+#     resp = render_template("list.html")
+#     return resp
+# endregion
 
 
 @pages_blue.before_request
@@ -27,14 +38,19 @@ def before_req():
 @pages_blue.route('/', methods=['GET'])
 def welcome():
     #
-    data = {'name':'cqs'}
-    print('发送数据: ')
-    print(data)
-    content_ev.to_do(data)
-    print('修改后数据: ')
-    print(data)
+    # data = {'name': 'cqs'}
+    # print('发送数据: ')
+    # print(data)
+    # content_ev.to_do(data)
+    # print('修改后数据: ')
+    # print(data)
     resp = render_template("index.html")
     return resp
+
+
+@pages_blue.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404
 
 
 @pages_blue.route('/login', methods=['GET', 'POST'])
@@ -141,24 +157,3 @@ def ad_login():
 @pages_blue.route('/imgcode')
 def img_code():
     return ImageCode().getImgCode()
-    # cache_key = request.args.get("key", None)
-    # if cache_key:
-    #     return ImageCode().getImgCode(cache_key)
-    # else:
-    #     return "bad key"
-
-
-@pages_blue.route('/test')
-def temp_test():
-    template_string = """
-        <html>
-        <head>
-            <title>Template Processing Example</title>
-        </head>
-        <body>
-            <h1>Hello, Flask!</h1>
-            {{say_hello('cqs')}}
-        </body>
-        </html>
-        """
-    return render_template_string(template_string)

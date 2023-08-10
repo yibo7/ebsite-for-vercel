@@ -5,7 +5,14 @@ from entity.templates_model import TemplatesModel
 
 class Templates(BllBase[TemplatesModel]):
     def new_instance(self) -> TemplatesModel:
-        return TemplatesModel()
+        model = TemplatesModel()
+        if self.temp_type == 1:
+            model.file_path = 'list.html'
+        elif self.temp_type == 2:
+            model.file_path = 'content.html'
+        elif self.temp_type == 3:
+            model.file_path = 'special.html'
+        return model
 
     def __init__(self, temp_type: int):
         super().__init__()

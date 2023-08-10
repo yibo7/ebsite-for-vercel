@@ -37,6 +37,10 @@
                         <label>分类简介</label>
                         <textarea style="max-width:500px" name="info" class="form-control" rows="4" cols="50">{{model.info}}</textarea>
                     </div>
+                     <div class="mb-3">
+                        <label>每页显示</label>
+                        <input type="number" name="page_size" value="{{model.page_size}}"  style="max-width:100px" class="form-control" required>
+                    </div>
 
                     <input hidden value="{{model._id}}" id="_id" name="_id" >
                     <button class="btn btn-primary mb-3" type="submit">   保  存   </button>

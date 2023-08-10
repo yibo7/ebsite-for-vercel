@@ -1,0 +1,16 @@
+{% extends 'base_admin.html' %}
+{% block content %}
+
+<div class="eb-box">
+    <div class="btn-toolbar px-2">
+        <form method="get">
+            <div class="btn-group">
+                <a href="temp_list_save?t={{temp_t}}" class="btn btn-outline-primary">
+                    添加模板
+                </a>
+            </div>
+        </form>
+    </div>
+    {{table_html}}
+</div>
+{% endblock %}

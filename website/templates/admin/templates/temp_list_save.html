@@ -6,7 +6,7 @@
     <div class="col-sm-12 col-md-12 ">
         <div class="block-flat">
             <div class="boxheader">
-                <h3>添加或修改分类模板</h3>
+                <h3>添加或修改模板</h3>
             </div>
             <div class="content">
                 <form method="post" >
@@ -18,7 +18,7 @@
                     <div class="mb-3">
                         <label>模板代码</label>
                          <div class="btn-group" role="group" >
-                          <input value="1" type="radio" class="btn-check" name="temp_model" id="btn_radio1"  checked>
+                          <input value="1" type="radio" class="btn-check" name="temp_model" id="btn_radio1">
                           <label class="btn btn-outline-primary" for="btn_radio1">在线模板</label>
                           <input value="2" type="radio" class="btn-check" name="temp_model" id="btn_radio2" >
                           <label class="btn btn-outline-primary" for="btn_radio2">指定文件</label>
@@ -26,7 +26,8 @@
 
                     </div>
                     <div class="mb-3">
-                        <textarea name="temp_code" class="form-control" rows="20" cols="100">{{model.temp_code}}</textarea>
+                        <textarea id="temp_code" name="temp_code" class="form-control" rows="20" cols="100">{{model.temp_code}}</textarea>
+                        <input id="file_path" name="file_path" value="{{model.file_path}}"  style="max-width:500px;display:none" class="form-control" required>
                     </div>
 
                     <input hidden value="{{model._id}}"  name="_id" >
@@ -44,5 +45,23 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(function(){
+        $('.btn-check').change(function() {
+          var selectedValue = $(this).val();
+          $('#temp_code').hide()
+          $('#file_path').hide()
+
+          if (selectedValue === '1') {
+             $('#temp_code').show()
+          } else if (selectedValue === '2') {
+            $('#file_path').show()
+          }
+        });
+        var temp_model = {{model.temp_model}}
+        $("#btn_radio"+temp_model).click();
+    });
+</script>
 
 {% endblock %}

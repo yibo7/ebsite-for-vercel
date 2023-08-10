@@ -20,7 +20,7 @@ from . import news_class
 from . import news_content
 from . import news_special
 from . import widgets
-
+from . import templates
 # region 后台请求前的处理
 
 @admin_blue.before_request

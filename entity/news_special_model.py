@@ -1,4 +1,4 @@
-from eb_utils import random_int
+from eb_utils import random_int, url_links
 from entity.entity_base import ModelBase, annotation
 
 
@@ -16,12 +16,17 @@ class NewsSpecialModel(ModelBase):
         self.user_id: str = ""
         self.temp_id: str = ""
         self.is_good: bool = False
-        self.content_ids: list[str] = []
+        self.content_ids: list[int] = []
         self.id: int = 0
+
 
     @annotation("专题名称")
     def a_name(self):
-        return self.name
+        return f'<a href="{url_links.get_special_url(self.id)}" target=_blank >{self.name}</a>'
+
+    @annotation("专题ID")
+    def b_a_id(self):
+        return self.id
 
     @annotation("排序权重")
     def b_order_id(self):

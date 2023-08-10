@@ -1,4 +1,4 @@
-from eb_utils import random_int
+from eb_utils import random_int, url_links
 from entity.entity_base import ModelBase, annotation
 
 
@@ -8,7 +8,7 @@ class NewsContentModel(ModelBase):
         self.title: str = ""
         self.info: str = ""
         self.small_pic = ""
-        self.class_nane: str = ""
+        self.class_name: str = ""
         self.class_id: str = ""
         self.seo_title: str = ""
         self.seo_keyword: str = ""
@@ -19,18 +19,25 @@ class NewsContentModel(ModelBase):
         self.user_id: str = ""
         self.user_name: str = ""
         self.user_ni_name: str = ""
-        self.rand_num: int = random_int(1,100)
+        self.rand_num: int = random_int(1, 100)
         self.is_good: bool = False
-        self.content_temp_id: str = ""
+        # self.content_temp_id: str = ""
         self.id: int = 0
 
-    @annotation("标题")
+    def get_url(self):
+        return url_links.get_content_url(self.id)
+
+    @annotation("文章标题")
     def a_title(self):
-        return self.title
+        return f'<a href="{self.get_url()}" target=_blank >{self.title}</a>'
+
+    @annotation("文章ID")
+    def b_a_id(self):
+        return self.id
 
     @annotation("分类名称")
-    def b_class_nane(self):
-        return self.class_nane
+    def b_class_name(self):
+        return self.class_name
 
     @annotation("访问次数")
     def c_hits(self):
@@ -47,4 +54,3 @@ class NewsContentModel(ModelBase):
     @annotation("添加时间|to_time_name")
     def f_add_time(self):
         return self.add_time
-

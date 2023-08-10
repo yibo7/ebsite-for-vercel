@@ -5,7 +5,9 @@ from flask import request
 from markupsafe import Markup
 
 
-def pager_html_admin(count: int, page_number: int, page_size: int, prams={}):
+def pager_html_admin(count: int, page_number: int, page_size: int, prams=None):
+    if prams is None:
+        prams = {}
     if count > page_size:
         pg = MvcPager()
         pg.current_page = page_number
@@ -26,7 +28,7 @@ class MvcPager:
         self.page_size = 0
         self.total_count = 0
         self.first_page_url = ""
-        self._rewrite_patch_url = ""
+        self.rewrite_rule = ""
 
     @property
     def page_num(self) -> int:
@@ -48,9 +50,9 @@ class MvcPager:
 
     @property
     def rewrite_patch_url(self) -> str:
-        if not self._rewrite_patch_url:
+        if not self.rewrite_rule:
             return request.path + "?p={0}"
-        return self._rewrite_patch_url
+        return self.rewrite_rule
 
     def build_url(self, page_number: int) -> str:
         url = ""

@@ -1,0 +1,23 @@
+{% extends 'base_site.html' %}
+{% block title %}
+{{model.class_name}}
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-20">
+        <div style="padding-left: 25px;" class="row mt-20" >
+            <div style="border-left:#008EE0 solid 5px">
+                {{model.class_name}}
+            </div>
+        </div>
+        <div>
+            {% for item in data_list%}
+                <div><a href="{{item.get_url()}}">{{item.title}}</a></div>
+            {%endfor%}
+        </div>
+        <div>
+            {{pager}}
+        </div>
+
+    </div>
+{% endblock %}

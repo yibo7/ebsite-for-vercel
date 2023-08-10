@@ -9,7 +9,7 @@ from bson import ObjectId
 from db_utils import mongo_db
 from db_utils.redis_utils import generate_next_id
 from eb_utils.configs import SiteConstant
-from eb_utils.mvc_pager import pager_html_admin
+from eb_utils.mvc_pager import pager_html_admin, MvcPager
 
 T = TypeVar('T')  # 定义一个类型变量 T
 
@@ -130,7 +130,8 @@ class BllBase(Generic[T], ABC):
             return self.build_model(document)
         return None
 
-    def find_list_by_where(self, where: {}, sort_key="_id", sort_direction=pymongo.DESCENDING, limit: int = 100000) -> list[
+    def find_list_by_where(self, where: {}, sort_key="_id", sort_direction=pymongo.DESCENDING, limit: int = 100000) -> \
+    list[
         T]:
         """
         查询列表
@@ -177,7 +178,7 @@ class BllBase(Generic[T], ABC):
         return c
 
     def find_pages(self, page_number: int, page_size: int, where=None, sort_key="_id",
-                   sort_direction=pymongo.DESCENDING) -> Tuple[list[T], str]:
+                   sort_direction=pymongo.DESCENDING) -> Tuple[list[T], int]:
         """
         分页查询列表
         :param page_size: 每页的记录数
@@ -195,13 +196,43 @@ class BllBase(Generic[T], ABC):
 
         # 执行分页查询并排序
         datas = mongo_db[self.table_name].find(where).skip(skip_count).limit(page_size).sort(sort_key, sort_direction)
+        lst = []
+        i_count = 0
         if datas:
-            c = self.count(where)
+            i_count = self.count(where)
             lst = []
             for document in datas:
                 lst.append(self.build_model(document))
-            return c, lst
-        return None
+
+        return lst, i_count
+
+    def find_pager(self, page_number: int, page_size: int, rewrite_rule: str, where=None, sort_key="_id",
+                   sort_direction=pymongo.DESCENDING) -> Tuple[list[T], str]:
+        """
+        分页查询列表
+        :param page_size: 每页的记录数
+        :param page_number: 页码，从1开始
+        :param rewrite_rule: 分页的地址重写规则，规则中的{0}是页码
+        :param where: 查询条件 如：{"name":"ctt"} 默认不填写将查询全部
+        :param sort_key: 要用哪个字段排序，默认使用_id
+        :param sort_direction: 排序方式，默认使用 pymongo.DESCENDING 降序排序
+        :return: 结果列表，可以通过 for data in datas 遍历
+        """
+
+        datas, i_count = self.find_pages(page_number, page_size, where, sort_key, sort_direction)
+        # pager = pager_html_admin(i_count, page_number, page_size, where)
+        pager = ''
+        if i_count > page_size:
+            pg = MvcPager()
+            pg.current_page = page_number
+            pg.total_count = i_count
+            pg.page_size = page_size
+            pg.params = None
+            pg.ShowCodeNum = 10
+            pg.rewrite_rule = rewrite_rule
+            pager = pg.show_pages()
+
+        return datas, pager
 
     def search(self, keyword: str, page_number: int, key_name: str) -> Tuple[list[T], str]:
         """
@@ -218,7 +249,7 @@ class BllBase(Generic[T], ABC):
             regex_pattern = re.compile(f'.*{re.escape(keyword)}.*', re.IGNORECASE)  # IGNORE CASE 忽略大小写
             s_where = {key_name: {'$regex': regex_pattern}}
 
-        i_count, datas = self.find_pages(page_number, page_size, s_where)
+        datas, i_count = self.find_pages(page_number, page_size, s_where)
 
         pager = pager_html_admin(i_count, page_number, page_size, {'k': keyword})
         return datas, pager
@@ -231,3 +262,7 @@ class BllBase(Generic[T], ABC):
         model = self.new_instance()
         model.dict_to_model(dic_data)
         return model
+
+    def get_by_int_id(self, int_id: int) -> T:
+        # 查询单个文档
+        return self.find_one_by_where({"id": int_id})
