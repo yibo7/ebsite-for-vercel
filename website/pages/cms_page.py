@@ -46,7 +46,7 @@ def special(id: int, p:int):
         temp_model = Templates(3).find_one_by_id(model.temp_id)
         query = {"id": {"$in": model.content_ids}}
         rewrite_rule = f'/s{id}p{{0}}.html'
-        data_list, pager = NewsContent().find_pager(p, 10, rewrite_rule, query)
+        data_list, pager = NewsContent().find_pager(p, model.page_size, rewrite_rule, query)
         if temp_model.temp_model == 1:
             return render_template_string(temp_model.temp_code, model=model, data_list=data_list, pager=pager)
         else:

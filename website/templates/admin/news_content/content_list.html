@@ -8,16 +8,25 @@
                 <input class="form-control" placeholder="关键字" name="k" type="text" required/>
             </div>
             <div class="btn-group">
-                <button class="btn btn-primary" type="submit">   搜索   </button>
+                <button class="btn btn-primary" type="submit">   搜 索   </button>
+            </div>
+            <div class="btn-group">
+                <select onchange="OnClassChange(this)" name="cid" style="max-width:300px" class="form-control">
+                        <option value="">所有分类</option>
+                        {{build_sel_item(class_list,'_id','class_name',class_id)}}
+                </select>
+            </div>
+            <div class="btn-group">
+                <button onclick="OpenSelToSpecial()" class="btn btn-primary" type="button">   添加到专题   </button>
             </div>
             <div class="btn-group">
                 <a href="content_list_save" class="btn btn-outline-primary">
-                    添加
+                    添 加
                 </a>
             </div>
             <div class="btn-group">
-                <a class="btn btn-outline-primary" onclick="return confirm('将删除包括其下的子菜单，确认要删除所选项吗？');" href="javascript: del_items('content_list_del')">
-                    删除
+                <a class="btn btn-outline-primary" onclick="return confirm('确认要删除所选项吗？');" href="javascript: del_items('content_list_del')">
+                    删 除
                 </a>
             </div>
         </form>
@@ -27,5 +36,20 @@
 <nav class="mt-2 px-2">
     {{pager}}
 </nav>
+
+<script>
+    function OnClassChange(ob) {
+        var vl = get_selected_value(ob);
+        location.href = "?cid="+vl;
+    }
+    function OpenSelToSpecial() {
+        var ids = get_checkboxval(".eb-table");
+        if (ids)
+            OpenIframe('special_sel_box?ids='+ids,'选择专题','保存到专题',300,350)
+        else
+            alert("请选择要删除的数据！");
+    }
+
+</script>
 
 {% endblock %}

@@ -269,7 +269,10 @@ function OpenLeftMenu() {
 function del_items(url) {
         var ids = get_checkboxval(".eb-table");
         if (ids)
-            location.href = url+'?ids=' + ids;
+            if(url.includes('?'))
+                location.href = url+'&ids=' + ids;
+            else
+                location.href = url+'?ids=' + ids;
         else
             alert("请选择要删除的数据！");
     }

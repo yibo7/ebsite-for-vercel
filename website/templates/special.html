@@ -10,8 +10,13 @@
                 {{model.name}}
             </div>
         </div>
-        <div class="row ">
-           {{model.info}}
+         <div>
+            {% for item in data_list%}
+                <div><a href="{{item.get_url()}}">{{item.title}}</a></div>
+            {%endfor%}
+        </div>
+        <div>
+            {{pager}}
         </div>
 
     </div>

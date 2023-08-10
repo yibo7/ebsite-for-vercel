@@ -36,6 +36,10 @@
                         <input type="number" name="order_id" value="{{model.order_id}}"  style="max-width:100px" class="form-control" required>
                     </div>
                     <div class="mb-3">
+                        <label>每页显示</label>
+                        <input type="number" name="page_size" value="{{model.page_size}}"  style="max-width:100px" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
                         <label>
                             <input name="is_good" type="checkbox" {% if model.is_good %}checked{% endif %}>是否推荐
                             <input type="hidden" title="checkbox未选提交辅助控件，只能放在同名checkbox下面" name="is_good" value="checkbox_unchecked">

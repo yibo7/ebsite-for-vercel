@@ -28,10 +28,14 @@ class NewsClassModel(ModelBase):
     def b_id(self):
         return self.id
 
+    @annotation("分类数据")
+    def c_id(self):
+        return f'<a href="content_list?cid={self._id}">查看数据<a/>'
+
     @annotation("排序ID")
-    def c_order_id(self):
+    def d_order_id(self):
         return self.order_id
 
     @annotation("添加时间|to_time_name")
-    def cd_add_time(self):
+    def e_add_time(self):
         return self.add_time
