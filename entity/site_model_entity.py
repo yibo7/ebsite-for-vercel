@@ -1,12 +1,23 @@
-from eb_utils import random_int
+from dataclasses import dataclass
+
+
 from entity.entity_base import ModelBase, annotation
 
 
-class SiteModel(ModelBase):
+@dataclass
+class FieldModel:
+    name: str
+    show_name: str
+    control_id: str
+    control_name: str
+    control_size: str
+
+
+class SiteModelEntity(ModelBase):
     def __init__(self):
         super().__init__()
         self.name: str = ""
-        self.field_setting:dict = {}
+        self.fields: list[dict] = []
 
     @annotation("模型名称")
     def a_name(self):

@@ -108,11 +108,7 @@ table td {
 .dropdown-menu {
     background-color: #e5f7ff !important;
 }
-.btn-toolbar {
-    background: #EEEEEE;
-    height: 50px;
-    padding-top: 6px;
-}
+
 
 .btn-group {
     margin-left: 8px;
@@ -202,4 +198,15 @@ table td {
 }
 .color-w{
  color:#fff
+}
+.nav-box{padding:8px;border-bottom: 1px solid #ccc;font-size:16px;}
+.table-box {
+
+    background: #ffffff !important;
+}
+.btn-toolbar {
+    background: #F5F9F9;
+    height: 50px;
+    padding-top: 6px;
+    border-bottom: 1px solid #dadada !important;
 }

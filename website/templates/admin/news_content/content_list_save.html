@@ -9,21 +9,24 @@
                 <h3>添加或修改内容</h3>
             </div>
             <div class="content">
-                <form method="post" >
+                <form method="post">
                     <div class="mb-3 mt-3">
-                        <label>选择分类</label>
-                        <select name="class_id" style="max-width:300px" class="form-control">
-		                    {{build_sel_item(class_list,'_id','class_name',model.class_id)}}
-                        </select>
+                        分类:{{class_name}}
+<!--                        <label>选择分类</label>-->
+<!--                        <select name="class_id" style="max-width:300px" class="form-control">-->
+<!--		                    {{build_sel_item(class_list,'_id','class_name',model.class_id)}}-->
+<!--                        </select>-->
                     </div>
-                    <div class="mb-3">
-                        <label>标题</label>
-                        <input name="title" value="{{model.title}}" minlength="3" style="max-width:500px" class="form-control" required>
-                    </div>
-                     <div class="mb-3">
-                        <label>内容</label>
-                        <textarea style="max-width:500px" name="info" class="form-control" rows="4" cols="50">{{model.info}}</textarea>
-                    </div>
+<!--                    <div class="mb-3">-->
+<!--                        <label>标题</label>-->
+<!--                        <input name="title" value="{{model.title}}" minlength="3" style="max-width:500px" class="form-control" required>-->
+<!--                    </div>-->
+<!--                     <div class="mb-3">-->
+<!--                        <label>内容</label>-->
+<!--                        <textarea style="max-width:500px" name="info" class="form-control" rows="4" cols="50">{{model.info}}</textarea>-->
+<!--                    </div>-->
+
+                    {{model_html|safe}}
 
                     <div class="mb-3">
                         <label>

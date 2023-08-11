@@ -1,7 +1,8 @@
 from dataclasses import dataclass
+from typing import Any
 
 
 @dataclass
 class ListItem:
-    value: str
+    value: Any
     name: str

@@ -1,0 +1,91 @@
+{% extends 'base_admin.html' %}
+{% block content %}
+<div class="container-fluid nav-box">
+      <a href="content_model_list">模型管理</a>->{{model.name}}
+</div>
+
+<div id="vue_app" class="table-box">
+    <div class="btn-toolbar px-2">
+        <form method="post">
+            <div class="btn-group">
+                 <select name="name" style="max-width:300px" class="form-control" required>
+                     <option value="">选择字段</option>
+                     {% for name in fields %}
+                        <option value="{{name}}">{{name}}</option>
+                     {%endfor%}
+                 </select>
+            </div>
+            <div class="btn-group">
+                 <select name="control_id" style="max-width:300px" class="form-control" required>
+                     <option value="">选择控件</option>
+                     {{build_sel_item(controls,'value','name','')}}
+                 </select>
+            </div>
+            <div class="btn-group">
+                 <select name="control_size" style="max-width:300px" class="form-control" required>
+                     <option value="">控件大小</option>
+                     {% for i in range(1,11) %}
+                        <option value="{{i}}">{{i}}</option>
+                     {%endfor%}
+                 </select>
+            </div>
+             <div class="btn-group">
+                <input class="form-control" placeholder="展示名称" name="show_name" type="text" required/>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-primary">
+                    添加字段
+                </button>
+            </div>
+        </form>
+    </div>
+    <table class="table table-hover eb-table">
+        <thead>
+            <tr>
+                <th>展示名称</th>
+                <th>字段名称</th>
+                <th>控件</th>
+                <th>控件大小</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for item in model.fields %}
+                <tr v-for="item in fields">
+                    <td>{{ item.get('show_name') }}</td>
+                    <td>{{ item.get('name') }}</td>
+                    <td>{{ item.get('control_name') }}</td>
+                    <td>{{ item.get('control_size') }}</td>
+                    <td class="pd-a">
+                        <a href="content_model_fields_del?_id={{model._id}}&field_name={{ item.get('name') }}" onclick="return confirm('确认要删除所选项吗？');" ><i class="fa fa-remove" /></i> 删 除 </a>
+                    </td>
+                </tr>
+                {%endfor%}
+        </tbody>
+    </table>
+   <div class="container">
+        {% if err %}
+            <div class="alert alert-danger">{{err}}</div>
+        {%endif%}
+   </div>
+</div>
+<!--<script>-->
+<!--    In.ready('vue', function () {-->
+<!--        new Vue({-->
+<!--          delimiters: ['##', '##'],-->
+<!--          el: '#vue_app',-->
+<!--          data: {-->
+<!--            fields: [{show_name:"姓名", name:"u_name", control_id:1,control_name:"单行文本输入框", control_size:5}]-->
+<!--          },-->
+<!--          created() {-->
+
+<!--          },-->
+<!--          methods: {-->
+<!--            increment() {-->
+<!--              this.counter++;-->
+<!--            }-->
+<!--          }-->
+<!--    });-->
+<!--});-->
+<!--</script>-->
+{% endblock %}

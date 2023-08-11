@@ -23,14 +23,20 @@
                     </div>
                      <div class="mb-3 mt-3">
                         <label>分类模板</label>
-                        <select name="class_temp_id" style="max-width:300px" class="form-control">
+                        <select name="class_temp_id" style="max-width:300px" class="form-control" required>
 		                    {{build_sel_item(temp_class,'_id','name',model.class_temp_id)}}
                         </select>
                     </div>
                      <div class="mb-3 mt-3">
                         <label>内容模板</label>
-                        <select name="content_temp_id" style="max-width:300px" class="form-control">
+                        <select name="content_temp_id" style="max-width:300px" class="form-control" required>
 		                    {{build_sel_item(temp_content,'_id','name',model.content_temp_id)}}
+                        </select>
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label>内容模型</label>
+                        <select name="content_model_id" style="max-width:300px" class="form-control" required>
+		                    {{build_sel_item(model_content,'_id','name',model.content_model_id)}}
                         </select>
                     </div>
                     <div class="mb-3">

@@ -17,6 +17,7 @@ class NewsClassModel(ModelBase):
         self.user_group_ids: list[str] = []  # allow user group ids
         self.class_temp_id: str = ""
         self.content_temp_id: str = ""
+        self.content_model_id: str = ""
         self.id: int = 0
         self.page_size = 30
 

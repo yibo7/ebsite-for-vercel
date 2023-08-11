@@ -2,6 +2,7 @@ import pymongo
 from flask import render_template, request, redirect, g
 
 from bll.new_class import NewsClass
+from bll.site_model import SiteModel
 from bll.templates import Templates
 from entity.news_class_model import NewsClassModel
 from entity.templates_model import TemplatesModel
@@ -20,8 +21,9 @@ def class_list():
     data_list = bll.get_tree()
     del_btn = {"show_name": "删除", "url": "class_list_del?ids=#_id#", "confirm": True}
     modify_btn = {"show_name": "修改", "url": "class_list_save?_id=#_id#", "confirm": False}
+    add_content_btn = {"show_name": "添加内容", "url": "content_list_save?cid=#_id#", "confirm": False}
 
-    table_html = get_table_html(data_list, [del_btn, modify_btn])
+    table_html = get_table_html(data_list, [del_btn, modify_btn,add_content_btn])
 
     return render_template(WebPaths.get_admin_path("news_class/class_list.html"), table_html=table_html)
 
@@ -43,8 +45,9 @@ def class_list_save():
     p_class_list = bll.get_tree_text()
     temp_class = Templates(1).get_templates()
     temp_content = Templates(2).get_templates()
+    model_content = SiteModel().find_all()
     return render_template(WebPaths.get_admin_path("news_class/class_list_save.html"), temp_class=temp_class,
-                           temp_content=temp_content, p_class_list=p_class_list,
+                           temp_content=temp_content, p_class_list=p_class_list, model_content=model_content,
                            model=model, err=err)
 
 
