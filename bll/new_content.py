@@ -9,7 +9,30 @@ from entity.news_content_model import NewsContentModel
 
 class NewsContent(BllBase[NewsContentModel]):
     def new_instance(self) -> NewsContentModel:
-        return NewsContentModel()
+        model = NewsContentModel()
+        model.column_1 = ''
+        model.column_2 = ''
+        model.column_3 = ''
+        model.column_4 = ''
+        model.column_5 = ''
+        model.column_6 = ''
+        model.column_7 = ''
+        model.column_8 = ''
+        model.column_9 = ''
+        model.column_10 = ''
+        model.column_11 = ''
+        model.column_12 = ''
+        model.column_13 = ''
+        model.column_14 = ''
+        model.column_15 = ''
+        model.column_16 = ''
+        model.column_17 = ''
+        model.column_18 = ''
+        model.column_19 = ''
+        model.column_20 = ''
+        model.column_21 = ''
+
+        return model
 
     def search_content(self, keyword: str, class_id: str, page_number: int) -> Tuple[list[NewsContentModel], str]:
         """

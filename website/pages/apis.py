@@ -2,10 +2,12 @@ import json
 
 from flask import Blueprint, request, jsonify
 
+from bll.custom_form import CustomForm
 from bll.custom_form_data import CustomFormData
 from eb_utils import http_helper
 from eb_utils.configs import WebPaths
 from bll.admin_menus import AdminMenus
+from eb_utils.image_code import ImageCode
 from entity.api_msg import ApiMsg
 
 api_blue = Blueprint('apis', __name__, url_prefix=WebPaths.API_PATH)
@@ -34,12 +36,32 @@ def admin_stop_order():
 
 @api_blue.route(f'custom_form', methods=['POST'])
 def custom_form():
-    key_id = http_helper.get_prams('key')
-    dict_prams = http_helper.get_prams_dict()
+    key = request.args.get('key')
     api_msg = ApiMsg('err')
-    if dict_prams:
-        CustomFormData(key_id).add(dict_prams)
-        api_msg.success = True
-        api_msg.data = 'ok'
+
+    a_key = key.split('_')
+
+    if len(a_key) == 2:
+        form_id = a_key[1]
+        bll_form = CustomForm()
+        form_model = bll_form.find_one_by_id(form_id)
+        if form_model:
+            dict_prams = http_helper.get_prams_dict()
+            is_safe = True
+            if form_model.open_safe_code:
+                image_code = dict_prams.get('safe_code')
+                is_safe, api_msg.data = ImageCode().check_code(image_code)
+            if is_safe:
+                if dict_prams:
+                    if 'safe_code' in dict_prams:
+                        dict_prams.pop('safe_code')
+                    is_safe, api_msg.data = CustomFormData().add(form_model, dict_prams)
+                    api_msg.success = is_safe
+            else:
+                api_msg.data = '验证码不正确!'
+        else:
+            api_msg.data = f'can`t find form {form_id}'
+    else:
+        api_msg.data = 'bad for the form id'
 
     return jsonify(api_msg.__dict__)

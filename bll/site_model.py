@@ -8,6 +8,16 @@ class SiteModel(BllBase[SiteModelEntity]):
         model = SiteModelEntity()
         return model
 
+    def save_default(self, model: SiteModelEntity):
+        field = FieldModel(name='title', show_name='标题', control_id='1', control_name='单行文本输入框', control_size='3' )
+        model.fields.append(field.__dict__)
+
+        field = FieldModel(name='info', show_name='内容', control_id='2', control_name='多行文本输入框',
+                           control_size='5')
+        model.fields.append(field.__dict__)
+
+        self.save(model)
+
     def save_fields(self, model: SiteModelEntity, field_model: FieldModel):
         exists = any(f_m.get('name') == field_model.name for f_m in model.fields)
         if not exists:
@@ -85,9 +95,9 @@ class SiteModel(BllBase[SiteModelEntity]):
             elif control_type == 2:
                 a_html.append('<div class="mb-3">'
                               f'<label>{show_name}</label>'
-                              f'<textarea name="{name}" style="max-width:500px" class="form-control" rows="4" cols="50">[[#model.{name}]]</textarea>'
+                              f'<textarea name="{name}" style="max-width:500px" class="form-control" rows="4" cols="50">[[model.{name}]]</textarea>'
                               '</div>')
 
         s_html = ''.join(a_html)
-        s_html = s_html.replace('[[','{{').replace(']]', '}}')
+        s_html = s_html.replace('[[', '{{').replace(']]', '}}')
         return s_html

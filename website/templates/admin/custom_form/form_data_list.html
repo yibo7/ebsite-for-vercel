@@ -1,0 +1,47 @@
+{% extends 'base_admin.html' %}
+{% block content %}
+<div class="container-fluid nav-box">
+      <a href="content_model_list">查看表单数据</a>->{{model.name}}
+</div>
+
+<div id="vue_app" class="table-box">
+    <div class="btn-toolbar px-2">
+        <form method="post">
+            <div class="btn-group">
+                <a class="btn btn-outline-primary" onclick="return confirm('确认要删除所选项吗？');" href="javascript: del_items('form_data_list_del?form_id={{model._id}}')">
+                    删 除
+                </a>
+            </div>
+        </form>
+    </div>
+    <table class="table table-hover eb-table">
+        <thead>
+            <tr>
+                {% for item in model.fields %}
+                 <th>{{ item.get('show_name') }}</th>
+                {%endfor%}
+                <th>操作</th>
+                <th><input id='chAll' onclick='on_check(this)' type="checkbox" /></th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for item in data_list %}
+                <tr>
+                    {% for f_data in model.fields%}
+                        <td>{{ item.get(f_data.get('name')) }}</td>
+                    {%endfor%}
+                     <td class="pd-a">
+                        <a href="form_data_list_del?ids={{item.get('_id')}}&form_id={{model._id}}" onclick="return confirm('确认要删除所选项吗？');" ><i class="fa fa-remove" /></i> 删 除 </a>
+                    </td>
+                    <td>
+                        <input value="{{item.get('_id')}}" type="checkbox" />
+                    </td>
+                </tr>
+                {%endfor%}
+        </tbody>
+    </table>
+</div>
+<nav class="mt-2 px-2">
+    {{pager}}
+</nav>
+{% endblock %}

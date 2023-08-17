@@ -1,37 +1,77 @@
 {% extends 'base_admin.html' %}
 {% block content %}
+<div class="container-fluid nav-box">
+      <a href="content_model_list">表单字段管理</a>->{{model.name}}
+</div>
 
-<div class="eb-box">
+<div id="vue_app" class="table-box">
     <div class="btn-toolbar px-2">
-        <form method="get">
+        <form method="post">
             <div class="btn-group">
-                <a href="form_list_save" class="btn btn-outline-primary">
-                    添加
-                </a>
+                <input class="form-control" pattern="[a-zA-Z]+" title="字段名称只支持英文字母" placeholder="字段名称" name="name" type="text" required/>
+            </div>
+             <div class="btn-group">
+                <input class="form-control" placeholder="展示名称" name="show_name" type="text" required/>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-primary">
+                    添加字段
+                </button>
+            </div>
+            <div class="btn-group">
+                <button type="button" onclick="open_code()" class="btn btn-primary">
+                    调用代码示例
+                </button>
             </div>
         </form>
     </div>
     <table class="table table-hover eb-table">
         <thead>
             <tr>
-                <th>表单id</th>
-                <th>表单名称</th>
+                <th>展示名称</th>
+                <th>字段名称</th>
                 <th>操作</th>
             </tr>
         </thead>
         <tbody>
-              <tr>
-                    <td>name_key</td>
-                    <td>
-                        姓名
-                    </td>
+                {% for item in model.fields %}
+                <tr v-for="item in fields">
+                    <td>{{ item.get('show_name') }}</td>
+                    <td>{{ item.get('name') }}</td>
                     <td class="pd-a">
-                        <a ><i class="fa fa-edit" /></i> 修 改 </a>
-                        <a onclick="return confirm('将删除包括其下的子菜单，确认要删除所选项吗？');" ><i class="fa fa-remove" /></i> 删 除 </a>
+                        <a href="form_field_list_del?_id={{model._id}}&field_name={{ item.get('name') }}" onclick="return confirm('确认要删除所选项吗？');" ><i class="fa fa-remove" /></i> 删 除 </a>
                     </td>
                 </tr>
+                {%endfor%}
         </tbody>
     </table>
+   <div class="container">
+        {% if err %}
+            <div class="alert alert-danger">{{err}}</div>
+        {%endif%}
+   </div>
 </div>
-
+<script>
+    function open_code(){
+        $('#win_code').modal('toggle');
+    }
+</script>
+<div id="win_code" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div style="width:800px;" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">调用代码</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div style="height:500px;" class="modal-body">
+        <textarea style="width:100%;height:100%" id="get_code" class="form-control" >
+            {{demo_tem}}
+        </textarea>
+      </div>
+        <div class="modal-footer">
+        <p>以上代码只是示例，你可以修改代码中的的控件类型、样式、验证规则等，但不要更改控件的name值及form的id </p>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

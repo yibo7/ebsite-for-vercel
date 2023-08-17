@@ -617,5 +617,25 @@ function post_form(url, postobj, backfun)
     });
 }
 
-
+function on_custom_form(form){
+    var form_id = form.id;
+    var formData = $(form).serialize();
+    $.ajax({
+      type: 'POST',
+      url: '/api/custom_form?key='+form_id,
+      data: formData,
+      success: function(rz) {
+        if(rz.success){
+            alert('提交成功')
+        }else{
+            alert('提交失败:'+rz.data);
+            $('.safe_code_img img').click();
+        }
+      },
+      error: function(xhr, status, error) {
+        console.log(error);
+      }
+    });
+    return false;
+}
 

@@ -35,13 +35,14 @@ def content_list():
 @admin_blue.route('content_list_save', methods=['GET', 'POST'])
 def content_list_save():
     g_id = http_helper.get_prams('_id')
-    model = NewsContentModel()
     bll = NewsContent()
+    model = bll.new_instance()
+
     if g_id:
         model = bll.find_one_by_id(g_id)
         class_id = model.class_id
     else:
-        class_id = http_helper.get_prams('cid')
+        class_id = request.args.get('cid')
 
     class_model = NewsClass().find_one_by_id(class_id)
 
@@ -56,7 +57,7 @@ def content_list_save():
 
         # class_model = NewsClass().find_one_by_id(model.class_id)
         model.class_name = class_model.class_name
-
+        model.class_id = class_id
         bll.save(model)
         return redirect('content_list')
 
@@ -86,7 +87,7 @@ def content_model_list():
 
     del_btn = {"show_name": "删除", "url": f"content_model_list_del?ids=#_id#", "confirm": True}
     modify_btn = {"show_name": "修改", "url": f"content_model_list_save?_id=#_id#", "confirm": False}
-    fields_btn = {"show_name": "设置字段", "url": f"content_model_fields?_id=#_id#", "confirm": False}
+    fields_btn = {"show_name": "管理字段", "url": f"content_model_fields?_id=#_id#", "confirm": False}
 
     table_html = get_table_html(datas, [del_btn, modify_btn, fields_btn], False)
 
@@ -104,7 +105,7 @@ def content_model_list_save():
     err = ''
     if request.method == 'POST':
         model.name = http_helper.get_prams('name')
-        bll.save(model)
+        bll.save_default(model)
         return redirect('content_model_list')
 
     return render_template(WebPaths.get_admin_path("news_content/content_model_list_save.html"), model=model, err=err)

@@ -1,3 +1,5 @@
+from typing import Any
+
 from eb_utils import random_int, url_links
 from entity.entity_base import ModelBase, annotation
 
@@ -23,6 +25,26 @@ class NewsContentModel(ModelBase):
         self.is_good: bool = False
         # self.content_temp_id: str = ""
         self.id: int = 0
+        self.column_1: Any = None
+        self.column_2: Any = None
+        self.column_3: Any = None
+        self.column_4: Any = None
+        self.column_5: Any = None
+        self.column_6: Any = None
+        self.column_8: Any = None
+        self.column_9: Any = None
+        self.column_10: Any = None
+        self.column_11: Any = None
+        self.column_12: Any = None
+        self.column_13: Any = None
+        self.column_14: Any = None
+        self.column_15: Any = None
+        self.column_16: Any = None
+        self.column_17: Any = None
+        self.column_18: Any = None
+        self.column_19: Any = None
+        self.column_20: Any = None
+        self.column_21: Any = None
 
     def get_url(self):
         return url_links.get_content_url(self.id)
