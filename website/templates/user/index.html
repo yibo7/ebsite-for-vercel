@@ -1,0 +1,11 @@
+{% extends 'base_site.html' %}
+{% block title %}
+首页
+{% endblock %}
+
+{% block content %}
+个人中心首页<br>
+     用户名：{{user.name}}<br>
+     用户ID：{{user.id}}<br>
+     <a href="log_out">退出登录</a>
+{% endblock %}

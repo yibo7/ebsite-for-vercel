@@ -3,7 +3,6 @@ import os
 from flask import Flask
 
 from db_utils import init_eb_db
-from eb_event import content_ev
 from eb_triggers import init_triggers
 from temp_expand import reg_temp_expand
 
@@ -35,7 +34,8 @@ def create_app(run_mode):  # run_mode
     app.register_blueprint(admin_blue)
     from website.pages.apis import api_blue
     app.register_blueprint(api_blue)
-
+    from website.pages_ucc import user_blue
+    app.register_blueprint(user_blue)
 
     init_triggers()
 

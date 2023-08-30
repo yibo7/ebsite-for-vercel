@@ -11,7 +11,11 @@ class WebPaths(object):
     def get_admin_path(temp_name: str):
         return f"admin/{temp_name}"
 
+    @staticmethod
+    def get_user_path(temp_name: str):
+        return f"user/{temp_name}"
 
 class SiteConstant(object):
     COOKIE_AD_TOKEN_KEY = "ua_key"
+    COOKIE_TOKEN_KEY = "u_key"
     PAGE_SIZE_AD = 30

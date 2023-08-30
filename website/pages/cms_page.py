@@ -1,5 +1,3 @@
-import datetime
-
 from flask import render_template, render_template_string, abort
 
 from bll.new_class import NewsClass

@@ -14,9 +14,9 @@
 
                 <form action="{{request.path}}" method="post" class="needs-validation" novalidate>
                     <div class="mb-3">
-                        <label class="form-label" for="username">Email</label>
-                        <input type="email" title="email账号除了用来登录系统，还用来接收系统警报信息等" class="form-control" id="username" name="username" placeholder="Email" required>
-                        <div class="invalid-feedback">请输入有效的邮件地址。</div>
+                        <label class="form-label" for="username">Email或手机</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Email或手机号"  required>
+                        <div class="invalid-feedback">请输入有效的email或手机号。</div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="password">密码</label>
@@ -32,10 +32,9 @@
                         <label class="form-label" >验证码</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" title="验证码为4个字符" pattern=".{4}" name="code" required/>
-                            <input type="hidden" value="{{safe_code_key}}" class="form-control" name="key" />
                         </div>
                         <div class="col-sm-4">
-                          <img  onClick="this.src+=Math.random()" src="/imgcode?key={{safe_code_key}}&" style="cursor: pointer;" />
+                          <img  onClick="this.src+=Math.random()" src="/imgcode?" style="cursor: pointer;" />
                         </div>
                       </div>
                     <div class="form-check mt-10">
@@ -63,7 +62,7 @@
         blockTips("提交中...",2)
     }
     function reg_info(){
-        OpenIframe("reg_info","服务条款","同意")
+        OpenIframe("reg_info.html","服务条款","同意")
     }
     function agr_reg(){
         $("#invalidCheck3").prop("checked",true);
