@@ -1,9 +1,11 @@
 import json
+from io import BytesIO
 
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, send_file
 
 from bll.custom_form import CustomForm
 from bll.custom_form_data import CustomFormData
+from bll.file_upload import FileUpload
 from eb_utils import http_helper
 from eb_utils.configs import WebPaths
 from bll.admin_menus import AdminMenus
@@ -13,7 +15,7 @@ from entity.api_msg import ApiMsg
 api_blue = Blueprint('apis', __name__, url_prefix=WebPaths.API_PATH)
 
 
-@api_blue.route(f'getsubmenus', methods=['POST'])
+@api_blue.route('getsubmenus', methods=['POST'])
 def admin_stop_order():
     # data = json.loads(request.data)
     # data_id = data.get('pid', None)
@@ -34,7 +36,7 @@ def admin_stop_order():
     return jsonify({'code': 0, "data": data})
 
 
-@api_blue.route(f'custom_form', methods=['POST'])
+@api_blue.route('custom_form', methods=['POST'])
 def custom_form():
     key = request.args.get('key')
     api_msg = ApiMsg('err')
@@ -65,3 +67,36 @@ def custom_form():
         api_msg.data = 'bad for the form id'
 
     return jsonify(api_msg.__dict__)
+
+
+@api_blue.route('upfile', methods=['POST'])
+def up_file():
+    request_type = request.args.get('t')  # t=ume
+    data = {"state": 'unknown err'}
+    file = None
+    if request_type == 'ume':
+        file = request.files['upfile']
+
+    elif request_type in ['img', 'file']:
+        file = request.files['file']
+
+    if file:
+        content = file.read()
+        bll = FileUpload()
+        model = bll.new_instance()
+        model.original_name = file.filename
+        model.content = content
+        model.mimetype = file.mimetype
+        data = bll.upload(model)
+
+    return jsonify(data)
+
+
+@api_blue.route('upfile/<filename>', methods=['GET'])
+def get_up_file(filename):
+    bll = FileUpload()
+    model = bll.find_one_by_where({'url': filename})
+    if model:
+        file_obj = BytesIO(model.content)
+        return send_file(file_obj, mimetype=model.mimetype)
+    return 'Image not found.', 404

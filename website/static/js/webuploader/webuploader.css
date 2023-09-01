@@ -1,0 +1,100 @@
+.webuploader-container {
+	position: relative;
+}
+
+.webuploader-element-invisible {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px,1px,1px,1px);
+}
+
+.webuploader-pick {
+	/*position: relative;*/
+	/*display: inline-block;*/
+	cursor: pointer;
+	background: #00b7ee;
+	padding: 5px;
+	color: #fff;
+	text-align: center;
+	border-radius: 3px;
+	/*overflow: hidden;*/
+	/*clear:both;*/
+	max-width:120px;
+}
+
+.webuploader-pick-hover {
+	background: #00a2d4;
+}
+
+.webuploader-pick-disable {
+	opacity: 0.6;
+	pointer-events: none;
+}
+
+.uploader-imglist {
+	display: grid;
+	grid-template-columns: min-content min-content min-content min-content min-content min-content;
+	grid-template-rows: auto;
+	grid-gap: 10px;
+}
+.uploader-filelist {
+	display: block; 
+}
+.uploader-filelist div{
+	margin-top:10px;
+}
+
+.thumbnail img {
+	width: 100%;
+	height: 100%;
+}
+.upload-state-done {
+	border:solid 2px #09bf4f
+}
+.upload-state-bad {
+	border: solid 2px #ff0000;
+}
+.fileitem {
+	border-radius: 3px;
+	border: 1px solid #AEAEAE;
+	padding: 5px;
+	max-width: 500px;
+}
+.fileitem:hover{
+	background-color:bisque
+}
+progress {
+	/* Reset the default appearance */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 100%;
+	height: 5px;
+	/* Firefox */
+	border: none;
+	background: #96dff3;
+	border-radius: 3px;
+	/* box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset; */
+}
+
+progress::-webkit-progress-bar {
+		background: #96dff3;
+		/* box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset; */
+		border-radius: 3px;
+	}
+
+progress::-webkit-progress-value {
+		background-color: #15afd8;
+		border-radius: 3px;
+	}
+
+progress::-moz-progress-bar {
+		background-color: #15afd8 #f86610;
+		border-radius: 3px;
+	}
+.file-item img{
+	width:100%;height:100%;
+}
+.bduploader div {
+        margin-bottom: 3px;
+    }

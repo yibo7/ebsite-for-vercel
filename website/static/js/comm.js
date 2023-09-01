@@ -81,6 +81,8 @@
 In.add('jqcookie', { path: '/js/plugins/jquery.cookie.js', type: 'js', charset: 'utf-8' });
 In.add('blockui', { path: '/js/plugins/blockui.min.js', type: 'js', charset: 'utf-8' });
 In.add('vue', { path: '/js/vue.js', type: 'js', charset: 'utf-8' });
+
+
 /////////////////////////////////////////字符串操作///////////////////////////
 function GetFileNameByPath(s) {
     if (s.indexOf("\\") > -1)

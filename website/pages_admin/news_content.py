@@ -50,6 +50,9 @@ def content_list_save():
     if request.method == 'POST':
         admin_token: UserToken = g.u
         dic_prams = http_helper.get_prams_dict()
+        if 'file' in dic_prams:  # the upload input
+            dic_prams.pop('file')
+
         model.dict_to_model(dic_prams)
         model.user_id = admin_token.id
         model.user_name = admin_token.name
@@ -64,9 +67,9 @@ def content_list_save():
     # class_list = NewsClass().get_tree_text()
     class_name = class_model.class_name
     model_html_temp = SiteModel().get_model_temp_by_id(class_model.content_model_id)
-    model_html = render_template_string(model_html_temp,model=model)
+    model_html = render_template_string(model_html_temp, model=model)
     return render_template(WebPaths.get_admin_path("news_content/content_list_save.html"),
-                           model=model, err=err,class_name=class_name, model_html=model_html)
+                           model=model, err=err, class_name=class_name, model_html=model_html)
 
 
 @admin_blue.route('content_list_del', methods=['GET', 'POST'])
@@ -145,6 +148,20 @@ def content_model_fields():
 def content_model_fields_del():
     _id = http_helper.get_prams('_id')
     field_name = http_helper.get_prams('field_name')
-    SiteModel().del_field(_id,field_name)
+    SiteModel().del_field(_id, field_name)
     return redirect(f"content_model_fields?_id={_id}")
+
+
+@admin_blue.route('content_model_fields_move', methods=['GET'])
+def content_model_fields_move():
+    _id = http_helper.get_prams('_id')
+    field_name = http_helper.get_prams('field_name')
+    move_type = http_helper.get_prams_int('t')
+    if move_type == 0:
+        SiteModel().move_up(_id, field_name)
+    else:
+        SiteModel().move_down(_id, field_name)
+
+    return redirect(f"content_model_fields?_id={_id}")
+
 # endregion

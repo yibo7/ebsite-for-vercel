@@ -9,7 +9,8 @@ class SiteModel(BllBase[SiteModelEntity]):
         return model
 
     def save_default(self, model: SiteModelEntity):
-        field = FieldModel(name='title', show_name='标题', control_id='1', control_name='单行文本输入框', control_size='3' )
+        field = FieldModel(name='title', show_name='标题', control_id='1', control_name='单行文本输入框',
+                           control_size='3')
         model.fields.append(field.__dict__)
 
         field = FieldModel(name='info', show_name='内容', control_id='2', control_name='多行文本输入框',
@@ -32,6 +33,33 @@ class SiteModel(BllBase[SiteModelEntity]):
         model.fields = new_list
         self.save(model)
 
+    def move_up(self, _id: str, field_name):
+        model = self.find_one_by_id(_id)
+        # 找到 name="info" 的项的索引
+        current_index = next((index for index, field in enumerate(model.fields) if field["name"] == field_name), None)
+
+        if current_index is not None and current_index > 0:
+            # 将 name="info" 的项从原位置删除，并在索引+1的位置插入
+            # up_index = current_index-1
+            # current_item = model.fields.pop(current_index)
+            # up_item = model.fields.pop(up_index)
+            # model.fields.insert(up_index, current_item)
+            # model.fields.insert(current_index, up_item)
+            current_item = model.fields.pop(current_index)
+            model.fields.insert(current_index - 1, current_item)
+            self.save(model)
+
+    def move_down(self, _id: str, field_name):
+        model = self.find_one_by_id(_id)
+        # 找到 name="info" 的项的索引
+        current_index = next((index for index, field in enumerate(model.fields) if field["name"] == field_name), None)
+
+        if current_index is not None:
+            # 将 name="info" 的项从原位置删除，并在索引-1的位置插入
+            current_item = model.fields.pop(current_index)
+            model.fields.insert(current_index + 1, current_item)
+            self.save(model)
+
     @staticmethod
     def get_controls() -> list[ListItem]:
         lst = [
@@ -40,7 +68,9 @@ class SiteModel(BllBase[SiteModelEntity]):
             ListItem(value=3, name='富文本编辑框'),
             ListItem(value=4, name='数字输入框'),
             ListItem(value=5, name='单图上传控件'),
-            ListItem(value=6, name='单文件上传控件')
+            ListItem(value=6, name='单文件上传控件'),
+            ListItem(value=7, name='多图上传控件'),
+            ListItem(value=8, name='多文件上传控件')
         ]
         return lst
 
@@ -96,6 +126,60 @@ class SiteModel(BllBase[SiteModelEntity]):
                 a_html.append('<div class="mb-3">'
                               f'<label>{show_name}</label>'
                               f'<textarea name="{name}" style="max-width:500px" class="form-control" rows="4" cols="50">[[model.{name}]]</textarea>'
+                              '</div>')
+
+            elif control_type == 3:
+                a_html.append('<div class="mb-3">'
+                              f'<label>{show_name}</label>'
+                              f'<script type="text/plain" id="{name}" name="{name}" style="width:100%;height:100%;">[[model.{name}|safe]]</script>'
+                              f'<script>var um = UM.getEditor("{name}");</script>'
+                              '</div>')
+
+            elif control_type == 4:
+                a_html.append('<div class="mb-3">'
+                              f'<label>{show_name}</label>'
+                              f'<input type="number" name="{name}" value="[[model.{name}]]" minlength="3" style="max-width:100px" class="form-control" required>'
+                              '</div>')
+
+            elif control_type == 5:
+                a_html.append('<div class="mb-3">'
+                              f'<label>{show_name}</label>'
+                              f'<input type="hidden" name="{name}" id="{name}" value="[[model.{name}]]" />'
+                              f"<div class='bduploader'>"
+                              f"    <div><div id='imglisttbuUploadImg_{name}' class='uploader-imglist'></div></div>"
+                              f"    <div id='filedatatbuUploadImg_{name}'>选择图片</div>"
+                              f'</div>'
+                              f"<script>InitImgUpload('filedatatbuUploadImg_{name}','imglisttbuUploadImg_{name}','{name}',80,80,false);</script>"
+                              '</div>')
+            elif control_type == 6:
+                a_html.append('<div class="mb-3">'
+                              f'<label>{show_name}</label>'
+                              f'<input type="hidden" name="{name}" id="{name}" value="[[model.{name}]]" />'
+                              f"<div class='bduploader'>"
+                              f"    <div id='div_files_{name}' class='uploader-filelist'></div>"
+                              f"    <div id='btn_upload_file_{name}'>选择文件</div>"
+                              f'</div>'
+                              f"<script>InitFileUpload('btn_upload_file_{name}','div_files_{name}','{name}',false);</script>"
+                              '</div>')
+            elif control_type == 7:
+                a_html.append('<div class="mb-3">'
+                              f'<label>{show_name}</label>'
+                              f'<input type="hidden" name="{name}" id="{name}" value="[[model.{name}]]" />'
+                              f"<div class='bduploader'>"
+                              f"    <div><div id='imglisttbuUploadImg_{name}' class='uploader-imglist'></div></div>"
+                              f"    <div id='filedatatbuUploadImg_{name}'>选择图片</div>"
+                              f'</div>'
+                              f"<script>InitImgUpload('filedatatbuUploadImg_{name}','imglisttbuUploadImg_{name}','{name}',80,80,true);</script>"
+                              '</div>')
+            elif control_type == 8:
+                a_html.append('<div class="mb-3">'
+                              f'<label>{show_name}</label>'
+                              f'<input type="hidden" name="{name}" id="{name}" value="[[model.{name}]]" />'
+                              f"<div class='bduploader'>"
+                              f"    <div id='div_files_{name}' class='uploader-filelist'></div>"
+                              f"    <div id='btn_upload_file_{name}'>选择文件</div>"
+                              f'</div>'
+                              f"<script>InitFileUpload('btn_upload_file_{name}','div_files_{name}','{name}',true);</script>"
                               '</div>')
 
         s_html = ''.join(a_html)

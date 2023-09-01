@@ -58,6 +58,8 @@
                     <td>{{ item.get('control_size') }}</td>
                     <td class="pd-a">
                         <a href="content_model_fields_del?_id={{model._id}}&field_name={{ item.get('name') }}" onclick="return confirm('确认要删除所选项吗？');" ><i class="fa fa-remove" /></i> 删 除 </a>
+                        <a href="content_model_fields_move?t=0&_id={{model._id}}&field_name={{ item.get('name') }}"  ><i class="fa fa-arrow-up" /></i> 上移 </a>
+                        <a href="content_model_fields_move?t=1&_id={{model._id}}&field_name={{ item.get('name') }}"  ><i class="fa fa-arrow-down" /></i> 下移 </a>
                     </td>
                 </tr>
                 {%endfor%}
@@ -69,23 +71,4 @@
         {%endif%}
    </div>
 </div>
-<!--<script>-->
-<!--    In.ready('vue', function () {-->
-<!--        new Vue({-->
-<!--          delimiters: ['##', '##'],-->
-<!--          el: '#vue_app',-->
-<!--          data: {-->
-<!--            fields: [{show_name:"姓名", name:"u_name", control_id:1,control_name:"单行文本输入框", control_size:5}]-->
-<!--          },-->
-<!--          created() {-->
-
-<!--          },-->
-<!--          methods: {-->
-<!--            increment() {-->
-<!--              this.counter++;-->
-<!--            }-->
-<!--          }-->
-<!--    });-->
-<!--});-->
-<!--</script>-->
 {% endblock %}
