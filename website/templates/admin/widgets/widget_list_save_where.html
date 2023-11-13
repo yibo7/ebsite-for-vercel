@@ -30,7 +30,8 @@
                                     </div>
                                     <div class="mb-3">
                                         <label>数据绑定模板(flask模板语法)</label>
-                                        <textarea onkeydown="handleTabKey(event)" style="max-width:800px" name="temp_code" class="form-control" rows="10" cols="100" required>{{model.temp_code}}</textarea>
+                                        <div style="width:100%;min-height:300px;" id="temp_code_div">{{model.temp_code}}</div>
+                                        <textarea id="temp_code" style="display:none" name="temp_code" class="form-control" rows="10" cols="100" required>{{model.temp_code}}</textarea>
                                     </div>
                             </div>
                             <div id="tg2" class="tab-pane mt-3">
@@ -56,6 +57,12 @@
                                         <label>注：可查询的字段</label>
                                         <div class="alert alert-info">{{all_fields}}</div>
                                     </div>
+                                    <div class="mb-3">
+                                        <label>查询语法必须符合python下的mongodb代码使用规则</label>
+                                        <div class="alert alert-info">
+                                            如，{ 'class_name': { '$in': ['a', 'b'] } } 或 {'parent_id': '654f7523ab7a0b85c78a1e23'}
+                                        </div>
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -75,38 +82,9 @@
     </div>
 
 <script>
-    function handleTabKey(event) {
-      if (event.keyCode === 9) {
-        event.preventDefault();
-
-        var textarea = event.target;
-        var start = textarea.selectionStart;
-        var end = textarea.selectionEnd;
-
-        // 检查是否选择了多行文本
-        var selectedText = textarea.value.substring(start, end);
-        if (selectedText.indexOf('\n') !== -1) {
-          // 对选择的多行文本进行缩进
-          var lines = selectedText.split('\n');
-          var indentedText = lines.map(function(line) {
-            return '\t' + line;
-          }).join('\n');
-
-          // 替换选中的文本为缩进后的文本
-          textarea.value = textarea.value.substring(0, start) + indentedText + textarea.value.substring(end);
-
-          // 重新设置光标位置
-          textarea.selectionStart = start;
-          textarea.selectionEnd = start + indentedText.length;
-        } else {
-          // 对单行文本进行缩进
-          textarea.value = textarea.value.substring(0, start) + '\t' + textarea.value.substring(end);
-
-          // 重新设置光标位置
-          textarea.selectionStart = textarea.selectionEnd = start + 1;
-        }
-      }
-    }
+    $(function(){
+        init_ace("temp_code_div","temp_code");
+    });
   </script>
 
 {% endblock %}

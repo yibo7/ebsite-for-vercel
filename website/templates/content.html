@@ -4,15 +4,20 @@
 {% endblock %}
 
 {% block content %}
-     <div class="container mt-20">
-        <div style="padding-left: 25px;" class="row mt-20" >
-            <div style="border-left:#008EE0 solid 5px">
-                {{model.title}}
-            </div>
-        </div>
-        <div class="row ">
-           {{model.info|safe}}
-        </div>
-
+<div class="container">
+    <nav>
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">{{SiteName}}</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><a href="{{get_class_link(model.classid)}}">{{model.class_name}}</a></li>
+      </ol>
+    </nav>
+</div>
+ <div class="container mt-20">
+     <div class="text-center">
+         <h2>{{model.title}}</h2>
+     </div>
+    <div class="mt-10">
+       {{model.info|safe}}
     </div>
+</div>
 {% endblock %}

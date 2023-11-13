@@ -10,6 +10,7 @@ app = create_app("dev")  # dev 或者 pro
 def after_request():
     request.session_id = request.cookies.get('session_id')
 
+
 @app.after_request
 @check_session
 def after_request(response):

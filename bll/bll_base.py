@@ -121,7 +121,10 @@ class BllBase(Generic[T], ABC):
         # 查询单个文档
         # document = mongo_db[self.table_name].find_one({"_id": ObjectId(_id)})
         # return self.build_model(document)
-        return self.find_one_by_where({"_id": ObjectId(_id)})
+        data_id = ObjectId()
+        if _id != "":
+            data_id = ObjectId(_id)
+        return self.find_one_by_where({"_id": data_id})
 
     def find_one_by_where(self, where: {}) -> T:
         # 查询单个文档

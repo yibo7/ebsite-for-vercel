@@ -25,9 +25,13 @@ class NewsClassModel(ModelBase):
     def a_class_name(self):
         return f'<a href="{url_links.get_class_url(self.id)}" target=_blank >{self.class_name}</a>'
 
-    @annotation("分类ID")
+    @annotation("自增ID")
     def b_id(self):
         return self.id
+
+    @annotation("数据ID")
+    def b_dataid(self):
+        return self._id
 
     @annotation("分类数据")
     def c_id(self):

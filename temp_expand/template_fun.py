@@ -4,7 +4,9 @@ Custom global functions can be called in templates using the following method：
 """
 from markupsafe import Markup
 
+from bll.new_class import NewsClass
 from bll.widgets import Widgets
+from eb_utils import url_links
 from entity.select_opt import SelectItem
 
 
@@ -12,6 +14,10 @@ def reg_temp_expand_fun(app):
     @app.template_global()
     def say_hello(msg: str):
         return Markup(f'<h1>你好呀:{msg}</h1>')
+
+    @app.template_global()
+    def get_class_link(cid: int):
+        return url_links.get_class_url(cid)
 
     @app.template_global()
     def build_sel_item(datas, value_key: str, name_key: str, sel_value: str):
@@ -33,3 +39,7 @@ def reg_temp_expand_fun(app):
     @app.template_global()
     def widget(data_id: str):
         return Widgets().get_content(data_id)
+
+    @app.template_global()
+    def get_sub_class(pid: str):
+        return NewsClass().get_by_pid(pid)

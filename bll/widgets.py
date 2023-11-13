@@ -33,8 +33,11 @@ class Widgets(BllBase[WidgetsModel]):
             else:
                 s_where = {}
                 if model.where_query:
-                    s_where = ast.literal_eval(model.where_query)
-                    # literal_eval 无法解析带有类型的字典，如 ObjectId "{'_id': ObjectId('64d2e7c93798563b080040c4')}"
+                    try:
+                        s_where = ast.literal_eval(model.where_query)
+                    except Exception:
+                        raise Exception(f"部件查询条件错误:{model.where_query}不是python下合法的mongodb语句,来自部件ID:{_id}")
+                        # literal_eval 无法解析带有类型的字典，如 ObjectId "{'_id': ObjectId('64d2e7c93798563b080040c4')}"
                     # 如要查询指定id的记录，可查询 自增加 id
                     # s_where = eval(model.where_query, {'ObjectId': ObjectId}) # eval 比较危险，但功能强大
 

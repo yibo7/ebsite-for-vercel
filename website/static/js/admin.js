@@ -1,4 +1,19 @@
-﻿//Custom-Tags
+﻿
+$(function(){
+    var TopTags = new CustomTags();
+    TopTags.ParentObjName = "panrent-menu";
+    TopTags.SubObj = "span";
+    TopTags.CurrentClassName = "current";
+    TopTags.ClassName = "";
+
+    TopTags.fun = OnMainTags; // function () { OnMainTags(this) };
+
+    TopTags.InitOnclickInTags();
+
+    TopTags.InitOnclick(0);
+})
+
+//Custom-Tags
 function CustomTags() {
     //tags列表的上一级元素名称
     this.ParentObjName = "";
@@ -157,21 +172,6 @@ function CustomTags() {
 }
 
 
-$(function(){
-    var TopTags = new CustomTags();
-    TopTags.ParentObjName = "panrent-menu";
-    TopTags.SubObj = "span";
-    TopTags.CurrentClassName = "current";
-    TopTags.ClassName = "";
-
-    TopTags.fun = OnMainTags; // function () { OnMainTags(this) };
-
-    TopTags.InitOnclickInTags();
-
-    TopTags.InitOnclick(0);
-})
-
-
 function OnMainTags(obj) {
      
     var sID = $(obj).data("mid");
@@ -276,3 +276,20 @@ function del_items(url) {
         else
             alert("请选择要删除的数据！");
     }
+
+function init_ace(editor_div_id,editor_input_id){
+    // 创建 Ace 编辑器并配置
+        var editor = ace.edit(editor_div_id);
+        editor.setTheme("ace/theme/monokai"); // 设置编辑器主题
+        editor.session.setMode("ace/mode/html"); // 设置语言模式为 HTML
+        editor.setOptions({
+          enableBasicAutocompletion: true, // 启用基本的智能完成
+          enableLiveAutocompletion: true, // 启用实时智能完成
+          enableSnippets: true, // 启用代码片段
+          foldStyle: "markbeginend" // 设置折叠样式为标记开始和结束
+        });
+          editor.on("change", function() {
+          const value_html = editor.getValue();
+          $("#"+editor_input_id).val(value_html);
+        });
+}

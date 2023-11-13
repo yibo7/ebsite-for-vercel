@@ -4,20 +4,41 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container mt-20">
-        <div style="padding-left: 25px;" class="row mt-20" >
-            <div style="border-left:#008EE0 solid 5px">
-                {{model.class_name}}
-            </div>
-        </div>
-        <div>
-            {% for item in data_list%}
-                <div><a href="{{item.get_url()}}">{{item.title}}</a></div>
-            {%endfor%}
-        </div>
-        <div>
-            {{pager}}
-        </div>
+<div class="container">
+    <nav>
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">{{SiteName}}</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><a href="{{get_class_link(model.id)}}">{{model.class_name}}</a></li>
+      </ol>
+    </nav>
+</div>
+<div class="container">
+    <div class="alert alert-info">{{model.info|safe}}</div>
+    <table class="table">
+         <thead>
+        <tr>
+          <th scope="col">标题</th>
+          <th style="width:200px;" scope="col">时间</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for item in data_list%}
+       <tr>
+          <td>
+              {{ loop.index }}.<a href="{{item.get_url()}}" class="btn btn-link">{{item.title}}</a>
+          </td>
+           <td>
+               {{item.add_time|to_time_name}}
+           </td>
+        </tr>
+    {%endfor%}
 
+
+      </tbody>
+    </table>
+    <div>
+        {{pager}}
     </div>
+
+</div>
 {% endblock %}

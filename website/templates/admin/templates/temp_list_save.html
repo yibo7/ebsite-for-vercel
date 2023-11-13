@@ -26,7 +26,8 @@
 
                     </div>
                     <div class="mb-3">
-                        <textarea id="temp_code" name="temp_code" class="form-control" rows="20" cols="100">{{model.temp_code}}</textarea>
+                        <div style="width:100%;height:100vh;" id="temp_code_div">{{model.temp_code}}</div>
+                        <textarea style="display:none" id="temp_code" name="temp_code" class="form-control" rows="20" cols="100">{{model.temp_code}}</textarea>
                         <input id="file_path" name="file_path" value="{{model.file_path}}"  style="max-width:500px;display:none" class="form-control" required>
                     </div>
 
@@ -50,18 +51,22 @@
     $(function(){
         $('.btn-check').change(function() {
           var selectedValue = $(this).val();
-          $('#temp_code').hide()
+          $('#temp_code_div').hide()
           $('#file_path').hide()
 
           if (selectedValue === '1') {
-             $('#temp_code').show()
+             $('#temp_code_div').show()
           } else if (selectedValue === '2') {
             $('#file_path').show()
           }
         });
         var temp_model = {{model.temp_model}}
         $("#btn_radio"+temp_model).click();
+
+        init_ace("temp_code_div","temp_code");
     });
+
+
 </script>
 
 {% endblock %}

@@ -14,6 +14,9 @@ class CustomFormModel(ModelBase):
     def a_name(self):
         return self.name
 
+    @annotation("表单ID")
+    def b_data_id(self):
+        return f"f_{self._id}"
     @annotation("是否开启验证码")
     def b_open_safe_code(self):
         return '是' if self.open_safe_code else '否'

@@ -1,6 +1,10 @@
 {% extends 'base_admin.html' %}
 {% block content %}
-
+     <link href="https://cdn.jsdelivr.net/gh/yibo7/ebcdn@0.9/umeditor/themes/default/_css/umeditor.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/yibo7/ebcdn@0.9/umeditor/third-party/template.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/gh/yibo7/ebcdn@0.9/umeditor/umeditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/gh/yibo7/ebcdn@0.9/umeditor/xs_index/editor_api.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/yibo7/ebcdn@0.9/umeditor/lang/zh-cn/zh-cn.js"></script>
 
 <div class="row eb-box">
     <div class="col-sm-12 col-md-12 ">
@@ -19,7 +23,7 @@
                     </div>
                     <div class="mb-3">
                         <label>分类名称</label>
-                        <input name="class_name" value="{{model.class_name}}" minlength="3" style="max-width:300px" class="form-control" required>
+                        <input name="class_name" value="{{model.class_name}}" minlength="1" style="max-width:300px" class="form-control" required>
                     </div>
                      <div class="mb-3 mt-3">
                         <label>分类模板</label>
@@ -41,7 +45,8 @@
                     </div>
                     <div class="mb-3">
                         <label>分类简介</label>
-                        <textarea style="max-width:500px" name="info" class="form-control" rows="4" cols="50">{{model.info}}</textarea>
+                        <script type="text/plain" id="info" name="info" style="width:100%;height:100%;">{{model.info|safe}}</script><script>var um = UM.getEditor("info");</script>
+
                     </div>
                      <div class="mb-3">
                         <label>每页显示</label>

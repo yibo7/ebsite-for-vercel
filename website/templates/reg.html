@@ -4,9 +4,8 @@
 {% endblock %}
 {% block content %}
 
-<div style="max-width: 500px" class="row cbrowbox">
-    <div class="col-sm-12 col-md-12 ">
-        <div class="boxheader headertips">
+<div class="container mt-5">
+    <div class="boxheader headertips">
                 <h3>新用户注册</h3>
                 老用户请从<a class="text-success" href="login">这里登录</a>
             </div>
@@ -28,16 +27,15 @@
                         <input type="password" class="form-control" id="repassword" name="repassword" placeholder="确认密码" required>
                         <div class="invalid-feedback">确认密码不能为空</div>
                     </div>
-                     <div class="row">
-                        <label class="form-label" >验证码</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" title="验证码为4个字符" pattern=".{4}" name="code" required/>
-                        </div>
-                        <div class="col-sm-4">
+                    <div><label class="form-label" >验证码</label></div>
+                    <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
+
+                      <input type="text" class="form-control" title="验证码为4个字符" pattern=".{4}" name="code" required/>
+                      <div>
                           <img  onClick="this.src+=Math.random()" src="/imgcode?" style="cursor: pointer;" />
-                        </div>
                       </div>
-                    <div class="form-check mt-10">
+                    </div>
+                    <div class="form-check mt-3">
                       <input class="form-check-input " type="checkbox" value="" id="invalidCheck3" required>
                       <label class="form-check-label" for="invalidCheck3">
                         我已阅读《<a onclick="reg_info()" href="#">注册条款</a>》并同意
@@ -46,7 +44,7 @@
                         你必须同意条款才能注册哦
                       </div>
                     </div>
-                    <button onclick="on_post()" style="width: 150px" type="submit" class="btn btn-primary mt-10"> 注 册 </button>
+                    <button onclick="on_post()" style="width: 150px" type="submit" class="btn btn-primary mt-5"> 注 册 </button>
                     <br><br>
                     {%if err %}
                      <div class="alert alert-danger" role="alert">
@@ -55,7 +53,6 @@
                     {%endif%}
                 </form>
             </div>
-    </div>
 </div>
 <script>
     function on_post(){

@@ -1,8 +1,6 @@
 from flask import render_template, request, redirect, g
 
-from bll.user_group import UserGroup
 from bll.widgets import Widgets
-from entity.user_group_model import UserGroupModel
 from entity.widgets_model import WidgetsModel
 from temp_expand import get_table_html
 from website.pages_admin import admin_blue

@@ -16,7 +16,8 @@
                     </div>
                     <div class="mb-3">
                         <label>HTML内容</label>
-                        <textarea style="max-width:800px" name="temp_code" class="form-control" rows="10" cols="100" required>{{model.temp_code}}</textarea>
+                        <div style="width:100%;min-height:300px;" id="temp_code_div">{{model.temp_code}}</div>
+                        <textarea style="display:none" id="temp_code" name="temp_code" class="form-control" rows="10" cols="100" required>{{model.temp_code}}</textarea>
                     </div>
                     <input hidden value="{{model._id}}" name="_id" >
                      <input hidden value="{{model.temp_type}}" name="temp_type" >
@@ -32,5 +33,9 @@
         </div>
     </div>
 </div>
-
+<script>
+    $(function(){
+        init_ace("temp_code_div","temp_code");
+    });
+  </script>
 {% endblock %}

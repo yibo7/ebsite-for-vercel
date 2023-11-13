@@ -1,53 +1,92 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html class="no-js" lang="zh">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <meta charset="UTF-8">
-    <title>{% block title %}{% endblock %}-不麻烦量化平台</title>
-    <script src="/js/jquery.js" type="text/javascript"></script>
-    <script src="/js/comm.js" type="text/javascript"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/index.css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}-{{SiteName}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="themes/images/favicon.svg"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/yibo7/ebcdn@1.0/bootstrap/4/css/bootstrap.min.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/gh/yibo7/ebcdn@1.0/jquery/jquery1.9.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/yibo7/ebcdn@1.0/bootstrap/4/js/bootstrap.min.js"></script>
+    <script src="/js/comm.js"></script>
+    <link rel="stylesheet" href="themes/css/style.css" type="text/css">
 </head>
 <body>
-<div style="background-color: #142131" class="container-fluid">
-        <header class="d-flex flex-wrap justify-content-between  py-2">
-
+    <header class="header" id="main-topbar">
+        <div class="top-bar pb-2 pt-2">
             <div class="container">
-            <header class="d-flex flex-wrap justify-content-between py-2">
-                <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto" href="/">
-                    <i  class="fa fa-location-arrow fa-2x logotext"></i>
-                    &nbsp;<span class="logotext fs-4">EBSITE</span>
-                </a>
-
-                <div>
-                    <ul id="indexnav" class="nav nav-pills">
-                         <li class="nav-item" >
-                           <a href="/" class="nav-link "> 首 页 </a>
-                        </li>
-                        {% if g.user_gid %}
-                            <li class="nav-item" >
-                                <a href="/user/index" class="nav-link "> 用户中心 </a>
-                            </li>
-                        {%else%}
-                            <li class="nav-item" >
-                               <a href="/login" class="nav-link "> 登 录 </a>
-                            </li>
-                            <li class="nav-item" >
-                                <a href="/reg" class="nav-link "> 注 册 </a>
-                            </li>
-                        {%endif%}
-                    </ul>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+<!--                       <div class="topbar-setting">-->
+<!--                           <small>www.ebsite.site</small>-->
+<!--                       </div>-->
+                    </div>
+                    <div class="social-settting col-lg-6 col-md-6 col-sm-6 pr-xl-1 ">
+                        <ul class="social list-unstyled list-inline float-right mb-0">
+                            <li><i style="color:#FF687D" class="fa fa-github" aria-hidden="true" /></i><a class="link-hover-bg" target="_blank" href="https://github.com/yibo7/ebsite7">Github</a></li>
+                            <li><i style="color:#FF687D" class="fa fa-wechat" aria-hidden="true" /></i><a class="link-hover-bg" href="/a17.html">讨论社群</a></li>
+                        </ul>
+                    </div>
                 </div>
-
-            </header>
+            </div>
         </div>
 
-       </header>
-    </div>
-    {% block content %}
-    {% endblock %}
+        <div class="main-header pt-md-2 pb-md-2 pt-0 pb-0" id="main-header">
+            <div class="container pl-xl-0 pr-xl-0 pl-lg-0 pr-lg-0 pl-md-0 pr-md-0 pl-sm-0 pr-sm-0 pl-0 pr-0">
+                <nav class="navbar navbar-expand-lg navbar-light ">
+                    <a class="navbar-brand" href="/">
+                        <figure class="navbar-logo">
+                        <img class="img-fluid" src="themes/images/logo.png" alt="">
+                        </figure>
+                    </a>
+                    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">首页</a>
+                            </li>
+                            {{ widget("64d369a73d94dd897b8f5971") }}
+                        </ul>
+                    </div>
+                  </nav>
+                </div>
 
+
+            </div>
+</header>
+{% block content %}
+
+{% endblock %}
+
+<div class="footer-bar">
+    <div class="container">
+        <div class="row">
+            <div class="footer-cards col-lg-6 col-md-6 col-sm-6">
+                <small>Copyright &copy; 2023.EbSite All rights reserved.</small>
+            </div>
+            <div class="footer-arrow col-lg-6 col-sm-6">
+                <a href="#main-topbar"><i style="color:#FF687D; font-size:50px;" class="fa fa-chevron-circle-up" aria-hidden="true" /></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    $(document).ready(function() {
+      // 子菜单的处理
+      $('.sub-menus').each(function() {
+        var liElements = $(this).find('a');
+        if (liElements.length > 0) {
+          $(this).parent().addClass('dropdown');
+          $(this).prev().addClass('dropdown-toggle').attr('data-toggle', 'dropdown');
+        }
+      });
+    });
+</script>
 </body>
 </html>

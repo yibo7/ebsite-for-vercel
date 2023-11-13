@@ -10,11 +10,21 @@ from db_utils import redis_utils
 from eb_utils.configs import WebPaths, SiteConstant
 from eb_utils.image_code import ImageCode
 from eb_utils.string_check import is_email, is_mobile
+from entity.site_settings import get_settings
 from entity.user_model import UserModel
 from entity.user_token import UserToken
 
 pages_blue = Blueprint('pages_blue', __name__)
 from . import cms_page
+
+
+@pages_blue.context_processor
+def inject_site_name():
+    """
+    使用context_processor上下文件处理器，注入pages_blue下所有模板的公共变量
+    """
+    settings_model = get_settings()
+    return {'SiteName': settings_model.site_name}
 
 
 @pages_blue.before_request
