@@ -1,31 +1,11 @@
 
-# 通用接口代理
-本项目采用 Python Flask + Vercel 部署，主要功能是代理国外被墙的api接口。
-
-目前提供功能如下：
-
-1、将中文翻译成英文
-
-| 请求方式     | 参数         | URL    |
-|----------|------------|--------|
-| POST或GET | txt：要翻译的内容 | /to_en | 
-
-2、将英文翻译成中文
-
-| 请求方式     | 参数         | URL    |
-|----------|------------|--------|
-| POST或GET | txt：要翻译的内容 | /to_zh | 
-
-3、调用openai请求结果
-
-| 请求方式     | 参数                   | URL       |
-|----------|----------------------|-----------|
-| POST或GET | t：请求内容；k: openai的key | /gpt_text | 
+# EbSite Vercel
+本项目采用 Python Flask + Vercel 部署。
  
 
 # 通过python在本地调试
 将项目clone到本地后，安装所有依赖库
-运行 api/index.py
+运行 website/index.py
 
 # 通过vercel在本地运行
 
