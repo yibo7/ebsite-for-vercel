@@ -61,7 +61,7 @@ def content_list_save():
         # class_model = NewsClass().find_one_by_id(model.class_id)
         model.class_name = class_model.class_name
         model.class_id = class_id
-        bll.save(model)
+        bll.save_content(model)
         return redirect('content_list')
 
     # class_list = NewsClass().get_tree_text()

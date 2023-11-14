@@ -71,7 +71,7 @@ class QueueData:
             sleep(self._interval)
             event = Event(EVENT_TIMER)
             self.put(event)
-            print('ffffff')
+            # print('ffffff')
 
     def start(self) -> None:
         """

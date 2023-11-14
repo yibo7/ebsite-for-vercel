@@ -1,5 +1,4 @@
 import datetime
-
 from flask import Blueprint, g, render_template, request, redirect, make_response
 
 from bll.admin_login_log import AdminLoginLog
@@ -40,7 +39,7 @@ def before_req():
 
 @pages_blue.route('/', methods=['GET'])
 def welcome():
-    resp = render_template("index.html")
+    resp = render_template("index.html",site_key=SiteConstant.SITE_KEY)
     return resp
 
 

@@ -2,6 +2,7 @@ import re
 from typing import Tuple
 
 from bll.bll_base import BllBase
+from eb_event import content_saving
 from eb_utils.configs import SiteConstant
 from eb_utils.mvc_pager import pager_html_admin
 from entity.news_content_model import NewsContentModel
@@ -34,6 +35,11 @@ class NewsContent(BllBase[NewsContentModel]):
 
         return model
 
+    def save_content(self, model: NewsContentModel):
+        content_saving.to_do(model)
+        if model.title:
+            self.save(model)
+
     def search_content(self, keyword: str, class_id: str, page_number: int) -> Tuple[list[NewsContentModel], str]:
         """
         模糊搜索
@@ -63,5 +69,3 @@ class NewsContent(BllBase[NewsContentModel]):
 
         pager = pager_html_admin(i_count, page_number, page_size, {'k': keyword})
         return datas, pager
-
-

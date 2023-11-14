@@ -40,7 +40,7 @@ def class_list_save():
         dic_prams = http_helper.get_prams_dict()
         model.dict_to_model(dic_prams)
         model.user_id = g.uid
-        bll.save(model)
+        bll.save_class(model)
         return redirect('class_list')
     p_class_list = bll.get_tree_text()
     temp_class = Templates(1).get_templates()

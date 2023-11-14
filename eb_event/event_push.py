@@ -15,7 +15,7 @@ class EbEvent:
             handler(*args, **kwargs)
 
 
-class ContentEvent:
+class EventHandler:
     def __init__(self):
         self.event = EbEvent()
 
@@ -29,9 +29,9 @@ class ContentEvent:
 #     data['name'] = '小明'
 
 
-# publisher = ContentEvent()
+# publisher = EventHandler()
 # publisher.event += event_handler
 #
 # data = {'name': 'cqs'}
-# publisher.on_run(data)
+# publisher.to_do(data)
 # print(data)

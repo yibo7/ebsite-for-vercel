@@ -6,9 +6,15 @@ from flask import request, g
 from bll.site_log import SiteLog
 from eb_utils import http_helper
 from entity.site_log_model import SiteLogModel
-
-
+"""
+装饰器
+"""
 def check_session(func):
+    """
+    装饰器-设置记录用户的session_id到cookie
+    一般在首页请求时设置，或在相应需要跟踪用户状态的页面
+    只要设置一次即可，每个用户的session只有一个
+    """
     def wrapper(response):
         session_id = request.cookies.get('session_id')
         if not session_id:
@@ -24,7 +30,9 @@ def check_session(func):
 
 
 def admin_action_log(title: str):
-    # 在工厂函数内部定义装饰器
+    """
+    后台操作写日志的装饰器
+    """
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):

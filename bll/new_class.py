@@ -5,12 +5,18 @@ from bson import ObjectId
 
 from bll.bll_base import BllBase
 from db_utils import mongo_db
+from eb_event import class_saving
 from entity.news_class_model import NewsClassModel
 
 
 class NewsClass(BllBase[NewsClassModel]):
     def new_instance(self) -> NewsClassModel:
         return NewsClassModel()
+
+    def save_class(self, model: NewsClassModel):
+        class_saving.to_do(model)
+        if model.class_name:
+            self.save(model)
 
     def get_by_pid(self, pid) -> list[NewsClassModel]:
         s_where = {"parent_id": str(pid)}
