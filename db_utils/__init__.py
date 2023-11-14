@@ -2,10 +2,13 @@ import json
 import os
 import redis
 from bson import json_util
+from flask import request
 from pymongo import MongoClient
 
-# MONGODB_SERV = os.environ.get('MONGODB_SERV','mongodb://localhost:27017')
-MONGODB_SERV = os.environ.get('MONGODB_SERV', 'mongodb+srv://mongo_u:mgdb2015@cqsmongo.d7plkb7.mongodb.net/?retryWrites=true&w=majority')
+from eb_utils import http_utils
+
+MONGODB_SERV = os.environ.get('MONGODB_SERV','mongodb://localhost:27017')
+# MONGODB_SERV = os.environ.get('MONGODB_SERV', 'mongodb+srv://mongo_u:mgdb2015@cqsmongo.d7plkb7.mongodb.net/?retryWrites=true&w=majority')
 REDIS_SERV = os.environ.get('REDIS_SERV',
                             'redis://:cejVttuqN1ogu1m4y31IVqsahjHDR6X7@redis-10119.c252.ap-southeast-1-1.ec2.cloud.redislabs.com:10119')
 
@@ -55,7 +58,7 @@ def OutputDefaultData():
         data = [document for document in cursor]
         data = json_util.dumps(data)
 
-        with open(f'db_bak/{table_name}.json', 'w', encoding='utf-8') as file:
+        with open(f'website/static/db_bak/{table_name}.json', 'w', encoding='utf-8') as file:
             file.write(data)
 
 
@@ -63,10 +66,13 @@ def ImportDefaultData():
     for table_name in default_tables:
         collection_list = mongo_db.list_collection_names()
         if table_name not in collection_list:
-            csv_file = f"../db_bak/{table_name}.json"
-            # 获取 CSV 文件的表名（去除文件扩展名）
+            csv_file = f"{request.host_url}db_bak/{table_name}.json"
+            txt = http_utils.getText(csv_file)
+            # 获取 CSV 文件的表名(去除文件扩展名)
             collection_name = os.path.splitext(os.path.basename(csv_file))[0]
             collection = mongo_db[collection_name]
-            with open(csv_file, "r") as file:
-                json_data = json.load(file, object_hook=json_util.object_hook)
+
+            json_data = json.loads(txt, object_hook=json_util.object_hook)
+            # with open(csv_file, "r") as file:
+            #     json_data = json.load(file, object_hook=json_util.object_hook)
             collection.insert_many(json_data)
