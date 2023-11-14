@@ -1,6 +1,7 @@
 import datetime
 from flask import Blueprint, g, render_template, request, redirect, make_response
 
+import db_utils
 from bll.admin_login_log import AdminLoginLog
 from bll.admin_user import AdminUser
 from bll.user import User
@@ -39,7 +40,7 @@ def before_req():
 
 @pages_blue.route('/', methods=['GET'])
 def welcome():
-    resp = render_template("index.html",site_key=SiteConstant.SITE_KEY)
+    resp = render_template("index.html")
     return resp
 
 
@@ -140,8 +141,9 @@ def reg_info():
 @pages_blue.route('/login_ad', methods=['GET', 'POST'])
 def ad_login():
     err_msg = ""
-    AdminUser().add_default()
-    UserGroup().add_default()
+    # AdminUser().add_default()
+    # UserGroup().add_default()
+    db_utils.ImportDefaultData()
     err_count = redis_utils.get_count('adminer_login_err_count')
 
     if request.method == 'POST':

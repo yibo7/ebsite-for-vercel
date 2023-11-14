@@ -12,6 +12,7 @@ class NewsContentModel(ModelBase):
         self.small_pic = ""
         self.class_name: str = ""
         self.class_id: str = ""
+        self.class_n_id: int = 0
         self.seo_title: str = ""
         self.seo_keyword: str = ""
         self.seo_description: str = ""

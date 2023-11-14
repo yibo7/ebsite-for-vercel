@@ -3734,9 +3734,11 @@ html {
 .friend-link{
     background:#171A24;
     height:50px;
+    padding-top:20px;
 }
 .friend-link a{
-    color:#ccc !important;
+    color:#ccc !important; padding:10px;
+    font-size:12px;
 }
 .dropdown-menu{
     background:#3b3939

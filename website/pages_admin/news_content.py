@@ -61,6 +61,7 @@ def content_list_save():
         # class_model = NewsClass().find_one_by_id(model.class_id)
         model.class_name = class_model.class_name
         model.class_id = class_id
+        model.class_n_id = class_model.id
         bll.save_content(model)
         return redirect('content_list')
 

@@ -1,9 +1,13 @@
+import json
 import os
 import redis
+from bson import json_util
 from pymongo import MongoClient
 
+# MONGODB_SERV = os.environ.get('MONGODB_SERV','mongodb://localhost:27017')
 MONGODB_SERV = os.environ.get('MONGODB_SERV', 'mongodb+srv://mongo_u:mgdb2015@cqsmongo.d7plkb7.mongodb.net/?retryWrites=true&w=majority')
-REDIS_SERV = os.environ.get('REDIS_SERV', 'redis://:cejVttuqN1ogu1m4y31IVqsahjHDR6X7@redis-10119.c252.ap-southeast-1-1.ec2.cloud.redislabs.com:10119')
+REDIS_SERV = os.environ.get('REDIS_SERV',
+                            'redis://:cejVttuqN1ogu1m4y31IVqsahjHDR6X7@redis-10119.c252.ap-southeast-1-1.ec2.cloud.redislabs.com:10119')
 
 # eb_db = SQLAlchemy()
 # 创建Redis客户端实例
@@ -36,3 +40,33 @@ def init_eb_db(app):
     # global eb_db
     # eb_db.init_app(app)
     # eb_db.app = app  # 如果不加这个，在视图外使用会出错
+
+
+default_tables = ['AdminMenus', 'AdminRole', 'AdminUser', 'SiteModel', 'Templates', 'UserGroup', 'Widgets', 'NewsClass', 'NewsContent']
+
+
+def OutputDefaultData():
+    for table_name in default_tables:
+        # 获取数据库和集合
+        collection = mongo_db[table_name]
+
+        # 查询集合中的所有文档
+        cursor = collection.find({})
+        data = [document for document in cursor]
+        data = json_util.dumps(data)
+
+        with open(f'db_bak/{table_name}.json', 'w', encoding='utf-8') as file:
+            file.write(data)
+
+
+def ImportDefaultData():
+    for table_name in default_tables:
+        collection_list = mongo_db.list_collection_names()
+        if table_name not in collection_list:
+            csv_file = f"../db_bak/{table_name}.json"
+            # 获取 CSV 文件的表名（去除文件扩展名）
+            collection_name = os.path.splitext(os.path.basename(csv_file))[0]
+            collection = mongo_db[collection_name]
+            with open(csv_file, "r") as file:
+                json_data = json.load(file, object_hook=json_util.object_hook)
+            collection.insert_many(json_data)
