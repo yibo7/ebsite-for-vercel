@@ -1,0 +1,1005 @@
+@media screen and (max-width: 1440px) {
+    .banner-img { width: 554px; position: absolute; float: right; top: -57px; right: 10px; }
+}
+
+@media screen and (max-width: 1024) {
+    #Comprison_pricingplan ul {
+        padding-bottom: 0;
+    }
+}
+@media screen and (max-width: 1199px) {
+    #banner_slider .carousel-inner { padding: 60px 0 30px 0; }
+    #banner_slider .carousel-control-prev-icon { padding: 16px 12px; }
+    #banner_slider .carousel-control-next-icon { padding: 16px 12px; }
+    .search-btn { left: inherit; bottom: 0px; right: 0;}
+    .price li:first-child { padding-left: 0px; }
+    .price li { margin-right: 22px; }
+    .field-background .field { padding: 50px 70px; top: -105px; }
+    .hosting-section { padding: 150px 0px 70px 0px; }
+    .hosting-section-setting { padding-bottom: 30px; }
+    .banner-img, .slider-2 .banner-img { width: 463px; position: relative; float: right; top: -142px; right: -10px; }
+    .slider-3 .banner-img  { width: 463px; position: relative; float: right; top: -100px; right: -10px; }
+    #banner_slider .carousel-item { min-height: 520px; }
+    .hosting-text, .server-text, .vps-text { left: 160px; }
+    .hosting-payment-card, .server-payment-card, .vps-payment-card { padding: 48px 30px 61px 30px; }
+    .text-paragraph p { padding: 8px 0 0 0;}
+    .banner-text { width: 55%;}
+    .slider-2 p, .slider-3 p { padding-right: 6%; margin-bottom: 20px;}
+    .text-paragraph { width: 50%; }
+    .map-container img { width: 100%; }
+    .canada { top: 142px; left: 148px; }
+    .los-angeles { top: 198px; left: 124px; }
+    .dallas { top: 203px; left: 170px; }
+    .atlanta { top: 179px; left: 206px; }
+    .united-kingdom { top: 145px; left: 408px; }
+    .germany { top: 155px; left: 437px; }
+    .moscow { top: 141px; left: 523px; }
+    .india { top: 225px; right: 252px; }
+    .south-korea { top: 184px; right: 137px; }
+    .japan { top: 176px; right: 102px; }
+    .australia { top: 374px; right: 83px; }
+    .review-section { padding: 87px 0 0px 0; }
+    .contact-planbox { text-align: center; padding: 28px 20px;}
+    .contact-planbox img{ padding-bottom: 10px;}
+    .contact-image { margin: 0 auto;}
+    .contact-section { position: relative; bottom: -74px; }
+    .footer-hosting, .footer-company, .footer-contact { padding-left: 0px;}
+    .hosting-list li a, .company-list li a, .contact-list li a { padding-left: 0px; font-size: 14px;}
+    .about-sub-section { background-position: 65% 41px; }
+    .about-us-banner-section p { margin-bottom: 35px; }
+    .about-us-price p { margin-bottom: 0px;}
+    .vision-plan-box p { padding: 0;}
+    .history-section .plan-circle:after { left: 117px; }
+    .choose-image { max-width: 80%; margin: 0 auto;}
+    .choose-section figure { text-align: center;}
+    .choose-text { padding-top: 0px; }
+    .team-plan-box { padding: 50px 30px; }
+    .contact-us-banner-text { text-align: center;}
+    .contact-us-plan-box { padding: 50px; }
+    .success-section { padding: 70px 0 150px 0; }
+    .success-section-text { margin-bottom: 60px; }
+    .contact-section-inner { bottom: 0px; }
+    .dedicated-server-plan-box { padding: 50px 26px; }
+    .dedicated-server-maintainance h4 { padding: 0 15%; }
+    .reseller-banner-section p { padding: 0 15%; }
+    .reseller-plan-box { padding: 50px 35px; }
+    .reseller-guarrantees-plan-box { padding: 51px 31px; }
+    #Comprison_pricingplan table thead th:nth-child(2), #Comprison_pricingplan table thead th:nth-child(3), #Comprison_pricingplan table .table thead th:nth-child(4) { width: 200px; padding: 21px 0px; }
+    .reseller-table-text { right: 279px; }
+    .reliable-shared-hsoting-section-image { max-width: 350px; margin: 0 auto; }
+    .reliable-shared-hsoting-section-text { padding-top: 40px; }
+    .shared-plan-box { padding: 50px 35px; }
+    .shared-tabs-section .shared-tab-button { display: block; vertical-align: top; }
+    .shared-tabs-section li { display: inline-block; text-align: center; vertical-align: top; }
+    .shared-banner-section { padding: 70px 0px 170px 0px; }
+    .shared-tabs-section .nav-tabs { margin: 0 auto 144px; }
+    .shared-tabs-section { margin-top: -182px; }
+    .vps-banner-text { padding-top: 0px; }
+    .vps-banner-section { padding: 70px 0px 207px 0px; }
+    .vps-banner-image { margin: 0 auto; }
+    .guarrantees-section-variation-2 p { padding: 0 10%; }
+    .slider_content { padding: 55px 30px 78px 30px; width: 32.5%; }
+    .vps-slider-section .select-form { background-position: 97% 21px; }
+    .sliderbox { width: 67.5%;  padding: 60px 60px 25px 60px; }
+    .domain-management-image-2 { margin: 0px 0px 0px 20px; }
+    .reseller-feature-plan-box-image-list-variation-1 { margin: 0px 0px 0px 20px; }
+    .landing-page-server-bottom-left-image { left: -110px; bottom: -60px; width: 30%; opacity: .1; }
+    .landing-page-server-bottom-right-image { right: -110px; bottom: -60px; width: 30%; opacity: .1; }
+    .domain-plan-box-image-list { max-width: 120px; height: 30px; }
+    .landing-page-banner-section p { padding: 0 8%; }
+    .support-natix-host-text p { padding: 0 1%; }
+    .support-natix-host-plan-box { padding: 30px 19px; }
+    .support-natix-host-plan-box-btn { padding: 13px 40px; }
+    .support-operation-plan-box { padding: 23px; }
+}
+  
+@media (min-width: 991px) {
+    #Comprison_pricingplan ul { display: none; }
+    #Comprison_pricingplan td,
+    #Comprison_pricingplan th { display: table-cell !important; width: 290px; }
+    #Comprison_pricingplan td + td,
+    #Comprison_pricingplan th + th { width: auto; }
+}  
+  
+@media screen and (max-width: 991px) {
+.social li a{ margin: 0 5px 0 3px; }
+.navbar-toggler{ width: auto;}
+.navbar-toggler { margin-left: auto; border: none !important; padding: 0; color: var(--global--color-white); width: 50px; height: 40px; }
+header .container { max-width: initial!important; }
+.navbar-nav{display: flex; -ms-flex-direction: column; flex-direction: column; padding-left: 0; margin-bottom: 0; list-style: none;}
+.navbar-btn { padding: 0 !important; background: none; padding-left: 0; margin-left: 0;}
+.navbar-collapse { background: var(--global--color-pink); position: absolute; right: 18px; width: 28%; top: 65px; padding: 8px 0; z-index: 1;}
+.navbar-nav li.active > a { border-bottom: 0px; color: var(--global--color-yellow) !important; }
+.navbar-nav li.nav-item.dropdown  ul.dropdown-menu-list li.active a { color: var(--global--color-yellow) !important; }
+.navbar-nav  .dropdown-menu-list li.active a { color: var(--global--color-yellow) !important; }
+.navbar-nav li:last-child { margin-left: 0px;  }
+.navbar li a { font-size: 14px; line-height: 16px; padding: 10px 30px!important; }
+.navbar .dropdown-menu li a { background: var(--global--color-blue); color: var(--global--color-white) !important; padding: 12px 0px 2px 30px !important; font-size: 13px; line-height: 20px; text-decoration: none;}
+.navbar .hosting-dropdown li a { background: #f54961; color: var(--global--color-white) !important; padding: 5px 18px !important; font-size: 13px; line-height: 20px; text-decoration: none;}
+.navbar .hosting-dropdown { padding: 10px;}
+.navbar li a#navbarDropdown { outline: none;}
+.navbar-nav:hover a { filter: none; opacity: 1;  transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1); }
+.navbar .hosting-dropdown li a:last-child { padding-bottom: 10px;}
+.dropdown-menu:before { display: none;}
+.navbar .dropdown-menu { background: #f54961 ;}
+.navbar .dropdown-menu li a img { display: none;}
+.navbar-nav li:hover{ text-decoration: none;}
+.navbar .dropdown-menu { border-radius: 0px; border: none; }
+.navbar-nav li { border: none; margin-right: 0; width: 100%;}
+.navbar-light .navbar-toggler-icon { background: #fff; height: 2px; margin: 7px 0 0 0; width: 51%; float: right; }
+.navbar-light .navbar-toggler-icon:first-child { margin-top: 0px;}
+.navbar-brand { padding-top: 10px; }
+.navbar-logo { padding-top: 5px; }
+.navbar-btn:hover { box-shadow: none; }
+.banner-img, .slider-2 .banner-img, .slider-3 .banner-img { position: relative; top: 10px; right: 0px; float: left; left: 110px; width: 500px; margin-bottom: 20px;}
+#banner_slider .carousel-indicators { bottom: 63px; }
+.text-paragraph p { padding: 0;}
+#banner_slider .carousel-inner { padding: 20px 0 70px 0; }
+#banner_slider .carousel-item { min-height: 710px; }
+.social li:last-child{display: none; }
+.banner-text h1 { font-size: 39px; line-height: 45px; }
+.text-paragraph { width: 100%; text-align: center; }
+.banner-text .text-paragraph { padding: 0px 0% 0 0; font-size: 16px; line-height: 25px; }
+.banner-button { text-align: center;}
+.navbar-toggler:focus { outline: none;}
+.banner-text p { font-size: 16px; line-height: 25px; }
+.banner-text span { font-size: 16px; line-height: 25px; }
+.banner-text { width: 100%; text-align: center; }
+.primary-btn { padding: 14px 30px; }
+.secondary-btn { padding: 14px 30px; margin-left: 6px; }
+.search-btn { left: inherit; bottom: 0px; right: 0; font-size: 12px; padding: 12px 24px; }
+.field-background .field { padding: 40px 50px; top: -82px; }
+.subscribe-form .form-control { padding: 20px 0px 20px 39px; }
+.price li { margin-right: 12px; font-size: 14px; }
+.hosting-text, .server-text, .vps-text { left: 525px; }
+.plan ul { margin-right: 20%; width: 40%;}
+.plan figure { margin-right: 35px;}
+.plan ul figure { margin-right: 0px; }
+.hosting-section-setting { padding-bottom: 0px; }
+.guarrantee-text { text-align: center;}
+.plan-box-setting { padding-top: 55px;}
+.guarrantees-section { padding: 60px 0; }
+.guarrantee-text { padding-top: 0px; }
+.point { width: 1.2rem; height: 1.2rem; border: 3px solid var(--global--color-white); }
+.canada { top: 110px; left: 115px; }
+.los-angeles { top: 152px; left: 95px; }
+.dallas { top: 159px; left: 128px; }
+.atlanta { top: 141px; left: 159px; }
+.united-kingdom { top: 108px; left: 317px; }
+.germany { top: 119px; left: 340px; }
+.moscow { top: 112px; left: 400px; }
+.india { top: 173px; right: 192px; }
+.south-korea { top: 142px; right: 105px; }
+.japan { top: 133px; right: 76px; }
+.australia { top: 291px; right: 63px; }
+.data-section { padding: 60px 0; }
+.map-container { padding: 51px 0px 60px 0px; }
+.data-section h4 { padding: 0;}
+.features-section { padding: 70px 0; }
+.feature-heading { padding-bottom: 40px; }
+.feature-plan-box { padding: 40px 30px; }
+.review-section { padding: 55px 0 0px 0; }
+.review-section h1 { font-size: 35px; }
+.review-section-text br { display: none;}
+.review-section p { margin-bottom: 33px;}
+.contact-planbox h4 { font-size: 20px; }
+.contact-planbox p { font-size: 15px; line-height: 17px; }
+.review-section .heading-text { margin-bottom: 20px; }
+.contact-planbox { padding: 20px; }
+.footer-logo-setting { order: 4; padding-top: 30px;}
+.footer-company-setting { order: 2; padding-top: 30px;}
+.footer-section h5 { font-weight: 700; margin-bottom: 20px; }
+.footer-logo figure { margin-bottom: 15px; }
+.hosting-list li, .company-list li, .contact-list li { padding-bottom: 5px;}
+.footer-logo img { padding-bottom: 0px; }
+.footer-list { padding-top: 15px; }
+.footer-form { width: 100%; }
+.footer-setting { padding-top: 40px; }
+.footer-bar .footer-cards small { margin: 0px 4px 0px 15px; }
+.about-us-price { padding-top: 70px; }
+.about-us-banner-section { padding: 70px 0px 250px 0px; }
+.about-us-price p br{ display:  none;}
+.about-us-price p { margin-bottom: 0px;}
+.about-sub-section { background-position: 71% 41px; }
+.about-us-banner-text h1 { font-size: 45px; line-height: 55px; }
+.about-us-banner-text p { font-size: 16px; line-height: 22px;  margin-bottom: 25px; }
+.about-primary-btn { padding: 16px 42px; }
+.about-secondary-btn { padding: 16px 31px; }
+.about-us-banner-section h2 { font-size: 32px; line-height: 36px; }
+.about-us-banner-text-setting { text-align: center;}
+.vision-plan-box { padding: 50px }
+.vision-plan-box h4 { margin-bottom: 15px; }
+.vision-image-list { margin-bottom: 25px;}
+.history-section-text { margin-bottom: 50px; }
+.history-section .plan-circle:after { left: 87px; }
+.history-border { top: 50px; }
+.history-section h4 { margin-bottom: 10px; font-size: 18px; }
+.history-section .plan-circle { margin-bottom: 72px; }
+.history-section span { font-size: 22px; line-height: 26px; }
+.history-section { padding: 0px 0px 70px 0px; }
+.history-section { margin-top: -100px; }
+.history-section p { font-size: 15px; }
+.choose-section { padding: 70px 0px; }
+.choose-image {  max-width: 50%; }
+.choose-text { padding-top: 60px; text-align: center;}
+.choose-section h5 { margin-bottom: 15px; }
+.choose-section p { line-height: 27px; }
+.team-section { padding: 70px 0px; }
+.team-heading { margin-bottom: 50px; }
+.team-plan-box { padding: 30px; }
+.team-plan-box figure { margin-bottom: 30px; }
+.team-plan-box h4 { font-size: 21px; line-height: 18px; }
+.team-plan-box p { font-size: 14px; line-height: 14px; margin-bottom: 25px; }
+.team-list li { padding: 0 10px; }
+.team-list li:first-child { padding-left: 0px;}
+.success-section-text { margin-bottom: 50px; }
+.success-plan-box { padding: 50px 40px; }
+.contact-form-section { padding: 494px 0px 90px 0px; }
+.contact-form-section-plan-box p { padding: 0 10%; }
+.dedicated-banner-section { padding: 70px 0px; }
+.dedicated-server-plan-box-section { padding-top: 70px;}
+.dedicated-server-plan-box-section-inner { position: relative; top: 0px; }
+.dedicated-server-plan-box { padding: 50px; }
+.dedicated-server-plan-box ul { width: 45%;}
+.dedicated-server-maintainance { padding: 70px 0px; margin-top: 0px;}
+.dedicated-server-maintainance h4 { padding: 0 6%; }
+.dedicated-hosting-plan-section { padding: 70px 0px; }
+.dedicated-hosting-plan-section p { padding: 0 15%; }
+.dedicated-server-features-plan-box { padding: 80px; }
+.dedicated-server-features-section-setting { order: 1;}
+.dedicated-server-features-section-setting-2 { order: 2;}
+.dedicated-hosting-plan-image { margin: 0 auto; }
+.dedicated-hosting-plan-image-list {  margin: 0 auto; }
+.dedicated-server-feature-image-list { margin: 0 auto 40px; }
+.dedicated-server-feature-network-img, .dedicated-server-feature-technology-img, .dedicated-server-feature-control-panel-img { margin-bottom: 40px; }
+.dedicated-server-features-plan-box p { margin-bottom: 0px;}
+.dedicated-server-features-section { padding: 70px 0px; }
+.dedicated-server-features-section-text { margin-bottom: 50px; }
+.dedicated-server-support-plan-box h4 { line-height: 28px; }
+.dedicated-server-support-plan-box p { margin-bottom: 15px; }
+.dedicated-server-support-plan-box { padding: 60px 30px; }
+.dedicated-server-support-plan-box-section { padding: 70px 0px; }
+.dedicated-server-support-plan-box-section-text { margin-bottom: 50px; }
+.dedicated-server-support-plan-box-section h1 { font-size: 34px; }
+.dedicated-support-btn { padding: 14px 40px; }
+.dedicated-server-support-plan-box .variation-2 { padding: 14px 30px; }
+.dedicated-server-support-plan-box span { font-size: 16px; }
+.accordion-section { padding: 70px 0px 0px 0px; }
+.accordion-section-text { margin-bottom: 40px; }
+.domain-banner-section h1 { font-size: 44px; line-height: 35px; }
+.domain-banner-section { padding: 70px 0px; }
+.domain-plan-box-section-inner { position: relative; top: 0px;}
+.domain-plan-box-section { padding-top: 70px}
+.domain-management-plan-box { padding: 60px 60px; }
+.domain-management-section { padding: 70px 0px; }
+.domain-management-plan-box-setting-1 { order: 1;}
+.domain-management-plan-box-setting-2 { order: 2;}
+.domain-management-image-1, .domain-management-image-2 { margin: 0 auto; max-width: 150px;}
+.domain-table-section { padding: 70px 0px; }
+.domain-table-section .table thead th { font-size: 16px; }
+.domain-table-section .table tbody td, .domain-table-section .table tbody td .price { font-size: 14px; } 
+.domain-table-section .table tbody th .popular, .domain-table-section .table tbody th .sale { font-size: 10px; }
+.reseller-banner-section { padding: 70px 0px; }
+.reseller-banner-section p { padding: 0 5%; }
+.reseller-banner-section h1 { font-size: 44px; line-height: 35px; }
+.reseller-plan-box-section-inner { top: 0px; }
+.reseller-plan-box-section { padding-top: 70px;}
+.reseller-plan-box { padding: 50px; }
+.reseller-feature-section { margin-top: 0px; padding: 70px 0px;}
+.reseller-feature-text { margin-bottom: 60px; }
+.reseller-feature-plan-box { padding: 58px 32px; }
+.reseller-feature-plan-box-setting-1 { order: 1;}
+.reseller-feature-plan-box-setting-2 { order: 2;}
+.reseller-plan-box figure { margin-bottom: 33px; }
+.reseller-feature-plan-box-image-list-variation-1, .reseller-feature-plan-box-image-list { margin: 0 auto; }
+.reseller-plan-box p { margin-bottom: 0px; }
+.reseller-plan-box .reseller-plan-box-paragraph { margin-top: 18px; }
+.reseller-guarrantees-plan-box { padding: 40px 20px; }
+.reseller-guarrantees-section { padding: 70px 0px; }
+.reseller-table-section { padding: 70px 0px; }
+.reseller-comparison-text { margin-bottom: 70px; }
+.reseller-table-plan-box h2 { font-size: 32px; }
+.reseller-table-plan-box-btn { padding: 12px 30px; }
+.shared-banner-section { padding: 70px 0px 100px 0px; }
+.reseller-table-text { display: none; }
+#Comprison_pricingplan table tbody tr td { width: 50%; float: left; height: auto; }
+#Comprison_pricingplan .sep { width: 100%; float: left; height: auto; }
+.reseller-comparison-text { margin-bottom: 40px; }
+#Comprison_pricingplan table tbody tr:last-child td:nth-child(3), #Comprison_pricingplan table tbody tr:last-child td:nth-child(2),  #Comprison_pricingplan table tbody tr:last-child td:nth-child(4) { border-bottom-right-radius: 15px;}
+#Comprison_pricingplan button:focus { outline: none; }
+#Comprison_pricingplan td.default { border-right: none;}
+#Comprison_pricingplan table tbody tr td:nth-child(4) { border-left: 1px solid  #e8eaf1; }
+#Comprison_pricingplan table tbody tr:first-child td:nth-child(3) { border-bottom: 1px solid  #e8eaf1; border-top-right-radius: 15px;}
+#Comprison_pricingplan table thead tr th { border-bottom: none;}
+#Comprison_pricingplan table tbody tr:nth-child(2) td:first-child { border-top-left-radius: 15px !important;}
+#Comprison_pricingplan table tbody tr:first-child td:nth-child(2) { border-top-right-radius: 15px !important;}
+#Comprison_pricingplan table tbody tr:first-child td:nth-child(4) { border-left: none; border-top-right-radius: 15px !important;}
+#Comprison_pricingplan table tbody tr:first-child td:nth-child(3) { border-left: none; }
+.reliable-shared-hsoting-section-image { max-width: 250px; }
+.reliable-shared-hsoting-section { padding: 70px 0px; }
+.shared-plan-box-section-inner { position: relative; top: 0px; }
+.shared-plan-box p {  margin-bottom: 0px; }
+.shared-tabs-section .nav-tabs { margin: 0px auto 75px; }
+.shared-plan-box-section { padding-top: 70px; }
+.shared-tabs-section .shared-monthly-btn, .shared-tabs-section .shared-yearly-btn { box-shadow: none;}
+.shared-tabs-section { margin-top: -115px; }
+.shared-plan-box .shared-plan-box-paragraph { margin-top: 18px;}
+.shared-plan-box { padding: 50px; }
+.vps-banner-section { padding: 70px 0px; }
+.guarrantees-section-variation-2 { background: var(--global--color-purple); padding: 70px 0px; }
+.guarrantees-section-variation-2 h1 { margin-bottom: 25px; }
+.guarrantees-section-variation-2 .guarrantee-text { margin-bottom: 50px; }
+.guarrantees-section-variation-2-text { margin-bottom: 50px; }
+.guarrantees-section-variation-2 p { padding: 0px; }
+.sliderbox { width: 100%; padding: 0px; margin-bottom: 30px; }
+.slider_content { width: 100%; box-shadow: none; padding: 0px;}
+.plan-wrap { padding: 60px; top: 0px; position: relative; }
+.slider-row1 label{ font-size:16px; }
+.slider-row1 .slide-value{ font-size:16px; }
+.vps-slider-section { padding: 70px 0px; }
+.landing-page-banner-section { padding: 70px 0px 0px 0px; }
+.landing-page-server-img { max-width: 463px; }
+.landing-page-column { padding: 145px 50px 92px 50px; }
+.landing-page-banner-logo-img { margin-bottom: 40px; }
+.landing-page-banner-logo-img img { width: 50%} 
+.landing-page-banner-section h1 { font-size: 32px; line-height: 30px; }
+.landing-page-banner-section p { font-size: 16px; line-height: 26px; }
+.landing-page-primary-btn, .landing-page-secondary-btn { font-size: 14px; }
+.landing-page-server-bottom-left-image, .landing-page-server-bottom-right-image { width: 35%; }
+.navbar-nav li.nav-item.dropdown:hover ul.dropdown-menu-list a { filter: none; opacity: 1; color: var(--global--color-white) !important; }
+.navbar-toggler span.navbar-toggler-icon { transition: all 0.15s; }
+.navbar-toggler.collapsed span:nth-child(1) { transform: rotate(0deg); }
+.navbar-toggler.collapsed span:nth-child(2) { opacity: 1; }
+.navbar-toggler.collapsed span:nth-child(3) { transform: rotate(0deg); }
+.navbar-toggler span:nth-child(1) { transform: rotate(45deg); transform-origin: 0% 200%; }
+.navbar-toggler span:nth-child(2) { opacity: 0; }
+.navbar-toggler span:nth-child(3) { transform: rotate(-45deg); transform-origin: 10% 20%; }
+.support-banner-section { padding: 70px 0px 265px 0px; }
+.support-banner-text h1 { font-size: 45px; }
+.support-plan-box-section-inner { position: relative; margin-top: -191px; padding-bottom: 70px;}
+.support-plan-box { padding: 40px; }
+.support-plan-box h4 { margin-bottom: 25px; font-size: 22px; }
+.support-plan-box p { font-size: 14px; }
+.support-plan-box h6 { font-size: 16px; }
+.support-plan-box p a { font-size: 14px; }
+.support-natix-host-section { padding: 70px 0px; }
+.support-natix-host-plan-box { padding: 30px; }
+.support-natix-host-plan-box-btn { padding: 13px 50px; }
+.support-operation-section { padding: 70px 0px 150px 0px; }
+.support-operation-plan-box { padding: 39px; }
+.support-operation-plan-box br { display: none; }
+}
+
+@media screen and (max-width: 767px) {
+.top-bar .right-arrow { font-size: 10px; }
+.top-bar small { font-size: 10px; }
+.top-bar span { font-size: 10px; }
+.social li:last-child { display: none;}
+.social-setting { font-size: 10px; }
+.social li a { font-size: 10px; }
+.navbar-brand img { max-width: 85%; } 
+.navbar-collapse { width: 50%; }
+.text-paragraph { width: 100%; }
+.banner-text { width: 100%; text-align: center; }
+.banner-text h1 { font-size: 35px; line-height: 40px; }
+.banner-btn { padding-top: 21px; text-align: center;}
+.text-paragraph p{ font-size: 14px; line-height: 20px; margin-bottom: 25px; padding: 8px 0 0 0; text-align: center;}
+.text-paragraph span { font-size: 14px; line-height: 20px; }
+.banner-text span { font-size: 15px; line-height: 22px; margin-bottom: 10px;}
+#banner_slider .carousel-inner { padding: 0px 0 60px 0; }
+#banner_slider .carousel-indicators { bottom: 0px; }
+#banner_slider .carousel-item { min-height: 0px; }
+.primary-btn { padding: 14px 35px; font-size: 12px;}
+.secondary-btn { padding: 14px 35px; font-size: 12px;  margin-left: 4px;}
+.banner-text p { font-size: 14px; line-height: 20px; margin-bottom: 7px; padding-bottom: 15px; }
+.search-btn { left: inherit; bottom: 0px; right: 0;}
+.slider-2 li, .slider-3 li { font-size: 14px; font-weight: 400; margin-bottom: 5px; }
+.field-background .field { padding: 33px 33px; top: 0px; position: relative; }
+.field-background { padding: 60px 0px 0px 0px; }
+.hosting-section { padding: 60px 0px 60px 0px; }
+.price li { margin-right: 5px; font-size: 11px; }
+.banner-img, .slider-2 .banner-img, .slider-3 .banner-img { left: 17px; }
+.hosting-section h1 { font-size: 30px; line-height: 40px; }
+.hosting-section p { font-size: 14px; line-height: 18px; }
+.hosting-text, .server-text, .vps-text { left: 344px; }
+.plan h2 { font-size: 40px;}
+.plan ul { margin-right: 11%; width: 50%; }
+.hosting-btn, .server-btn, .vps-btn { padding: 14px 30px; }
+.plan li span { font-size: 16px; line-height: 20px; }
+.hosting-pricing span, .server-pricing span, .vps-pricing span { font-size: 30px; line-height: 20px; }
+.hosting-setting, .server-setting, .vps-setting { padding-top: 18px;}
+.shared-hosting li, .server-hosting li, .vps-hosting li { font-size: 16px; line-height: 20px; }
+.guarrantees-section h1 { font-size: 30px; font-weight: 400; line-height: 28px; }
+.guarrantees-section h4 { font-size: 16px; font-weight: 500; line-height: 25px; padding-bottom: 0px; }
+.guarrantees-section p { font-size: 14px; font-weight: 400; line-height: 25px; }
+.plan-box img { width: 45px;}
+.plan-box h4 { font-size: 18px; font-weight: 500; line-height: 22px; }
+.data-section h1 { font-size: 32px; }
+.map-container { padding: 10px 0px 35px 0px; }
+.data-section h4 { font-size: 17px; line-height: 26px; margin-bottom: 22px;}
+.data-section { padding: 50px 0; }
+.point { width: 1.0rem; height: 1.0rem; border: 2px solid var(--global--color-white); }
+.canada { top: 81px; left: 84px; }
+.los-angeles { top: 116px; left: 69px; }
+.dallas { top: 120px; left: 96px; }
+.atlanta { top: 105px; left: 118px; }
+.united-kingdom { top: 83px; left: 233px; }
+.germany { top: 91px; left: 255px; }
+.moscow { top: 86px; left: 296px; }
+.india { top: 130px; right: 140px; }
+.south-korea { top: 107px; right: 75px; }
+.japan { top: 100px; right: 56px; }
+.australia { top: 215px; right: 46px; }
+.plan-box-technology { padding-bottom: 30px;}
+.features-section { padding: 60px 0; }
+.review-section { padding: 50px 0 0 0; }
+.review-section h1 { font-size: 26px; line-height: 30px; }
+.stars li { font-size: 22px; }
+.review-section-text { font-size: 20px; padding: 0; line-height: 26px;}
+.ceo h4 { font-size: 22px;  line-height: 10px ;}
+.quote i { padding-top: 3px; padding-bottom: 18px;}
+.contact-planbox {  padding: 20px 7px; }
+.contact-planbox img { padding-top: 0px;}
+.contact-image { max-width: 40px; }
+.contact-planbox h4 { font-size: 18px; line-height: 25px; }
+.contact-planbox p { font-size: 14px; line-height: 20px; }
+.newsletter { padding-top: 0px; }
+.footer-section { padding: 130px 0 60px 0; }
+.footer-section .form-control { padding: 24px; }
+.footer-section .form-group {  margin-bottom: 50px; }
+.subscribe-btn { padding: 14px 24px 15px 24px;}
+.footer-section .footer-hosting h4, .footer-section .footer-company h4, .footer-section .footer-contact h4 { font-size: 18px; }
+.footer-list li { height: 35px; width: 35px; line-height: 34px;  font-size: 13px; margin-right: 10px;}
+.footer-arrow-setting { height: 35px; width: 35px; line-height: 35px; margin-left: 0px; }
+.footer-cards-list li { font-size: 25px; }
+.footer-bar .footer-cards small { float: none;}
+.footer-cards-list li:first-child { margin-left: 10px;}
+.footer-arrow { padding-top: 12px; text-align: left;}
+.footer-arrow-setting { height: 30px; width: 30px; line-height: 30px; font-size: 16px; }
+.about-sub-section {  background-position: 70% 41px; }
+.about-us-banner-text h1 { font-size: 40px; line-height: 45px; }
+.about-primary-btn { padding: 14px 35px; }
+.about-secondary-btn { padding: 14px 23px; }
+.about-us-banner-section { padding: 50px 0px; }
+.about-us-banner-section h2 { font-size: 30px; line-height: 32px; }
+.about-us-price p { font-size: 13px; line-height: 18px; }
+.vision-section-inner { top: 0px;  text-align: center; position: relative; }
+.vision-image-list { margin: 0 auto 25px; }
+.history-border { display: none;}
+.vision-section { padding-top: 60px;}
+.history-section-text { margin-bottom: 50px; }
+.history-section .plan-circle:after { left: 130px; }
+.history-section h1 { font-size: 30px; line-height: 35px; }
+.history-section p { font-size: 14px; line-height: 20px; }
+.history-section .plan-circle:after { margin: 1% auto; left: 131px; }
+.history-section .plan-circle { height: 20px; width: 20px; margin: 4% auto; margin-bottom: 55px; }
+.history-section h4 { margin-bottom: 5px;}
+.history-section { padding: 60px 0px; margin-top: 0px;}
+.choose-section { padding: 60px 0px; }
+.choose-text { padding-top: 50px; }
+.choose-section h1 { font-size: 32px; line-height: 35px; margin-bottom: 15px; }
+.choose-section h5 { margin-bottom: 13px; font-size: 15px; line-height: 28px;}
+.choose-section p { line-height: 22px; font-size: 14px; }
+.team-plan-box { padding: 50px 80px; }
+.team-section { padding: 60px 0px; }
+.team-heading { margin-bottom: 30px; }
+.team-heading h1 { font-size: 30px; line-height: 30px; }
+.team-plan-box figure { width: 254px; height: 254px; margin: 0 auto 30px;}
+.contact-us-banner-section { padding: 60px 0px; }
+.contact-us-banner-section h1 { font-size: 45px; line-height: 35px; }
+.contact-us-banner-section p, .contact-us-banner-section span { font-size: 16px; }
+.contact-us-plan-box { text-align: center;}
+.contact-us-plan-box h4 { font-size: 22px;}
+.contact-us-plan-box img { width: 30px ;}
+.contact-us-plan-box figure { margin: 0 auto 20px; }
+.contact-us-plan-box p { padding: 0 15%; }
+.contact-us-plan-box-section-inner { position: relative; top: 50px; }
+.success-section { padding: 60px 0 150px 0; }
+.success-section-text { margin-bottom: 40px; }
+.success-section h1 { font-size: 32px; line-height: 35px; }
+.contact-form-section { padding: 130px 0px 70px 0px; }
+.contact-form-plan-box .form-control { font-size: 14px; padding: 0 0px 0 30px; }
+.contact-form-section-plan-box { padding: 35px; }
+.contact-form-section-plan-box h1 { font-size: 32px; line-height: 36px; }
+.contact-form-section-text { margin-bottom: 40px; }
+.submitform-btn {  padding: 16px 40px; }
+.contact-form-plan-box .form-control { height: 50px; }
+.contact-form-plan-box .select-form { background-position: 96% 20px; }
+.contact-form-plan-box .textarea .form-control { height: 100px; }
+.contact-form-section-plan-box p { padding: 0; }
+.dedicated-banner-section { padding: 60px 0px; }
+.dedicated-banner-section h1 { font-size: 45px; line-height: 35px; }
+.dedicated-banner-section p { font-size: 16px; line-height: 18px; }
+.dedicated-banner-section ul li { font-size: 16px; line-height: 18px; }
+.dedicated-server-plan-box h4 { margin-bottom: 20px; font-size: 20px; line-height: 18px; }
+.dedicated-server-plan-box h2 { font-size: 40px; line-height: 35px; }
+.dedicated-server-plan-box span { font-size: 28px; line-height: 35px; }
+.dedicated-server-plan-box .dedicated-server-pricing { font-size: 16px; line-height: 20px; }
+.dedicated-server-plan-box .dedicated-server-plan-box-text { font-size: 14px;  line-height: 22px; margin-bottom: 5px; }
+.dedicated-server-plan-box p { margin-bottom: 15px; }
+.dedicated-btn { padding: 12px 30px; font-size: 12px; }
+.dedicated-server-plan-box-section { padding-top: 60px; }
+.dedicated-server-plan-box { padding: 50px 30px; }
+.dedicated-server-plan-box li span { font-size: 14px; line-height: 20px; }
+.dedicated-server-plan-box ul { width: 43%; }
+.dedicated-server-maintainance h4 { padding: 0; font-size: 20px;  line-height: 30px;}
+.dedicated-server-maintainance a { padding: 0; font-size: 20px;  line-height: 30px;}
+.dedicated-server-maintainance { padding: 60px 0px; }
+.dedicated-hosting-plan-img img{ width: 70%}
+.dedicated-hosting-plan-section p { padding: 0; }
+.dedicated-hosting-plan-image { max-width: 350px; }
+.dedicated-hosting-plan-image-list { max-width: 50px; }
+.dedicated-hosting-plan-text h1,  .dedicated-hosting-plan-text span{ font-size: 32px; }
+.dedicated-hosting-plan-setting { padding-top: 35px; }
+.dedicated-hosting-plan-section h4 { line-height: 17px; font-size: 22px; }
+.dedicated-server-features-plan-box { padding: 80px 50px; }
+.dedicated-server-features-section { padding: 60px 0px; }
+.dedicated-server-features-section p { padding: 0 2%; }
+.dedicated-server-feature-image-list { max-width: 200px; margin: 0 auto 30px; }
+.dedicated-server-features-section h1 { font-size: 32px; line-height: 28px; }
+.dedicated-server-support-plan-box-section h1 { font-size: 31px; line-height: 32px; }
+.dedicated-server-support-plan-box-section { padding: 60px 0px; }
+.dedicated-server-support-plan-box { padding: 60px; }
+.accordion-section { padding: 60px 0px 0px 0px; }
+.accordion-section-text { margin-bottom: 30px; }
+.accordion-section h1 { font-size: 32px; line-height: 25px; }
+.accordion-card .btn-link { font-size: 19px; }
+.accordion-card .btn-link:before, .accordion-card .btn-link:before { font-size: 18px; line-height: 32px;}
+.accordion-card .card-header { padding: 13px 0px 15px 0px; }
+.accordion-card .card-body { padding: 0px 53px 13px 0px; font-size: 14px; color: var(--global--color-lightgrey); line-height: 22px; }
+.domain-banner-section { padding: 60px 0px; }
+.domain-banner-section h1 { font-size: 32px; line-height: 32px; }
+.domain-banner-section p { font-size: 16px; } 
+.domain-banner-section .form-control { height: 51px; padding-left: 20px; font-size: 14px;}
+.domain-btn { padding: 16px 32px; }
+.domain-plan-box-section { padding-top: 60px; }
+.domain-management-section { padding: 60px 0px; }
+.domain-management-image-1, .domain-management-image-2 { max-width: 130px;}
+.domain-management-plan-box { padding: 60px 40px; }
+.domain-plan-box-image-list { max-width: 90px; height: 40px; }
+.domain-table-section { padding: 60px 0px; }
+.table-plan-box { padding: 40px 30px; }
+.domain-table-section .table tbody td .price { display: block;}
+.domain-table-section .table tbody th { vertical-align: middle; padding: 0px;}
+.domain-table-section .table thead th { font-size: 15px; }
+.reseller-banner-section { padding: 60px 0px; }
+.reseller-banner-section p { padding: 0px; font-size: 16px; }
+.reseller-banner-section h1 { font-size: 32px; line-height: 32px; }
+.reseller-plan-box p { margin-bottom: 15px; }
+.reseller-plan-box-section { padding-top: 60px; }
+.reseller-feature-text h1 { font-size: 32px; }
+.reseller-feature-text p { line-height: 20px; }
+.reseller-feature-section { padding: 60px 0px; }
+.reseller-feature-text { margin-bottom: 40px; }
+.reseller-feature-plan-box { padding: 45px 28px; }
+.reseller-feature-plan-box-image-list-variation-1, .reseller-feature-plan-box-image-list { max-width: 160px;}
+.reseller-feature-plan-box h4 { font-size: 22px; }
+.reseller-feature-plan-box p { font-size: 14px; line-height: 25px; }
+.reseller-guarrantees-plan-box { padding: 40px; }
+.reseller-guarrantees-section { padding: 60px 0px; }
+.reseller-guarrantees-text h1 { font-size: 32px; }
+.reseller-guarrantees-text p { font-size: 16px; line-height: 24px; padding: 0 11%; }
+.reseller-guarrantees-text { margin-bottom: 40px; }
+.reseller-guarrantees-plan-box-image-list { margin: 0 auto; }
+.reseller-table-section { padding: 60px 0px; }
+.reseller-comparison-text h1 { font-size: 32px; }
+.reseller-comparison-text p { line-height: 22px; }
+.reseller-comparison-text { margin-bottom: 60px; }
+.reseller-table-plan-box .table thead th { font-size: 18px; }
+.reseller-table-plan-box h2 { font-size: 24px; line-height: 30px; }
+.reseller-table-plan-box .reseller-table-plan-box-pricing-month { font-size: 16px; }
+.reseller-table-plan-box-btn { padding: 12px 35px; font-size: 12px; }
+.shared-banner-section h1 { font-size: 45px; line-height: 36px; }
+.shared-banner-section p { font-size: 16px; }
+.shared-plan-box h2 { font-size: 45px; font-weight: 700; line-height: 40px; }
+.shared-plan-box .shared-plan-box-pricing { font-size: 30px; line-height: 30px; }
+.shared-plan-box .shared-plan-box-pricing-month { font-size: 16px; line-height: 22px; }
+.shared-monthly-btn, .shared-yearly-btn { font-size: 14px; }
+#Comprison_pricingplan table tbody tr { border: none; }
+#Comprison_pricingplan table tbody tr td { font-size: 14px; }
+#Comprison_pricingplan table tbody tr td:first-child { font-size: 14px; }
+#Comprison_pricingplan button { font-size: 12px; }
+.reseller-comparison-text { margin-bottom: 40px; }
+#Comprison_pricingplan button { padding: 9px 50px; }
+.reliable-shared-hsoting-section h1 { font-size: 29px; line-height: 34px; }
+.reliable-shared-hsoting-section h5 { font-size: 16px; line-height: 22px; }
+.reliable-shared-hsoting-section p { font-size: 14px; }
+.reliable-shared-hsoting-section-btn { padding: 12px 38px; }
+.reliable-shared-hsoting-section-image { max-width: 225px; }
+.reliable-shared-hsoting-section { padding: 60px 0px; }
+.shared-tabs-section .nav-tabs { margin: 0px auto 60px; }
+.shared-banner-section { padding: 60px 0px 100px 0px; }
+.shared-tabs-section { margin-top: -100px; }
+.shared-plan-box-section { padding-top: 60px; }
+.shared-plan-box .shared-plan-box-paragraph { margin-top: 0px; }
+.shared-plan-box p { margin-bottom: 15px;}
+.features-section-variation-2 h1 { font-size: 33px;}
+.feature-heading { padding-bottom: 30px; }
+.vps-banner-section h1 { font-size: 45px; line-height: 36px; }
+.vps-banner-section { padding: 60px 0px; }
+.vps-banner-section p { font-size: 16px; line-height: 22px; padding: 0 10%; }
+.vps-banner-image { max-width: 255px; }
+.guarrantees-section-variation-2 { padding: 60px 0px; }
+.guarrantees-section-variation-2 h1 { font-size: 32px; line-height: 27px; margin-bottom: 18px; }
+.guarrantees-section-variation-2 h5 { font-size: 16px; line-height: 22px; padding: 0 10%; }
+.guarrantees-section-variation-2 .guarrantee-text { margin-bottom: 40px; }
+.guarrantees-section-variation-2-text { margin-bottom: 40px; }
+.guarrantees-section-variation-2 p { font-size: 14px; padding: 0 2%; line-height: 26px; }
+.pricebox .pricetxt span.doller{ font-size:32px; }
+.pricebox .pricetxt span.numeric { font-size:32px; }
+.vps-slider-section .form-group { margin-bottom: 20px; }
+.vps-slider-section { padding: 60px 0px; }
+.landing-page-banner-section { padding: 60px 0px 0px 0px; }
+.landing-page-server-img { max-width: 350px; }
+.landing-page-column { padding: 130px 40px 70px 40px; }
+.landing-page-banner-logo-img img { width: 45%; }
+.landing-page-banner-section h1 { font-size: 28px; line-height: 28px; }
+.landing-page-banner-logo-img { margin-bottom: 30px;  }
+.landing-page-banner-section p { font-size: 14px; line-height: 24px; margin-bottom: 25px; padding: 0 3%; }
+.landing-page-primary-btn, .landing-page-secondary-btn { padding: 12px 25px; font-size: 13px;}
+.landing-page-server-bottom-left-image, .landing-page-server-bottom-right-image { width: 50%; }
+.support-banner-section { padding: 50px 0px; }
+.support-banner-text h1 { font-size: 33px; }
+.support-plan-box-section-inner { position: relative; margin-top: 0px; padding-bottom: 60px; }
+.support-plan-box-section { padding-top: 60px;}
+.support-plan-box h4 {  margin-bottom: 15px; font-size: 20px; }
+.support-plan-box h6 { margin-bottom: 0px; }
+.support-natix-host-section { padding: 60px 0px; }
+.support-natix-host-text h1 { font-size: 32px; }
+.support-natix-host-text p { padding: 0; }
+.support-natix-host-text { margin-bottom: 40px; }
+.support-natix-host-plan-box { padding: 30px; }
+.support-natix-host-plan-box-image-list { margin: 0 auto 25px; }
+.support-natix-host-plan-box h4 { font-size: 22px; margin-bottom: 15px; }
+.support-natix-host-plan-box p { margin-bottom: 20px; }
+.support-natix-host-plan-box-btn { padding: 12px 40px; }
+.support-natix-host-plan-box-image-list { max-height: 50px; }
+.support-operation-section { padding: 60px 0px 145px 0px; }
+.support-operation-plan-box { padding: 30px; }
+.support-operation-plan-box h5 { font-size: 18px; }
+}
+  
+  
+  
+@media screen and (max-width: 576px) {
+.topbar-setting { text-align: center; }
+.social { text-align: center; width: 100%; }
+.navbar { padding-top:0px; padding-bottom: 0px; } 
+.navbar-brand img { max-width: 85%; } 
+.banner-text h1 { font-size: 30px; line-height: 35px; }
+.banner-text span { font-size: 14px; line-height: 20px; } 
+.banner-img { left: 0; width: 100%; }
+.slider-2 .banner-img, .slider-3 .banner-img { left: 13px; width: 100%; }
+.slider-2 ul, .slider-3 ul { margin-bottom: 25px; }
+.banner-text .text-paragraph { font-size: 14px; line-height: 20px; margin-bottom: 5px; }  
+#banner_slider .carousel-inner { padding: 0px 0 60px 0; }
+.slider-2 li, .slider-3 li { font-size: 12px; }
+.primary-btn { padding: 12px 25px; }
+.secondary-btn { padding: 12px 25px; }
+.search-btn { left: inherit; right: 0; bottom: 0; padding: 9px 16px; font-size: 10px;}
+.subscribe-form .form-control { padding: 15px 0px 15px 10px; font-size: 12px; }
+.plan .hosting-img-1, .plan .hosting-img-2, .plan .hosting-img-3 { margin-bottom: 20px; }
+.plan h4 { font-size: 18px; }
+.plan li { padding: 8px 0; }
+.plan li span { font-size: 14px; line-height: 20px; }
+.hosting-list-icon { max-width: 20px; }
+.price { padding-top: 0px; }
+.price li { margin-right: 0px; font-size: 11px; text-align: center; padding: 0px 5px 0px 5px; display: table-cell; vertical-align: middle;}
+.plan ul { margin-right: 0%; width: 100%; display: table; margin-bottom: 20px; }
+.plan small { line-height: 0px; }
+.plan h2 { line-height: 40px; margin-bottom: 20px; }
+.hosting-section { padding: 50px 0px 60px 0px; }
+.field-background { padding: 50px 0px 0px 0px; }
+.hosting-text, .server-text, .vps-text { left: 60%; font-size: 12px; }
+.hosting-pricing span, .server-pricing span, .vps-pricing span { font-size: 25px; line-height: 20px; }
+.hosting-pricing small, .server-pricing small, .vps-pricing small { font-size: 14px;}
+.shared-hosting img, .server-hosting img, .vps-hosting img { padding-right: 10px; }
+.hosting-btn, .server-btn, .vps-btn { margin-left: 0%; padding: 14px 36px; font-size: 12px; }
+.hosting-section h1 { font-size: 26px; line-height: 35px; }
+.hosting-img-1 img, .hosting-img-2 img, .hosting-img-3 img { width: 50px; float: none;}
+.plan figure { margin-bottom: 15px; }
+.shared-hosting, .server-hosting, .vps-hosting { width: 100%; }
+.plan-box-guarrantee, .plan-box-backup { margin-bottom: 30px; }
+.plan-box h4 br{ display: none;}
+.guarrantees-section h1 { font-size: 26px; line-height: 26px; }
+.guarrantees-section h4 { font-size: 14px;  line-height: 22px; }
+.guarrantees-section p { font-size: 12px; line-height: 20px; }
+.guarrantees-btn { padding: 14px 36px 14px 36px; font-size: 12px; }
+.plan-box-setting { padding-top: 40px; }
+.data-section { padding: 60px 0px; }
+.data-section h1 { font-size: 26px; line-height: 26px; margin-bottom: 15px; }
+.data-section p { font-size: 14px; font-weight: 400; line-height: 20px; padding: 0 5%;}
+.data-section h4 { font-size: 16px; line-height: 22px; }
+.data-btn { font-size: 12px; padding: 12px 24px; }
+.point { width: 0.8rem; height: 0.8rem; border: 2px solid var(--global--color-white); }
+.canada { top: 33%; left: 17%; }
+.los-angeles { top: 45%; left: 13%; }
+.dallas { top: 45%; left: 19%; }
+.atlanta { top: 37%; left: 22%; }
+.united-kingdom { top: 32%; left: 46%; }
+.germany { top: 36%; left: 50%; }
+.moscow { top: 33%; left: 58%; }
+.india { top: 49%; right: 26%; }
+.south-korea { top: 42%; right: 14%; }
+.japan { top: 39%; right: 10%; }
+.australia { top: 81%; right: 8%; }
+.features-section { padding: 60px 0; }
+.features-section h1 { font-size: 26px; line-height: 26px;  margin-bottom: 10px; }
+.features-section p { font-size: 14px; line-height: 20px; }
+.feature-plan-box { padding: 40px 30px; }
+.feature-image-list { max-width: 150px; margin: 0 auto 25px; }
+.feature-plan-box h3 { font-size: 20px; line-height: 25px; }
+.feature-plan-box p { font-size: 14px; line-height: 20px; }
+.review-section { padding: 60px 0px; }
+.review-section h1 { font-size: 26px; line-height: 26px; }
+.review-section p { margin-bottom: 20px; }
+.review-section .heading-text { font-size: 14px; line-height: 20px; margin-bottom: 5px; }
+.stars li { font-size: 20px; padding-top: 10px; }
+.quote i { font-size: 20px; padding-top: 0px; padding-bottom: 15px; }
+.review-section-text { font-size: 18px;  line-height: 25px; }
+.ceo h4 { font-size: 20px; padding-top: 8px; line-height: 10px; }
+.ceo .ceo-text{ font-size: 12px; line-height: 18px; }
+.contact-planbox { margin-bottom: 20px;}
+.contact-planbox p { line-height: 14px; }
+.contact-section { padding-bottom: 40px; }
+.contact-form-plan-box .textarea .form-control { height: 50px; }
+.contact-section { bottom: 0px; }
+.footer-section { padding: 60px 0px; }
+.footer-section h3 { font-size: 22px; line-height: 18px; }
+.footer-section p { font-size: 13px; line-height: 20px; }
+.footer-form { padding-top: 5px; }
+.footer-section .form-control { padding: 20px; font-size: 14px;}
+.footer-section .form-group { margin-bottom: 40px; }
+.footer-section p { margin-bottom: 25px; }
+.footer-logo figure {  margin: 0 auto 20px; }
+.footer-list { margin-bottom: 0px;}
+.footer-list li a { height: 35px; width: 35px; line-height: 34px; }
+.subscribe-btn { padding: 12px 20px 12px 20px; font-size: 12px; }
+.footer-company-setting, .footer-hosting-setting, .footer-contact-setting { display: none; }
+.footer-logo-setting { padding-top: 0px;  text-align: center;}
+.footer-setting { padding-top: 25px; padding-bottom: 10px; }
+.footer-cards { text-align: center;}
+.footer-bar .footer-cards small { margin: 0px; }
+.footer-cards-list li:first-child { margin-left: 0px; }
+.footer-cards-list { padding-top: 10px;}
+.footer-arrow { text-align: center;}
+.footer-arrow-setting { height: 25px; width: 25px; line-height: 23px; font-size: 15px; }
+.footer-list li { height: 25px; width: 25px; line-height: 24px; margin-right: 20px; }
+.footer-logo small { font-size: 12px; }
+.footer-bar { padding: 30px 0 30px 0; }
+.footer-cards-list li { font-size: 20px; }
+.vision-plan-box { padding: 20px; }
+.vision-plan-box h4 { font-size: 20px; line-height: 25px; margin-bottom: 10px; }
+.vision-plan-box p { font-size: 14px; line-height: 22px; }
+.vision-image-list { margin: 0 auto 20px; max-width: 50px; }
+.about-us-banner-section { padding: 0px 0px 50px 0px; }
+.about-us-banner-section h2 { padding-bottom: 0px; padding-top: 20px; font-size: 28px; line-height: 30px;}
+.about-us-banner-text p { font-size: 14px; line-height: 20px; }
+.about-us-banner-text h1 { font-size: 34px; line-height: 38px; }
+.about-primary-btn { padding: 12px 26px; font-size: 12px;}
+.about-secondary-btn { padding: 12px 16px; font-size: 12px; margin-left: 4px;}
+.about-us-price { padding-top: 25px; }
+.about-sub-section {  background-position: 70% 65px; }
+.history-section .plan-circle:after { left: 49%; }
+.history-section h1 { font-size: 26px; line-height: 26px; }
+.history-section p { padding: 0 3%; }
+.history-section { padding: 60px 0px; }
+.choose-section h1 { font-size: 26px; line-height: 26px; margin-bottom: 13px; }
+.choose-section h5 { margin-bottom: 10px; font-size: 14px; line-height: 22px; }
+.choose-section p { line-height: 20px; font-size: 12px; }
+.choose-btn { padding: 12px 35px; font-size: 14px; }
+.choose-section { padding: 50px 0px; }
+.choose-text { padding-top: 30px; }
+.team-section { padding: 50px 0px; }
+.team-heading h1 { font-size: 26px; line-height: 26px; }
+.team-heading p { font-size: 14px; line-height: 14px; padding: 0 3%;}
+.team-plan-box { padding: 30px; }
+.team-plan-box figure { width: 150px; height: 150px; margin: 0 auto 30px; }
+.team-plan-box img { padding-top: 10px; }
+.team-plan-box h4 { font-size: 20px; line-height: 18px; }
+.team-plan-box p { margin-bottom: 15px; }
+.contact-us-banner-section h1 { font-size: 30px; line-height: 30px; }
+.contact-us-banner-section p, .contact-us-banner-section span { font-size: 14px; margin-bottom: 0px;}
+.contact-us-plan-box { padding: 30px; }
+.contact-us-plan-box figure { margin: 0 auto 20px; }
+.contact-us-banner-section { padding: 0px 0px 50px 0px; }
+.contact-us-plan-box img {  width: 25px; }
+.contact-us-plan-box h4 { font-size: 18px; line-height: 24px; margin-bottom: 10px; }
+.contact-us-plan-box p { font-size: 14px; line-height: 20px; padding: 0;}
+.contact-us-plan-box a { font-size: 14px; line-height: 20px;}
+.success-section h1 { font-size: 26px; line-height: 32px; }
+.success-section p { font-size: 14px; line-height: 18px; }
+.success-plan-box a { font-size: 14px; line-height: 18px; }
+.success-section-text { margin-bottom: 30px; }
+.success-plan-box { padding: 30px; }
+.success-plan-box h4 { margin-bottom: 10px; }
+.success-image-list { max-width: 40px; }
+.success-plan-box figure { margin-bottom: 10px; }
+.success-plan-box h4 { font-size: 20px; line-height: 24px; }
+.contact-form-section { padding: 100px 0px 60px 0px; }
+.contact-form-section-plan-box h1 { font-size: 26px; line-height: 32px; }
+.contact-form-section-plan-box p { font-size: 14px; line-height: 18px; }
+.contact-form-section-text { margin-bottom: 20px; }
+.contact-form-plan-box .form-control { font-size: 12px; padding: 0 0px 0 10px; height: 45px; }
+.contact-form-section-plan-box { padding: 20px; }
+.contact-form-plan-box .select-form { background-position: 96% 19px; }
+.submitform-btn { padding: 12px 30px; font-size: 12px; } 
+.success-section { padding: 60px 0 55px 0; }
+.contact-section-inner { position: relative; }
+.dedicated-banner-section { padding: 0px 0px 50px 0px; }
+.dedicated-banner-section ul { margin-bottom: 0px;}
+.dedicated-banner-section h1 { font-size: 30px; line-height: 30px; }
+.dedicated-banner-section p { font-size: 14px; }
+.dedicated-banner-section ul li { font-size: 12px; line-height: 16px; }
+.dedicated-server-plan-box ul { width: 100%; }
+.dedicated-server-plan-box { padding: 40px; }
+.dedicated-server-plan-box h4 { margin-bottom: 20px; font-size: 20px; line-height: 16px; }
+.dedicated-server-plan-box h2 { font-size: 40px; line-height: 40px; }
+.dedicated-server-plan-box span { font-size: 24px; line-height: 30px; }
+.dedicated-server-plan-box .dedicated-server-pricing { font-size: 14px; line-height: 18px; }
+.dedicated-server-plan-box .dedicated-server-plan-box-text { font-size: 12px;  line-height: 18px; margin-bottom: 5px; }
+.dedicated-btn { padding: 12px 26px; font-size: 12px; }
+.dedicated-server-plan-box p { font-size: 14px; margin-bottom: 18px; }
+.dedicated-server-plan-box .dedicated-server-plan-box-paragraph { font-size: 12px; line-height: 18px; }
+.dedicated-server-maintainance { padding: 50px 0px; }
+.dedicated-server-maintainance h4,  .dedicated-server-maintainance a { font-size: 20px; line-height: 24px; }
+.dedicated-hosting-plan-text h1, .dedicated-hosting-plan-text span { font-size: 26px; }
+.dedicated-hosting-plan-section h4 { line-height: 15px; font-size: 20px; }
+.dedicated-hosting-plan-section p { font-size: 12px; line-height: 16px; }
+.dedicated-hosting-plan-image-list { max-width: 40px; }
+.dedicated-hosting-plan-image { max-width: 250px; }
+.dedicated-list-icon { max-width: 20px; }
+.dedicated-hosting-plan-section { padding: 60px 0px; }
+.dedicated-server-features-plan-box { padding: 50px 30px; }
+.dedicated-server-features-section h1 { font-size: 26px; line-height: 26px; }
+.dedicated-server-features-section p { font-size: 14px; line-height: 18px; }
+.dedicated-server-features-plan-box p { font-size: 14px; line-height: 25px; padding: 0px;}
+.dedicated-server-features-section-text { margin-bottom: 30px; }
+.dedicated-server-feature-network-img, .dedicated-server-feature-technology-img, .dedicated-server-feature-control-panel-img { margin-bottom: 30px; }
+.dedicated-server-feature-image-list { max-width: 160px; margin: 0 auto 25px; }
+.dedicated-server-features-plan-box h4 { line-height: 23px; font-size: 20px; }
+.dedicated-server-support-plan-box-section h1 { font-size: 26px; line-height: 30px; }
+.dedicated-server-support-plan-box p { margin-bottom: 10px; font-size: 16px; }
+.dedicated-server-support-plan-box li { padding: 8px 0px; }
+.dedicated-server-support-plan-box img { width: 75px; }
+.dedicated-server-support-plan-box { padding: 30px; }
+.dedicated-server-support-plan-box li:last-child { padding-bottom: 0px; }
+.dedicated-support-btn { padding: 12px 30px; font-size: 12px;}
+.dedicated-server-support-plan-box .variation-2 { padding: 12px 24px; }
+.dedicated-server-support-plan-box span { font-size: 14px; line-height: 18px;}
+.dedicated-server-support-image-list { max-width: 62px; }
+.dedicated-server-support-plan-box h4 { line-height: 26px; font-size: 20px;}
+.dedicated-server-support-plan-box-section-text { margin-bottom: 30px; }
+.dedicated-server-support-plan-box-section p { font-size: 14px; line-height: 22px; }
+.accordion-section h1 { font-size: 26px; line-height: 25px; }
+.accordion-section-text { margin-bottom: 15px; }
+.accordion-card .btn-link { font-size: 16px; }
+.accordion-card .btn-link:before, .accordion-card .btn-link:before { font-size: 16px; line-height: 24px; }
+.accordion-card .card-body { font-size: 12px; line-height: 20px; }
+.accordion-section { padding: 60px 0px; }
+.domain-banner-section { padding: 0px 0px 50px 0px; }
+.domain-banner-section h1 { font-size: 26px; line-height: 30px; }
+.domain-banner-section p { font-size: 14px; line-height: 18px; }
+.domain-btn { padding: 12px 26px; font-size: 12px; }
+.domain-form { width: 100%; }
+.domain-banner-section .form-control { height: 40px; padding-left: 14px; font-size: 12px; }
+.domain-plan-box p { margin-bottom: 20px; font-size: 14px; line-height: 20px;}
+.domain-plan-box h2 { font-size: 40px; line-height: 40px;}
+.domain-plan-box span { font-size: 25px; line-height: 40px;}
+.domain-plan-box-image-list { max-width: 80px; height: 30px; }
+.domain-plan-box .domain-plan-box-pricing { font-size: 14px; }
+.domain-plan-box { padding: 30px; }
+.domain-plan-box-btn { padding: 12px 30px; font-size: 12px; }
+.domain-management-section { padding: 60px 0px; }
+.domain-management-plan-box { padding: 40px 30px; }
+.domain-management-image-1, .domain-management-image-2 { max-width: 100px;}
+.domain-management-plan-box h4 { font-size: 22px }
+.domain-management-plan-box p { font-size: 14px; line-height: 24px; }
+.domain-table-section .table thead th { font-size: 10px; }
+.table-plan-box { padding: 30px 20px; }
+.domain-table-section .table tbody th { font-size: 10px; }
+.domain-table-section .table tbody th .popular, .domain-table-section .table tbody th .sale { font-size: 7px; }
+.domain-table-section .table tbody td, .domain-table-section .table tbody td .price { font-size: 10px; }
+.reseller-banner-section { padding: 0px 0px 50px 0px; }
+.reseller-banner-section h1 { font-size: 26px; line-height: 35px; }
+.reseller-banner-section p { font-size: 14px; line-height: 24px; }
+.reseller-plan-box { padding: 40px 30px; }
+.reseller-plan-box-image-list {  max-width: 50px; }
+.reseller-plan-box figure { margin-bottom: 20px; }
+.reseller-plan-box h4 { font-size: 20px; }
+.reseller-plan-box p { font-size: 14px; line-height: 20px; }
+.reseller-plan-box h2 { font-size: 40px; line-height: 40px;}
+.reseller-plan-box .reseller-plan-box-pricing { font-size: 25px; }
+.reseller-plan-box .reseller-plan-box-pricing-month { font-size: 14px; }
+.reseller-feature-plan-box-image-list-variation-1, .reseller-feature-plan-box-image-list { max-width: 140px; }
+.reseller-plan-box-btn { padding: 12px 40px; font-size: 12px; }
+.reseller-feature-text h1 { font-size: 26px; }
+.reseller-feature-text p { line-height: 18px; font-size: 14px; }
+.reseller-feature-text { margin-bottom: 30px; }
+.reseller-feature-plan-box h4 { font-size: 20px; }
+.reseller-feature-plan-box p { font-size: 12px; line-height: 22px; }
+.reseller-feature-plan-box { padding: 45px 25px; }
+.reseller-guarrantees-text h1 { font-size: 26px; }
+.reseller-guarrantees-text p { font-size: 14px; line-height: 22px; padding: 0; }
+.reseller-guarrantees-plan-box p { font-size: 14px; line-height: 22px; }
+.reseller-guarrantees-plan-box { padding: 40px 20px; }
+.reseller-guarrantees-text { margin-bottom: 30px; }
+.reseller-guarrantees-plan-box-image-list { max-width: 50px; margin-bottom: 15px; height: 60px;}
+.shared-banner-section { padding: 0px 0px 100px 0px; }
+.shared-banner-section p { font-size: 14px; line-height: 20px; }
+.shared-banner-section h1 { font-size: 30px; line-height: 32px; }
+.shared-monthly-btn, .shared-yearly-btn { font-size: 14px !important; }
+.shared-tabs-section .nav-tabs { margin: 0px auto 45px; }
+.reseller-comparison-text h1 { font-size: 25px; }
+.reseller-comparison-text p { font-size: 14px; line-height: 20px; }
+.reseller-comparison-text { margin-bottom: 30px; }
+#Comprison_pricingplan button { padding: 7px 20px; }
+#Comprison_pricingplan table tbody tr td:first-child { padding-left: 20px; }
+#Comprison_pricingplan table tbody tr td { padding: 12px 0px; }
+#Comprison_pricingplan table tbody tr:first-child td { padding-top: 20px; }
+#Comprison_pricingplan table tbody tr:last-child td { padding-bottom: 20px; }
+#Comprison_pricingplan table tbody tr td { font-size: 12px; }
+#Comprison_pricingplan table tbody tr td:first-child { font-size: 12px; }
+.reseller-table-plan-box-btn { padding: 12px 25px; }
+#Comprison_pricingplan table tbody tr:nth-child(2) td { padding-top: 20px; }
+.reliable-shared-hsoting-section h1 { font-size: 26px; line-height: 30px; margin-bottom: 10px;}
+.reliable-shared-hsoting-section h5 { font-size: 14px; line-height: 22px; margin-bottom: 10px; }
+.reliable-shared-hsoting-section p { font-size: 12px; line-height: 20px; }
+.reliable-shared-hsoting-section-btn { font-size: 12px; padding: 14px 36px; }
+.reliable-shared-hsoting-section-text { padding-top: 20px; }
+.shared-plan-box figure { margin-bottom: 20px; }
+.shared-plan-box h4 { font-size: 20px; }
+.shared-plan-box p { font-size: 14px; line-height: 20px; }
+.shared-plan-box h2 { font-size: 40px; line-height: 40px;}
+.shared-plan-box .shared-plan-box-pricing { font-size: 25px; line-height: 20px;}
+.shared-plan-box .shared-plan-box-pricing-month { font-size: 14px; }
+.shared-plan-box-btn { padding: 12px 36px; font-size: 12px; }
+.shared-plan-box { padding: 30px; }
+.reliable-shared-hsoting-section-image { max-width: 175px; }
+.features-section-variation-2 h1 { font-size: 26px;}
+.feature-heading { padding-bottom: 20px; }
+.vps-banner-section { padding: 0px 0px 50px 0px; }
+.vps-banner-section h1 { font-size: 30px; line-height: 32px; }
+.vps-slider-image-list { max-width: 22px; }
+.vps-banner-image { max-width: 155px; }
+.vps-banner-section p { font-size: 14px; line-height: 22px; padding: 0px; }
+.reseller-feature-section-2 { margin-top: 0px; padding: 0px 0px 60px 0px; }
+.guarrantees-section-variation-2 h1 { font-size: 26px;  margin-bottom: 15px; }
+.guarrantees-section-variation-2 h5 { font-size: 14px; line-height: 20px; padding: 0px; }
+.guarrantees-section-variation-2 .guarrantee-text { margin-bottom: 30px; }
+.guarrantees-section-variation-2-text { margin-bottom: 30px; }
+.guarrantees-section-variation-2 p { font-size: 14px; padding: 0px; line-height: 22px; }
+.plan-box h4 { font-size: 14px; line-height: 22px; }
+.vps-slider-section h4 { font-size: 22px;}
+.plan-wrap { padding: 50px 30px 50px 30px; }
+.vps-slider-section p { line-height: 16px; font-size: 14px; margin-bottom: 27px; }
+.vps-slider-section .form-control { font-size: 14px; }
+.white_btn a { padding: 12px 30px;  font-size: 12px; }
+.slider-container .ui-slider-handle { width: 25px; height: 25px; margin-top: -3px;}
+.landing-page-server-img { max-width: 300px; }
+.landing-page-banner-logo-img img { width: 60%; }
+.landing-page-column { padding: 120px 30px 60px 30px; }
+.landing-page-banner-section h1 { font-size: 25px; line-height: 25px; }
+.landing-page-primary-btn { padding: 12px 18px; font-size: 10px; }
+.landing-page-secondary-btn { padding: 12px 15px; font-size: 10px; }
+.landing-page-server-bottom-left-image { left: -70px; width: 60%; }
+.landing-page-server-bottom-right-image { right: -70px; width: 60%; }
+.landing-page-banner-section p { padding: 0;}
+.support-banner-section { padding: 0px 0px 50px 0px; }
+.support-banner-text h1 { font-size: 26px; line-height: 30px; }
+.support-banner-text p { font-size: 16px; line-height: 20px; }
+.support-natix-host-text h1 { font-size: 26px; }
+.support-natix-host-text h1 { margin-bottom: 15px; }
+.support-natix-host-text p { font-size: 14px; line-height: 22px; }
+.support-natix-host-text { margin-bottom: 30px; }
+.support-natix-host-plan-box-image-list { margin: 0 auto 20px; max-width: 50px; }
+.support-natix-host-plan-box h4 { font-size: 20px; margin-bottom: 15px; }
+.support-natix-host-plan-box p { margin-bottom: 15px; font-size: 14px; }
+.support-natix-host-plan-box-btn { padding: 13px 40px; font-size: 12px; }
+.support-operation-plan-box-image-list { margin: 0 auto 20px; max-width: 40px; max-height: 40px; }
+.support-operation-section { padding: 60px 0px ; }
+.support-plan-box { padding: 28px; }
+.support-plan-box h4 { font-size: 18px; }
+}
+
+
