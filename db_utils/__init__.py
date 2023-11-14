@@ -1,16 +1,20 @@
+import os
 import redis
 from pymongo import MongoClient
 
-# eb_db = SQLAlchemy()
+MONGODB_SERV = os.environ.get('MONGODB_SERV', 'mongodb+srv://mongo_u:mgdb2015@cqsmongo.d7plkb7.mongodb.net/?retryWrites=true&w=majority')
+REDIS_SERV = os.environ.get('REDIS_SERV', 'redis://:cejVttuqN1ogu1m4y31IVqsahjHDR6X7@redis-10119.c252.ap-southeast-1-1.ec2.cloud.redislabs.com:10119')
 
+# eb_db = SQLAlchemy()
 # 创建Redis客户端实例
-redis_db = redis.Redis(
-    host='redis-10119.c252.ap-southeast-1-1.ec2.cloud.redislabs.com',
-    port=10119,
-    password='cejVttuqN1ogu1m4y31IVqsahjHDR6X7')
+redis_db = redis.from_url(REDIS_SERV)
+# redis_db = redis.Redis(
+#     host='redis-111.c252.ap-southeast-1-1.ec2.cloud.redislabs.com',
+#     port=10119,
+#     password='123')
 
 # 创建 MongoDB 客户端连接
-mongo_client = MongoClient('mongodb+srv://mongo_u:mgdb2015@cqsmongo.d7plkb7.mongodb.net/?retryWrites=true&w=majority')
+mongo_client = MongoClient(MONGODB_SERV)
 # 选择或创建数据库
 mongo_db = mongo_client['xs_site']
 
