@@ -10,7 +10,13 @@ from entity.user_token import UserToken
 
 user_blue = Blueprint('user', __name__, url_prefix=WebPaths.USER_PATH)
 
-
+@user_blue.context_processor
+def inject_site_name():
+    """
+    使用context_processor上下文件处理器，注入pages_blue下所有模板的公共变量
+    """
+    settings_model = get_settings()
+    return {'SiteName': settings_model.site_name}
 # region 后台请求前的处理
 
 @user_blue.before_request
