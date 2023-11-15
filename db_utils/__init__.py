@@ -7,8 +7,8 @@ from pymongo import MongoClient
 
 from eb_utils import http_utils
 
-MONGODB_SERV = os.environ.get('MONGODB_SERV','mongodb://localhost:27017')
-# MONGODB_SERV = os.environ.get('MONGODB_SERV', 'mongodb+srv://mongo_u:mgdb2015@cqsmongo.d7plkb7.mongodb.net/?retryWrites=true&w=majority')
+# MONGODB_SERV = os.environ.get('MONGODB_SERV','mongodb://localhost:27017')
+MONGODB_SERV = os.environ.get('MONGODB_SERV', 'mongodb+srv://mongo_u:mgdb2015@cqsmongo.d7plkb7.mongodb.net/?retryWrites=true&w=majority')
 REDIS_SERV = os.environ.get('REDIS_SERV',
                             'redis://:cejVttuqN1ogu1m4y31IVqsahjHDR6X7@redis-10119.c252.ap-southeast-1-1.ec2.cloud.redislabs.com:10119')
 

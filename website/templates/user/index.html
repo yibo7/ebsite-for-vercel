@@ -4,8 +4,14 @@
 {% endblock %}
 
 {% block content %}
-个人中心首页<br>
-     用户名：{{user.name}}<br>
-     用户ID：{{user.id}}<br>
-     <a href="log_out">退出登录</a>
+<div class="container mt-5 mb-5">
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{user.name}} 个人中心</h5>
+    <h6 class="card-subtitle mb-2 text-muted">个人中心首页</h6>
+    <p class="card-text">可以根据你的需要开发你的个人中心，如有需要请<a href="/a17.html">联系社区</a></p>
+    <a href="log_out" >退出登录</a>
+  </div>
+</div>
+</div>
 {% endblock %}
