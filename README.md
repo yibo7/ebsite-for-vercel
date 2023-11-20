@@ -67,9 +67,27 @@ Your Flask application is now available at `http://localhost:3000`.
 ### 注意
 - 如果你修改了requirements.txt，提交后代码后，vercel会自动安装新的python库，并重新部署，无需手动处理。
 - 如果你在vercel上修改了环境变量，则需要你重新部署(也可通过随意改动源代码提交让后其自动重新部署)。
- 
-# 支持
-本项目为免费项目，你可以自动修改，但请保留代码官方出处声明。
+
+# 后期修改数据库连接串
+在安装时会要求你填写， MONGODB_SERV（数据库连接串）与REDIS_SERV（Redis连接串），那么后期我又如何修改这两个连接串，
+- 1、登录你的vercel控制台并打开你要修改的项目进入settings
+- 2、打开环境变量设置页面，如
+    
+    https://vercel.com/你的github用户名称/你的项目名称/settings/environment-variables
+- 3、找到MONGODB_SERV（数据库连接串）与REDIS_SERV（Redis连接串）想必保存即可。
+
+> 注意:要使修改生效，需要重新部署
+
+# 使用声明
+EbSite及系列产品免费开源，你可以自行使用与修改，
+
+但你在使用EbSite产品开发项目的同时要遵守以下规定:
+- 1、请保留代码官方出处声明
+- 2、不得使用EbSite开发违法违规项目
+- 3、不得使用EbSite开发违背道德伦理的项目
+
+
+# 支持 
 ### 加微信进群:
 ![img.png](img.png)
 
