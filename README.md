@@ -71,5 +71,8 @@ Your Flask application is now available at `http://localhost:3000`.
  
 # 支持
 本项目为免费项目，你可以自动修改，但请保留代码官方出处声明。
+### 加微信进群:
+![img.png](img.png)
 
-
+### 捐赠开发者:
+![img_1.png](img_1.png)
