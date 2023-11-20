@@ -7,23 +7,19 @@ from pymongo import MongoClient
 
 from eb_utils import http_utils
 
-# MONGODB_SERV = os.environ.get('MONGODB_SERV','mongodb://localhost:27017')
-MONGODB_SERV = os.environ.get('MONGODB_SERV', 'mongodb+srv://mongo_u:mgdb2015@cqsmongo.d7plkb7.mongodb.net/?retryWrites=true&w=majority')
-REDIS_SERV = os.environ.get('REDIS_SERV',
-                            'redis://:cejVttuqN1ogu1m4y31IVqsahjHDR6X7@redis-10119.c252.ap-southeast-1-1.ec2.cloud.redislabs.com:10119')
-
+# mongodb+srv://user:pass@cqsmongo.d7plkb7.mongodb.net/?retryWrites=true&w=majority
+MONGODB_SERV = os.environ.get('MONGODB_SERV', 'mongodb://localhost:27017')
+# redis://:userkey@redis-10119.c252.ap-southeast-1-1.ec2.cloud.redislabs.com:10119
+REDIS_SERV = os.environ.get('REDIS_SERV', 'redis://127.0.0.1:6379')
+MONGODB_NAME = os.environ.get('MONGODB_NAME', 'eb_site')  # xs_site
 # eb_db = SQLAlchemy()
 # 创建Redis客户端实例
 redis_db = redis.from_url(REDIS_SERV)
-# redis_db = redis.Redis(
-#     host='redis-111.c252.ap-southeast-1-1.ec2.cloud.redislabs.com',
-#     port=10119,
-#     password='123')
 
 # 创建 MongoDB 客户端连接
 mongo_client = MongoClient(MONGODB_SERV)
 # 选择或创建数据库
-mongo_db = mongo_client['xs_site']
+mongo_db = mongo_client[MONGODB_NAME]
 
 
 def init_eb_db(app):
@@ -34,7 +30,7 @@ def init_eb_db(app):
     """
     pass
     # app.config[
-    #     'SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://media_db_user:123@mysql.sqlpub.com:3306/mydata"
+    #     'SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://test:123@mysql.sqlpub.com:3306/mydata"
 
     # 动态追踪数据库的修改. 性能不好. 且未来版本中会移除. 目前只是为了解决控制台的提示才写的
     # app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False  # configs.IS_DEBUG
@@ -45,10 +41,15 @@ def init_eb_db(app):
     # eb_db.app = app  # 如果不加这个，在视图外使用会出错
 
 
-default_tables = ['AdminMenus', 'AdminRole', 'AdminUser', 'SiteModel', 'Templates', 'UserGroup', 'Widgets', 'NewsClass', 'NewsContent']
+# 发布项目默认备份还原的表
+default_tables = ['AdminMenus', 'AdminRole', 'AdminUser', 'SiteModel', 'Templates', 'UserGroup', 'Widgets', 'NewsClass',
+                  'NewsContent']
 
 
 def OutputDefaultData():
+    """
+    备份表
+    """
     for table_name in default_tables:
         # 获取数据库和集合
         collection = mongo_db[table_name]
@@ -63,6 +64,9 @@ def OutputDefaultData():
 
 
 def ImportDefaultData():
+    """
+    还原表
+    """
     for table_name in default_tables:
         collection_list = mongo_db.list_collection_names()
         if table_name not in collection_list:
