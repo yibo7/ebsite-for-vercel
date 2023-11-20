@@ -60,14 +60,13 @@ Your Flask application is now available at `http://localhost:3000`.
 
 # 更新项目
 如果你在上面安装的页面上选择了：Create private Git Repository
-也就是创建一个你自己私有的github库，那么你在你的github下将会看属于你的一份源码管理库。
-由于这是属于你的私有库，你可以随意修改和提交你的代码，并不影响他人的项目。
+，提交后会复制一份EbSite CMS Vercel源码在你的github下。
+你可以在这个基础上随意修改你的项目，
 如果你将修改的代码提交到github,系统会自动更新到vercel上，所以在提交代码前，要确认你的代码是否正确无误，
 否则会影响你正在运行中的网站。
-
-
->注：如果你修改了requirements.txt，提交后也一样会自动更新，在vercel上你不需要重新部署。
- 
+### 注意
+- 如果你修改了requirements.txt，提交后代码后，vercel会自动安装新的python库，并重新部署，无需手动处理。
+- 如果你在vercel上修改了环境变量，则需要你重新部署(也可通过随意改动源代码提交让后其自动重新部署)。
  
 # 支持
 本项目为免费项目，你可以自动修改，但请保留代码官方出处声明。
