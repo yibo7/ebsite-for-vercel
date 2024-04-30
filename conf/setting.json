@@ -1,0 +1,5 @@
+{
+    "port": 80,
+    "MongoDBUrl": "mongodb://localhost:27017",
+    "RedisUrl": "redis://:111111@192.168.1.168:6379"
+}
