@@ -2,7 +2,10 @@ import os
 
 from eb_utils.xs_json import XsJson
 
-
+CF_APP = {
+    "MongoDBUrl": "",
+    "RedisUrl": ""
+}
 cf_path = 'conf/setting.json'
 # 检查文件是否存在
 if os.path.exists(cf_path):
