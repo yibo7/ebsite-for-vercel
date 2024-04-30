@@ -4,6 +4,7 @@
 这是一个轻量级CMS系统，可一键部署在Vercel上，轻松实现个人或简单的企业网，
 借自Vercel的免费服务及相关数据库的免费服务，你可以实现真正免费独立网站。
 
+>注意：目前vercel部署python项目需要指定node为18.x,后期如果支持20.x可以在package.json文件中修改
 
 官方演示站点:https://ebsite-for-vercel.vercel.app/
 
