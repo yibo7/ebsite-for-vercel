@@ -5,12 +5,13 @@ from bson import json_util
 from flask import request
 from pymongo import MongoClient
 
+from app_configs import CF_APP
 from eb_utils import http_utils
 
 # mongodb+srv://user:pass@cqsmongo.d7plkb7.mongodb.net/?retryWrites=true&w=majority
-MONGODB_SERV = os.environ.get('MONGODB_SERV', 'mongodb://localhost:27017')
+MONGODB_SERV = os.environ.get('MONGODB_SERV', CF_APP.get('MongoDBUrl'))
 # redis://:userkey@redis-10119.c252.ap-southeast-1-1.ec2.cloud.redislabs.com:10119
-REDIS_SERV = os.environ.get('REDIS_SERV', 'redis://127.0.0.1:6379')
+REDIS_SERV = os.environ.get('REDIS_SERV', CF_APP.get('RedisUrl'))
 MONGODB_NAME = os.environ.get('MONGODB_NAME', 'eb_site')  # xs_site
 # eb_db = SQLAlchemy()
 # 创建Redis客户端实例
