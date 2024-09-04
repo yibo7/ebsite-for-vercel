@@ -1,5 +1,11 @@
 {
+  "builds": [
+    {
+      "src": "website/index.py",
+      "use": "@vercel/python"
+    }
+  ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/website/index.py" }
+    { "source": "/(.*)", "destination": "/website/index" }
   ]
 }
