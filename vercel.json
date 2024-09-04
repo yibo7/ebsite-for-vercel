@@ -6,6 +6,6 @@
     }
   ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/website/index" }
+    { "source": "/(.*)", "destination": "website/index.py" }
   ]
 }
