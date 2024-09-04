@@ -1,5 +1,5 @@
 {
     "port": 80,
-    "MongoDBUrl": "mongodb://localhost:27017",
-    "RedisUrl": "redis://:111111@192.168.1.168:6379"
+    "MongoDBUrl": "mongodb://cqs263:369913836@192.168.1.209:27017/?replicaSet=cqsmg",
+    "RedisUrl": "redis://192.168.1.209:6379"
 }

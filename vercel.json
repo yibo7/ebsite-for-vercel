@@ -1,11 +1,5 @@
 {
-  "builds": [
-    {
-      "src": "website/index.py",
-      "use": "@vercel/python"
-    }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "website/index.py" }
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/website/index" }
   ]
 }

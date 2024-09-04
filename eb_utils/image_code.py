@@ -24,10 +24,10 @@ class ImageCode:
     def drawLines(self, draw, num, width, height):
         """划线"""
         for num in range(num):
-            x1 = random.randint(0, width / 2)
-            y1 = random.randint(0, height / 2)
+            x1 = random.randint(0, int(width / 2))
+            y1 = random.randint(0, int(height / 2))
             x2 = random.randint(0, width)
-            y2 = random.randint(height / 2, height)
+            y2 = random.randint(int(height / 2), height)
             draw.line(((x1, y1), (x2, y2)), fill='black', width=1)
 
     def getVerifyCode(self):
