@@ -3,6 +3,7 @@ import os
 from flask import Flask
 
 from db_utils import init_eb_db
+from eb_cache import init_eb_cache
 from eb_triggers import init_triggers
 from temp_expand import reg_temp_expand
 
@@ -23,6 +24,8 @@ def create_app(run_mode):  # run_mode
     init_eb_db(app)
 
     reg_temp_expand(app)
+
+    init_eb_cache(app)
 
     # db.app = app  # 如果不加这个，在视图外使用会出错
     # 将蓝图注册到app中

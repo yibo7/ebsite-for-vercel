@@ -1,8 +1,10 @@
 import json
+from datetime import datetime
 from io import BytesIO
 
 from flask import Blueprint, request, jsonify, send_file
 
+import eb_cache
 from bll.custom_form import CustomForm
 from bll.custom_form_data import CustomFormData
 from bll.file_upload import FileUpload
@@ -100,3 +102,16 @@ def get_up_file(filename):
         file_obj = BytesIO(model.content)
         return send_file(file_obj, mimetype=model.mimetype)
     return 'Image not found.', 404
+
+@api_blue.route('cacheset', methods=['GET'])
+def cacheset():
+    eb_cache.set_data(datetime.now(),60,"test_timeddd")
+    return '成功写入'
+
+@api_blue.route('cacheget', methods=['GET'])
+def cacheget():
+    data = eb_cache.get("test_timeddd")
+    if data:
+        return str(data)
+    else:
+        return "无数据"

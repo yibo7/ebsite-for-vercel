@@ -5,3 +5,4 @@ pydantic==2.1.1
 requests
 Pillow==10.2.0
 werkzeug~=3.0.2
+flask_caching
